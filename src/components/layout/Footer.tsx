@@ -5,7 +5,8 @@ import { ADDRESS, PHONE } from '@/lib/constants'
 export default function Footer() {
   return (
     <footer className="bg-[#0d1117]" aria-label="푸터">
-      <div className="max-w-7xl mx-auto px-4 lg:px-8 pt-12 pb-8">
+      {/* pt-12를 pt-4로 수정하여 상단 여백을 줄였습니다 */}
+      <div className="max-w-7xl mx-auto px-4 lg:px-8 pt-20 pb-12">
         <div className="pb-8 border-b border-white/10">
           <div className="space-y-4 max-w-xs">
             <Link href="/" className="inline-block">

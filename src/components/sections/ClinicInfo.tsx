@@ -8,7 +8,7 @@ export default function ClinicInfo() {
   const [tab, setTab] = useState<'hours' | 'location'>('hours')
 
   return (
-    <section className="bg-white py-20 lg:py-28" aria-labelledby="clinic-info-heading">
+    <section className="bg-white pt-20 pb-0 lg:pt-28 lg:pb-0" aria-labelledby="clinic-info-heading">
       <div className="max-w-7xl mx-auto px-4 lg:px-8">
 
         <div className="mb-12">

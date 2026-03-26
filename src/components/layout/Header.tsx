@@ -140,12 +140,6 @@ function MobileMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
             {/* 드로어 헤더 */}
             <div style={{ height: '56px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 16px', borderBottom: '1px solid rgba(255,255,255,0.2)', flexShrink: 0 }}>
               <span style={{ color: 'white', fontWeight: 900, fontSize: '15px' }}>메뉴</span>
-              <button
-                onClick={onClose}
-                style={{ width: '32px', height: '32px', borderRadius: '10px', background: 'rgba(255,255,255,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', border: 'none', cursor: 'pointer' }}
-              >
-                <span style={{ color: 'white', fontWeight: 700, fontSize: '16px', lineHeight: 1 }}>✕</span>
-              </button>
             </div>
 
             {/* 메뉴 리스트 */}
@@ -220,6 +214,8 @@ function MobileMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
   )
 }
 
+// ... 상단 생략
+
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -231,38 +227,44 @@ export default function Header() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [onScroll])
 
-  const burgerColor = (scrolled && !mobileOpen) ? '#1a1a2e' : 'white'
+  // 스크롤 시에는 청록색(#0d7fc4), 평소나 메뉴 열림 시에는 흰색
+  const burgerColor = mobileOpen ? 'white' : (scrolled ? '#0d7fc4' : 'white');
 
   return (
     <header
-      style={{ zIndex: 9998 }}
-      className={`fixed top-0 left-0 right-0 h-16 transition-all duration-500 ${
-        mobileOpen
-          ? 'bg-[#0d7fc4]'
-          : scrolled
-          ? 'bg-white/97 backdrop-blur-xl shadow-[0_2px_16px_rgba(0,0,0,0.07)]'
-          : 'bg-transparent'
-      }`}
-    >
+  style={{ zIndex: 9998 }}
+  className={`fixed top-0 left-0 right-0 h-16 transition-all duration-500 ${
+    mobileOpen
+      ? 'bg-[#0d7fc4]'
+      : scrolled 
+      ? 'bg-white/60 backdrop-blur-lg shadow-sm' // 'border-b border-white/20'를 삭제했습니다.
+      : 'bg-transparent'
+  }`}
+>
       <div className="max-w-7xl mx-auto h-full px-4 lg:px-6 flex items-center justify-between gap-4">
         <Logo />
         <DesktopNav scrolled={scrolled} />
-        <div className="hidden lg:flex items-center shrink-0">
-          <Link href="/consultation" className="btn-shine inline-flex items-center gap-2 px-6 py-2 rounded-full text-[13px] font-bold text-white shadow-[0_4px_14px_rgba(13,127,196,0.3)] hover:-translate-y-0.5 transition-all duration-200 whitespace-nowrap" style={{ background: 'linear-gradient(135deg, #0d7fc4, #0d9488)' }}>
-            📅 온라인예약
-          </Link>
-        </div>
+        
+        {/* 모바일 메뉴 버튼: 'menu' 글자와 '✕' 아이콘 처리 */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="lg:hidden relative w-10 h-10 flex items-center justify-center"
-          style={{ zIndex: 9998 }}
+          className="lg:hidden relative z-[10002] flex items-center justify-center p-2"
           aria-label="메뉴"
         >
-          <div className="flex flex-col justify-center items-center w-5 h-4">
-            <motion.span className="block w-5 h-[2.5px] rounded-full" style={{ background: burgerColor, position: 'absolute', filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.4))' }} animate={mobileOpen ? { rotate: 45, y: 0 } : { rotate: 0, y: -3 }} transition={{ duration: 0.2 }} />
-            <motion.span className="block w-5 h-[2.5px] rounded-full" style={{ background: burgerColor, position: 'absolute', filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.4))' }} animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }} transition={{ duration: 0.15 }} />
-            <motion.span className="block w-5 h-[2.5px] rounded-full" style={{ background: burgerColor, position: 'absolute', filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.4))' }} animate={mobileOpen ? { rotate: -45, y: 0 } : { rotate: 0, y: 3 }} transition={{ duration: 0.2 }} />
-          </div>
+          <span 
+            className="text-[11px] font-light uppercase tracking-[0.2em] transition-all duration-300" 
+            style={{ 
+              color: burgerColor,
+              fontFamily: 'Pretendard, sans-serif'
+            }}
+          >
+            {/* 메뉴가 열리면 '✕', 닫혀있으면 'menu' 표시 */}
+            {mobileOpen ? (
+              <span className="text-[20px] leading-none font-normal">✕</span>
+            ) : (
+              'menu'
+            )}
+          </span>
         </button>
       </div>
       <MobileMenu isOpen={mobileOpen} onClose={() => setMobileOpen(false)} />
