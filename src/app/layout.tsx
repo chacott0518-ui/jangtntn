@@ -12,16 +12,19 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.jangtntnhang.com'),
+  // 1. 기본 주소를 현재 Vercel 주소로 변경
+  metadataBase: new URL('https://jangtntn.vercel.app'), 
   title: '장튼튼항외과 | 김포 항문외과 대장항문 전문',
   description: '김포 구래역 1번출구 장튼튼항외과. 외과전문의 한호선 원장. 치핵 치열 치루 대장내시경 PPH수술 전문',
   keywords: '김포항문외과,김포치질병원,김포치질수술,구래동항문외과,구래동치질병원,김포대장내시경,PPH수술김포',
   openGraph: {
     title: '장튼튼항외과 | 김포 항문외과 대장항문 전문',
     description: '김포 구래역 1번출구 장튼튼항외과. 외과전문의 한호선 원장. 치핵 치열 치루 대장내시경 PPH수술 전문',
-    url: 'https://www.jangtntnhang.com',
+    // 2. 여기도 실제 접속 주소로 일치시킴
+    url: 'https://jangtntn.vercel.app', 
     siteName: '장튼튼항외과',
-    images: [{ url: '/images/hero.jpg', width: 1200, height: 630 }],
+    // 3. 이미지 경로가 정확한지 다시 한번 확인 (/images/og-image.png)
+    images: [{ url: '/images/og-image.png', width: 1200, height: 630 }], 
     locale: 'ko_KR',
     type: 'website',
   },
@@ -29,13 +32,10 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: '장튼튼항외과 | 김포 항문외과 대장항문 전문',
     description: '김포 구래역 1번출구 장튼튼항외과. 외과전문의 한호선 원장. 치핵 치열 치루 대장내시경 PPH수술 전문',
+    images: ['/images/og-image.png'],
   },
   alternates: {
-    canonical: 'https://www.jangtntnhang.com',
-  },
-  robots: {
-    index: true,
-    follow: true,
+    canonical: 'https://jangtntn.vercel.app',
   },
 }
 
