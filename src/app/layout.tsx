@@ -110,6 +110,7 @@ export default function RootLayout({
     <html lang="ko">
       <head>
       <meta name="naver-site-verification" content="491f5bf4c9e1d5af641cce5ac3f47b9863d6f971" />
+      <meta name="google-site-verification" content="iVUs-rUXvdFnYyvVaAhuHAdliuBoujmjyq3tyLV23Hc" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
