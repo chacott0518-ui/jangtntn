@@ -109,6 +109,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head>
+      <meta name="naver-site-verification" content="491f5bf4c9e1d5af641cce5ac3f47b9863d6f971" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
