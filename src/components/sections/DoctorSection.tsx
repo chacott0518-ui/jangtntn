@@ -1,13 +1,11 @@
 'use client'
 
-import { useRef } from 'react'
 import Image from 'next/image'
-import { motion, useInView } from 'framer-motion'
-import { AcademicCapIcon } from '@heroicons/react/24/outline'
+import Link from 'next/link'
+import { motion } from 'framer-motion'
 
-const CAREER = [
+const items = [
   '중앙대학교 의과대학 졸업',
-  '중앙대학교 의과대학원 졸업',
   '중앙대학교병원 외과전문의',
   '대한위장내시경학회인증 대장내시경 전문의',
   '천안 창문외과 과장',
@@ -15,7 +13,7 @@ const CAREER = [
   '중앙대학교 외과 외래교수',
 ]
 
-const SOCIETIES = [
+const societies = [
   '대한외과학회 평생회원',
   '대한 대장항문학회 평생회원',
   '대한 위장내시경학회 정회원',
@@ -25,51 +23,78 @@ const SOCIETIES = [
 ]
 
 export default function DoctorSection() {
-  const ref = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
-
   return (
-    <section className="py-16 md:py-24 overflow-hidden bg-[#f8fafb]">
-      <div ref={ref} className="max-w-7xl mx-auto px-4 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          <motion.div initial={{ opacity: 0, x: -50 }} animate={inView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.6, ease: 'easeOut' as const }}>
-            <div className="relative aspect-[3/4] max-w-md mx-auto lg:mx-0 rounded-[20px] overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
-              <Image
-                src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&q=80"
-                alt="장튼튼항외과 대표원장 한호선"
-                width={400}
-                height={500}
-                className="object-cover w-full h-full"
-                sizes="(max-width:1024px) 100vw, 50vw"
-              />
+    <section className="bg-[#f8fafb] py-20 lg:py-28">
+      <div className="max-w-7xl mx-auto px-4 lg:px-8">
+        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+
+          {/* 사진 */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="relative shrink-0 w-64 h-80 lg:w-80 lg:h-96 rounded-3xl overflow-hidden shadow-[0_16px_48px_rgba(13,127,196,0.18)]"
+          >
+            <Image
+              src="/images/doctor.jpg"
+              alt="대표원장 한호선"
+              fill
+              className="object-cover object-top"
+              sizes="(max-width: 1024px) 256px, 320px"
+            />
+            <div
+              className="absolute bottom-0 left-0 right-0 py-4 text-center"
+              style={{ background: 'linear-gradient(to top, rgba(13,127,196,0.95), transparent)' }}
+            >
+              <p className="text-white font-black text-[16px]">한호선 원장</p>
+              <p className="text-white/80 text-[12px]">외과전문의</p>
             </div>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, x: 50 }} animate={inView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.6, delay: 0.12, ease: 'easeOut' as const }} className="space-y-5">
-            <div>
-              <span className="inline-block px-3 py-1 rounded-full text-[11px] font-bold text-primary bg-primary/5 mb-3">외과전문의</span>
-              <h2 className="text-2xl md:text-3xl text-[#0d1117]">대표원장 한호선</h2>
-              <p className="mt-2 text-sm text-muted">정확한 진단, 바른 진료로 환자분들께 다가갑니다.</p>
-            </div>
+          {/* 정보 */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="flex-1"
+          >
+            <span className="inline-block text-[11px] font-bold tracking-widest text-primary bg-primary/10 px-3 py-1 rounded-full mb-3">외과전문의</span>
+            <h2 className="text-[28px] md:text-[34px] font-black text-[#0d1117] mb-2">대표원장 한호선</h2>
+            <p className="text-[14px] text-[#6b7280] mb-6">정확한 진단, 바른 진료로 환자분들께 다가갑니다.</p>
 
-            <div className="space-y-2.5">
-              {CAREER.map((item) => (
-                <div key={item} className="flex items-start gap-2.5">
-                  <AcademicCapIcon className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                  <span className="text-[13px] font-semibold text-[#374151]">{item}</span>
+            <div className="space-y-2 mb-6">
+              {items.map((item, i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <span className="w-5 h-5 rounded-full flex items-center justify-center shrink-0" style={{ background: 'linear-gradient(135deg, #0d7fc4, #0d9488)' }}>
+                    <svg className="w-2.5 h-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </span>
+                  <p className="text-[13px] md:text-[14px] text-[#374151]">{item}</p>
                 </div>
               ))}
             </div>
 
-            <div>
-              <h3 className="text-sm text-[#0d1117] mb-2.5">학회활동</h3>
-              <div className="flex flex-wrap gap-1.5">
-                {SOCIETIES.map((s) => (
-                  <span key={s} className="px-2.5 py-1 rounded-md bg-white shadow-[0_1px_4px_rgba(0,0,0,0.06)] text-[11px] text-muted">{s}</span>
+            <div className="mb-6">
+              <p className="text-[12px] font-bold text-[#6b7280] mb-2">학회활동</p>
+              <div className="flex flex-wrap gap-2">
+                {societies.map((s, i) => (
+                  <span key={i} className="text-[11px] font-semibold text-primary bg-primary/10 px-2.5 py-1 rounded-full">{s}</span>
                 ))}
               </div>
             </div>
+
+            <Link
+              href="/about/doctor"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-[13px] font-bold text-white shadow-[0_4px_16px_rgba(13,127,196,0.25)] hover:-translate-y-0.5 transition-all"
+              style={{ background: 'linear-gradient(135deg, #0d7fc4, #0d9488)' }}
+            >
+              의료진 소개 자세히 보기 →
+            </Link>
           </motion.div>
+
         </div>
       </div>
     </section>
