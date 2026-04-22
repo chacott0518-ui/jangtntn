@@ -30,14 +30,12 @@ export const NAV_ITEMS: NavItem[] = [
       { href: '/about/doctor', label: '의료진소개' },
       { href: '/about/info', label: '진료안내' },
       { href: '/about/tour', label: '병원둘러보기' },
-      { href: '/about/location', label: '오시는길' },
-      { href: '/about/surgery', label: '수술안내' },
       { href: '/about/aftercare', label: '수술후주의사항' },
     ],
   },
   {
     href: '/anorectal',
-    label: '대장항문센터',
+    label: '대장항문클리닉',
     subItems: [
       { href: '/anorectal/hemorrhoid', label: '치핵' },
       { href: '/anorectal/fissure', label: '치열' },
