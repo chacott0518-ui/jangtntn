@@ -135,7 +135,7 @@ export default function HeroSection() {
                   WebkitTextStroke: '0.2px rgba(0,0,0,0.04)',
                 }}
               >
-                준비할 때부터
+                오랜 임상경험을<br className="md:hidden" /> 바탕으로
               </span>
               <span
                 className="block text-[36px] md:text-[46px] lg:text-[60px] font-black tracking-[-0.03em]"
@@ -145,8 +145,9 @@ export default function HeroSection() {
                     '0 0 16px rgba(255,255,255,1), 0 0 32px rgba(255,255,255,0.95), 0 0 48px rgba(13,127,196,0.2)',
                   WebkitTextStroke: '0.2px rgba(13,127,196,0.08)',
                 }}
-              >
-                끝날 때까지
+                >
+                <span className="md:hidden">정확한 진단,<br />바른 진료만을</span>
+                <span className="hidden md:inline">정확한 진단, 바른 진료만을</span>
               </span>
             </motion.h1>
 
@@ -162,7 +163,7 @@ export default function HeroSection() {
                   '0 0 10px rgba(255,255,255,1), 0 0 20px rgba(255,255,255,0.9), 0 1px 0 rgba(255,255,255,0.8)',
               }}
             >
-              김포에서 가장 믿을 수 있는 항문외과
+              마음을 다해 진료하는 병원
             </motion.p>
 
             {/* CTA 버튼 — PC/태블릿만 표시 */}

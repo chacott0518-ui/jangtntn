@@ -91,7 +91,11 @@ const jsonLd = {
     name: '한호선',
     jobTitle: '대표원장',
     medicalSpecialty: 'Surgery',
-    alumniOf: '중앙대학교 의과대학',
+    description: '외과전문의. 중앙대학교 의과대학 졸업. 위·대장 내시경학회 인증의. 오랜 임상경험을 바탕으로 정확한 진단과 바른 진료를 시행합니다.',
+    alumniOf: [
+      { '@type': 'CollegeOrUniversity', name: '중앙대학교 의과대학' },
+      { '@type': 'CollegeOrUniversity', name: '중앙대학교 의과대학원' },
+    ],
   },
   hasMap: 'https://map.naver.com/p/entry/place/1152854964',
   aggregateRating: {
