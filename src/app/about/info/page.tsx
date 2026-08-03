@@ -109,7 +109,6 @@ export default function InfoPage() {
             <div className="space-y-1.5 pl-1">
               <p className="text-[13px] font-bold text-primary">※ 토요일은 점심시간 없이 진료합니다</p>
               <p className="text-[12px] text-[#94a3b8]">일요일 · 공휴일 휴진</p>
-              <p className="text-[12px] text-[#94a3b8]">공휴일 진료 여부는 사전 문의 바랍니다</p>
             </div>
           </div>
         )}
