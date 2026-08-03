@@ -48,11 +48,6 @@ export const NAV_ITEMS: NavItem[] = [
     ],
   },
   {
-    href: '/pph',
-    label: 'PPH',
-    subItems: [],
-  },
-  {
     href: '/endoscopy',
     label: '내시경센터',
     subItems: [
@@ -93,11 +88,6 @@ export const NAV_ITEMS: NavItem[] = [
   {
     href: '/notice',
     label: '공지사항',
-    subItems: [],
-  },
-  {
-    href: '/consultation',
-    label: '온라인상담',
     subItems: [],
   },
 ]

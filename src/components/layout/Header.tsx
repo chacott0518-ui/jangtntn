@@ -6,7 +6,6 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { NAV_ITEMS } from '@/lib/constants'
-import PendingFeatureButton from '@/components/ui/PendingFeatureButton'
 
 function Logo() {
   return (
@@ -225,17 +224,6 @@ function MobileMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
                 </div>
               ))}
             </div>
-
-            {/* 하단 온라인예약 버튼 */}
-            <div style={{ padding: '14px 16px', flexShrink: 0, borderTop: '1px solid rgba(255,255,255,0.2)' }}>
-              <PendingFeatureButton
-                message="온라인예약 기능을 준비하고 있습니다."
-                className="w-full"
-                style={{ width: '100%', padding: '12px', borderRadius: '16px', background: 'rgba(255,255,255,0.25)', color: 'white', fontWeight: 700, fontSize: '13px', border: 'none', cursor: 'pointer' }}
-              >
-                온라인예약
-              </PendingFeatureButton>
-            </div>
           </motion.div>
         </>
       )}
@@ -254,8 +242,8 @@ export default function Header() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [onScroll])
 
-  // MENU 텍스트: 진한 청록, 열림(✕) 시 헤더가 청록색이라 흰색 유지
-  const burgerColor = mobileOpen ? 'white' : '#075F8F'
+  // MENU 텍스트: 짙은 네이비, 열림(✕) 시 헤더가 청록색이라 흰색 유지
+  const burgerColor = mobileOpen ? 'white' : '#063B5C'
 
   return (
     <header
@@ -278,16 +266,18 @@ export default function Header() {
           className="lg:hidden relative z-[10002] flex items-center justify-center p-2"
           aria-label="메뉴"
         >
-          <span 
-            className="text-[11px] font-light uppercase tracking-[0.2em] transition-all duration-300" 
-            style={{ 
+          <span
+            className="mobile-menu-label text-[11px] font-bold uppercase tracking-[0.2em] transition-all duration-300"
+            style={{
               color: burgerColor,
-              fontFamily: 'Pretendard, sans-serif'
+              fontFamily: 'Pretendard, sans-serif',
+              fontWeight: 700,
+              opacity: 1,
+              textShadow: mobileOpen ? 'none' : '0 0 8px rgba(255,255,255,0.85), 0 1px 2px rgba(255,255,255,0.7)',
             }}
           >
-            {/* 메뉴가 열리면 '✕', 닫혀있으면 'menu' 표시 */}
             {mobileOpen ? (
-              <span className="text-[20px] leading-none font-normal">✕</span>
+              <span className="text-[20px] leading-none font-bold">✕</span>
             ) : (
               'menu'
             )}

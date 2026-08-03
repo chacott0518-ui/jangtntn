@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import StaticFaq, { faqJsonLd } from '@/components/content/StaticFaq'
-import { PageToc } from '@/components/content/MedicalImageGallery'
 
 export const metadata: Metadata = {
   title: '수술 후 주의사항 | 장튼튼항외과의원',
@@ -60,23 +59,6 @@ export default function AftercarePage() {
       </div>
       <div className="max-w-5xl mx-auto px-4 section-space space-y-6">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd(faqs)) }} />
-
-        <section className="bg-white rounded-2xl p-6 lg:p-8 shadow-[0_4px_20px_rgba(0,0,0,0.07)]">
-          <h2 className="section-h2 text-[#0d1117] mb-3">핵심요약</h2>
-          <p className="body-text text-[#374151] break-keep">
-            아래 내용은 일반적인 안내이며, 회복 속도와 주의사항은 수술 방법과 개인 상태에 따라 달라질 수 있습니다. 치핵 관련은{' '}
-            <Link href="/anorectal/hemorrhoid" className="text-primary font-bold hover:underline">치핵 안내</Link>, 예약은{' '}
-            <Link href="/consultation" className="text-primary font-bold hover:underline">온라인 상담</Link>을 이용해 주세요.
-          </p>
-        </section>
-
-        <PageToc
-          items={[
-            { id: 'aftercare-guide', label: '회복 생활 안내' },
-            { id: 'related', label: '관련 안내' },
-            { id: 'faq', label: '자주 묻는 질문' },
-          ]}
-        />
 
         <section id="aftercare-guide" className="space-y-5">
           <h2 className="section-h2 text-[#0d1117]">회복 생활 안내</h2>

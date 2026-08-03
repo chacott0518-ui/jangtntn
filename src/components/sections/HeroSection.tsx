@@ -3,7 +3,10 @@
 import { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
-import PendingFeatureButton from '@/components/ui/PendingFeatureButton'
+
+/** 동일 파일명 브라우저 캐시 갱신용 (파일명 자체는 변경하지 않음) */
+const HERO_PC = '/images/hero.webp?v=20260803'
+const HERO_MOBILE = '/images/hero-mobile.webp?v=20260803'
 
 function SplashScreen({ onComplete }: { onComplete: () => void }) {
   useEffect(() => {
@@ -70,11 +73,11 @@ export default function HeroSection() {
         aria-label="메인 히어로 섹션"
       >
         <picture className="absolute inset-0 block">
-          <source media="(max-width: 767px)" srcSet="/images/hero-mobile.webp" type="image/webp" />
-          <source media="(min-width: 768px)" srcSet="/images/hero.webp" type="image/webp" />
+          <source media="(max-width: 767px)" srcSet={HERO_MOBILE} type="image/webp" />
+          <source media="(min-width: 768px)" srcSet={HERO_PC} type="image/webp" />
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/hero.webp"
+            src={HERO_PC}
             alt="장튼튼항외과의원 병원 내부"
             className="hero-bg-img absolute inset-0 w-full h-full"
             fetchPriority="high"
@@ -122,24 +125,6 @@ export default function HeroSection() {
             >
               마음을 다해 진료하는 병원
             </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: delay + 0.34, duration: 0.45 }}
-              className="hero-cta-wrap"
-            >
-              <PendingFeatureButton
-                message="온라인예약 기능을 준비하고 있습니다."
-                className="btn-shine hero-cta-btn inline-flex items-center justify-center gap-2 px-10 py-3.5 rounded-full text-[15px] font-bold text-white transition-all duration-300"
-                style={{
-                  background: 'linear-gradient(135deg, #0d7fc4, #0d9488)',
-                  boxShadow: '0 8px 28px rgba(13,127,196,0.45)',
-                }}
-              >
-                온라인예약
-              </PendingFeatureButton>
-            </motion.div>
           </div>
         </div>
 

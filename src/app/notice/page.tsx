@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import { PageToc } from '@/components/content/MedicalImageGallery'
 
 export const metadata: Metadata = { title: '공지사항 | 장튼튼항외과의원', description: '공지사항.' }
 
@@ -14,24 +13,15 @@ const notices = [
 export default function NoticePage() {
   return (
     <div className="bg-white min-h-screen pb-24 md:pb-0">
-      <div className="relative overflow-hidden" style={{ height: '480px' }}>
+      <div className="relative overflow-hidden h-[260px] md:h-[360px] lg:h-[480px]">
         <Image src="/images/pages/or-room.webp" alt="공지사항" fill className="object-cover" sizes="100vw" priority />
         <div className="absolute inset-0 subpage-hero-scrim-x" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 h-full flex flex-col justify-end pb-10">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 h-full flex flex-col justify-end pb-8 lg:pb-10">
           <nav className="subpage-breadcrumb mb-4">홈 / <strong>공지사항</strong></nav>
           <h1 className="page-h1 text-[#0d1117] mb-2">공지사항</h1>
         </div>
       </div>
       <div className="max-w-3xl mx-auto px-4 section-space space-y-6">
-        <section className="bg-white rounded-2xl p-6 shadow-[0_4px_20px_rgba(0,0,0,0.07)]">
-          <h2 className="section-h2 text-[#0d1117] mb-3">핵심요약</h2>
-          <p className="body-text text-[#374151] break-keep">
-            휴진·주차·진료시간 등 장튼튼항외과의원 운영 관련 공지를 확인하실 수 있습니다.
-          </p>
-        </section>
-
-        <PageToc items={[{ id: 'notice-list', label: '공지 목록' }]} />
-
         <section id="notice-list" className="bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.07)] divide-y divide-[#f3f4f6] px-4">
           <h2 className="section-h2 text-[#0d1117] px-2 pt-6 pb-3">공지 목록</h2>
           {notices.map((n, i) => (

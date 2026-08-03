@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { PageToc } from '@/components/content/MedicalImageGallery'
 
 export const metadata: Metadata = {
   title: '건강매거진 | 장튼튼항외과의원',
@@ -78,15 +77,6 @@ export default function MagazinePage() {
         </div>
       </div>
       <div className="max-w-4xl mx-auto px-4 lg:px-8 section-space space-y-6">
-        <section className="bg-white rounded-2xl p-6 shadow-[0_4px_20px_rgba(0,0,0,0.07)]">
-          <h2 className="section-h2 text-[#0d1117] mb-3">핵심요약</h2>
-          <p className="body-text text-[#374151] break-keep">
-            대장항문·내시경·피부종양·PPH 관련 건강 정보를 모았습니다. 관심 있는 글을 선택해 해당 진료 안내로 이동할 수 있습니다.
-          </p>
-        </section>
-
-        <PageToc items={[{ id: 'articles', label: '건강 정보 목록' }]} />
-
         <section id="articles" className="space-y-5">
           <h2 className="section-h2 text-[#0d1117]">건강 정보 목록</h2>
 

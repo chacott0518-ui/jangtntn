@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import StaticFaq, { faqJsonLd } from '@/components/content/StaticFaq'
-import { PageToc } from '@/components/content/MedicalImageGallery'
 
 export const metadata: Metadata = {
   title: '수술안내 | 장튼튼항외과의원',
@@ -51,13 +50,6 @@ export default function SurgeryGuidePage() {
         </div>
       </div>
       <div className="max-w-5xl mx-auto px-4 section-space space-y-6">
-
-        <PageToc
-          items={[
-            { id: '수술-전-확인사항', label: '수술 전 확인사항' },
-            { id: 'faq', label: '자주 묻는 질문' },
-          ]}
-        />
 
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd(faqs)) }} />
         <section className="bg-white rounded-2xl p-6 lg:p-8 shadow-[0_4px_20px_rgba(0,0,0,0.07)]" id="수술-전-확인사항">

@@ -20,7 +20,7 @@ export default function Footer() {
             </Link>
             <div className="flex gap-2 flex-wrap">
               <a
-                href="#"
+                href="https://blog.naver.com/jangtntn0127"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-4 py-2 rounded-full bg-[#1a3a1e] text-[#4ade80] text-[12px] font-bold hover:bg-[#166534] transition-colors"
@@ -29,7 +29,7 @@ export default function Footer() {
               </a>
               <PendingFeatureButton
                 message="카카오상담 기능을 준비하고 있습니다."
-                className="px-4 py-2 rounded-full bg-[#3a2000] text-[#FEE500] text-[12px] font-bold hover:bg-[#4a2c00] transition-colors"
+                className="hidden md:inline-flex px-4 py-2 rounded-full bg-[#3a2000] text-[#FEE500] text-[12px] font-bold hover:bg-[#4a2c00] transition-colors"
               >
                 카카오상담
               </PendingFeatureButton>

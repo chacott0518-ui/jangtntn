@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import { PageToc } from '@/components/content/MedicalImageGallery'
 
 export const metadata: Metadata = {
   title: '병원둘러보기 | 장튼튼항외과의원',
@@ -59,15 +58,6 @@ export default function TourPage() {
       </div>
 
       <div className="max-w-6xl mx-auto px-4 lg:px-8 section-space space-y-6">
-        <section className="bg-white rounded-2xl p-6 lg:p-8 shadow-[0_4px_20px_rgba(0,0,0,0.07)]">
-          <h2 className="section-h2 text-[#0d1117] mb-3">핵심요약</h2>
-          <p className="body-text text-[#64748b] break-keep">
-            아래 이미지는 장튼튼항외과의원의 실제 병원 시설 사진입니다. 접수안내부터 내시경실까지 진료 이용 공간을 확인해 보세요.
-          </p>
-        </section>
-
-        <PageToc items={[{ id: 'gallery', label: '병원 시설 갤러리' }]} />
-
         <section id="gallery">
           <h2 className="section-h2 text-[#0d1117] mb-5">병원 시설 갤러리</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">

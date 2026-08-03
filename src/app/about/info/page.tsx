@@ -4,7 +4,6 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { ClockIcon, MapPinIcon, ShieldCheckIcon } from '@heroicons/react/24/solid'
 import { ADDRESS } from '@/lib/constants'
-import { PageToc } from '@/components/content/MedicalImageGallery'
 
 export default function InfoPage() {
   const [tab, setTab] = useState<'hours' | 'surgery' | 'location'>('hours')
@@ -83,21 +82,6 @@ export default function InfoPage() {
       </div>
 
       <div className="max-w-5xl mx-auto px-4 lg:px-8 section-space space-y-6">
-
-        <section className="bg-white rounded-2xl p-6 shadow-[0_4px_20px_rgba(0,0,0,0.07)]">
-          <h2 className="section-h2 text-[#0d1117] mb-3">핵심요약</h2>
-          <p className="body-text text-[#374151] break-keep">
-            진료시간·수술안내·오시는 길을 한곳에서 확인하세요. 아래 목차 또는 상단 탭으로 원하는 안내로 이동할 수 있습니다.
-          </p>
-        </section>
-
-        <PageToc
-          items={[
-            { id: 'hours', label: '진료시간' },
-            { id: 'surgery', label: '수술안내' },
-            { id: 'location', label: '오시는 길' },
-          ]}
-        />
 
         {/* 진료시간 */}
         {tab === 'hours' && (

@@ -1,7 +1,6 @@
 'use client'
 import { useState } from 'react'
 import Image from 'next/image'
-import { PageToc } from '@/components/content/MedicalImageGallery'
 
 const faqs = [
   {
@@ -130,15 +129,6 @@ export default function FaqPage() {
       </div>
 
       <div className="max-w-3xl mx-auto px-4 lg:px-8 section-space space-y-6">
-        <section className="bg-white rounded-2xl p-6 shadow-[0_4px_20px_rgba(0,0,0,0.07)]">
-          <h2 className="section-h2 text-[#0d1117] mb-3">핵심요약</h2>
-          <p className="body-text text-[#374151] break-keep">
-            예약·항문 질환·내시경·피부·수술·보험 등 진료 전 자주 묻는 질문을 카테고리별로 모았습니다. 아래에서 원하는 주제를 골라 확인하세요.
-          </p>
-        </section>
-
-        <PageToc items={[{ id: 'faq-list', label: '질문과 답변' }]} />
-
         <section id="faq-list">
           <h2 className="section-h2 text-[#0d1117] mb-4">질문과 답변</h2>
         <div className="flex gap-2 flex-wrap mb-[var(--section-title-gap)]">

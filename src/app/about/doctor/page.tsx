@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import { PageToc } from '@/components/content/MedicalImageGallery'
 
 export const metadata: Metadata = {
   title: '의료진 소개 | 장튼튼항외과의원 외과전문의 한호선',
@@ -22,7 +21,6 @@ const career = [
       '중앙대학교 의과대학 졸업',
       '중앙대학교 의과대학원 졸업',
       '중앙대학교병원 외과전문의',
-      '위·대장 내시경학회 인증의',
       '천안 창문외과 과장',
       '김앤정외과 과장',
       '중앙대학교 외과 외래교수',
@@ -90,20 +88,6 @@ export default function DoctorPage() {
         </div>
 
         <div className="max-w-4xl mx-auto px-4 lg:px-8 section-space space-y-6">
-
-          <section className="bg-white rounded-2xl p-6 lg:p-8 shadow-[0_4px_20px_rgba(0,0,0,0.07)]">
-            <h2 className="section-h2 text-[#0d1117] mb-3">핵심요약</h2>
-            <p className="body-text text-[#374151] break-keep">
-              장튼튼항외과의원 대표원장 한호선은 외과전문의로서 내시경·항문외과 진료를 시행합니다. 아래 인사말과 경력을 확인하세요.
-            </p>
-          </section>
-
-          <PageToc
-            items={[
-              { id: 'greeting', label: '원장 인사말' },
-              { id: 'doctor-profile', label: '한호선 원장 소개' },
-            ]}
-          />
 
           {/* 인사말 */}
           <section id="greeting" className="p-6 lg:p-8 rounded-2xl" style={{ background: 'linear-gradient(135deg, rgba(13,127,196,0.05), rgba(13,148,136,0.05))', border: '1px solid rgba(13,127,196,0.12)' }}>
