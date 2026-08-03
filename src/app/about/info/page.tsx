@@ -1,19 +1,30 @@
 'use client'
 
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ClockIcon, MapPinIcon, ShieldCheckIcon } from '@heroicons/react/24/solid'
 import { ADDRESS } from '@/lib/constants'
+import { PageToc } from '@/components/content/MedicalImageGallery'
 
 export default function InfoPage() {
   const [tab, setTab] = useState<'hours' | 'surgery' | 'location'>('hours')
+
+  useEffect(() => {
+    const applyHash = () => {
+      const h = window.location.hash.replace('#', '')
+      if (h === 'hours' || h === 'surgery' || h === 'location') setTab(h)
+    }
+    applyHash()
+    window.addEventListener('hashchange', applyHash)
+    return () => window.removeEventListener('hashchange', applyHash)
+  }, [])
 
   return (
     <div className="bg-white min-h-screen pb-24 md:pb-0">
       <div className="relative overflow-hidden h-[260px] md:h-[360px] lg:h-[480px]">
         <Image
-          src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1200&q=80"
-          alt="진료안내 장튼튼항외과"
+          src="/images/tour/02-waiting-area.webp"
+          alt="진료안내 장튼튼항외과의원"
           fill className="object-cover" sizes="100vw" priority
         />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to right,rgba(255,255,255,0.97) 0%,rgba(255,255,255,0.82) 40%,rgba(255,255,255,0.4) 65%,transparent 100%)' }} />
@@ -48,16 +59,31 @@ export default function InfoPage() {
         </div>
       </div>
 
-      <div className="max-w-5xl mx-auto px-4 lg:px-8 py-8 lg:py-12">
+      <div className="max-w-5xl mx-auto px-4 lg:px-8 section-space space-y-6">
+
+        <section className="bg-white rounded-2xl p-6 shadow-[0_4px_20px_rgba(0,0,0,0.07)]">
+          <h2 className="section-h2 text-[#0d1117] mb-3">핵심요약</h2>
+          <p className="body-text text-[#374151] break-keep">
+            진료시간·수술안내·오시는 길을 한곳에서 확인하세요. 아래 목차 또는 상단 탭으로 원하는 안내로 이동할 수 있습니다.
+          </p>
+        </section>
+
+        <PageToc
+          items={[
+            { id: 'hours', label: '진료시간' },
+            { id: 'surgery', label: '수술안내' },
+            { id: 'location', label: '오시는 길' },
+          ]}
+        />
 
         {/* 진료시간 */}
         {tab === 'hours' && (
-          <div className="max-w-2xl">
+          <div id="hours" className="max-w-2xl">
             <div className="flex items-center gap-2.5 mb-6">
               <span className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: 'linear-gradient(135deg,#0d7fc4,#0d9488)' }}>
                 <ClockIcon className="w-5 h-5 text-white" />
               </span>
-              <h2 className="text-[18px] font-bold text-[#0d1117]">진료시간</h2>
+              <h2 className="section-h2 text-[#0d1117]">진료시간</h2>
             </div>
             <div className="space-y-2 mb-6">
               <div className="flex items-center justify-between rounded-xl bg-[#f8fafb] px-5 py-4">
@@ -83,12 +109,12 @@ export default function InfoPage() {
 
         {/* 수술안내 */}
         {tab === 'surgery' && (
-          <div className="space-y-5">
+          <div id="surgery" className="space-y-5">
             <div className="flex items-center gap-2.5 mb-6">
               <span className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: 'linear-gradient(135deg,#0d7fc4,#0d9488)' }}>
                 <ShieldCheckIcon className="w-5 h-5 text-white" />
               </span>
-              <h2 className="text-[18px] font-bold text-[#0d1117]">수술안내</h2>
+              <h2 className="section-h2 text-[#0d1117]">수술안내</h2>
             </div>
 
             {[
@@ -184,12 +210,12 @@ export default function InfoPage() {
 
         {/* 오시는 길 */}
         {tab === 'location' && (
-          <div className="max-w-2xl">
+          <div id="location" className="max-w-2xl">
             <div className="flex items-center gap-2.5 mb-6">
               <span className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: 'linear-gradient(135deg,#0d9488,#0d7fc4)' }}>
                 <MapPinIcon className="w-5 h-5 text-white" />
               </span>
-              <h2 className="text-[18px] font-bold text-[#0d1117]">오시는 길</h2>
+              <h2 className="section-h2 text-[#0d1117]">오시는 길</h2>
             </div>
             <div className="space-y-3">
               <div className="rounded-xl bg-[#f8fafb] px-5 py-4">

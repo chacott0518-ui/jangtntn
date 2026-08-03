@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { CalendarDaysIcon } from '@heroicons/react/24/solid'
+import PendingFeatureButton from '@/components/ui/PendingFeatureButton'
 
 interface Breadcrumb { label: string; href?: string }
 interface RelatedItem { href: string; label: string; desc: string }
@@ -21,14 +22,14 @@ function StickyCTA() {
   return (
     <div className="hidden xl:block w-[200px] shrink-0">
       <div className="sticky top-24 space-y-3">
-        <Link
-          href="/consultation"
-          className="btn-shine flex items-center justify-center gap-2 py-3.5 rounded-2xl text-[14px] font-bold text-white shadow-[0_6px_20px_rgba(13,127,196,0.3)] hover:-translate-y-0.5 transition-all"
+        <PendingFeatureButton
+          message="온라인예약 기능을 준비하고 있습니다."
+          className="btn-shine flex items-center justify-center gap-2 py-3.5 rounded-2xl text-[14px] font-bold text-white shadow-[0_6px_20px_rgba(13,127,196,0.3)] hover:-translate-y-0.5 transition-all w-full"
           style={{ background: 'linear-gradient(135deg, #0d7fc4, #0d9488)' }}
         >
           <CalendarDaysIcon className="w-4 h-4" />
           온라인예약
-        </Link>
+        </PendingFeatureButton>
         <div className="p-4 rounded-2xl bg-[#f0f7ff]">
           <p className="text-[12px] font-bold text-primary mb-2">진료시간</p>
           <div className="space-y-1">
@@ -58,8 +59,8 @@ export default function DiseasePage({
         {heroImage && (
           <Image src={heroImage} alt={title} fill className="object-cover" sizes="100vw" priority />
         )}
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.82) 40%, rgba(255,255,255,0.4) 65%, transparent 100%)' }} />
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, transparent 50%, rgba(255,255,255,0.6) 80%, rgba(255,255,255,1) 100%)' }} />
+        <div className="absolute inset-0 subpage-hero-scrim-x" />
+        <div className="absolute inset-0 subpage-hero-scrim-y" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8 h-full flex flex-col justify-end pb-8 md:pb-10">
           <nav className="flex items-center gap-1.5 text-[12px] text-[#94a3b8] mb-3 flex-wrap">
             {breadcrumbs.map((b, i) => (
@@ -142,12 +143,18 @@ export function InfoCard({ title, children, accent }: { title: string; children:
 
 export function FAQItem({ q, a }: { q: string; a: string }) {
   return (
-    <div className="p-5 rounded-2xl bg-[#f8fafb] shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
-      <p className="font-bold text-[#0d1117] text-[15px] mb-3 flex items-start gap-2">
-        <span className="text-primary shrink-0">Q.</span>{q}
-      </p>
-      <p className="text-[14px] text-[#374151] leading-[1.8] pl-5">{a}</p>
-    </div>
+    <details className="group faq-item rounded-2xl bg-[#f8fafb] shadow-[0_2px_12px_rgba(0,0,0,0.04)] overflow-hidden">
+      <summary className="faq-question list-none cursor-pointer flex items-start justify-between gap-3 p-5 text-[#0d1117] font-bold break-keep focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+        <span className="flex items-start gap-2 min-w-0">
+          <span className="text-primary shrink-0">Q.</span>
+          <span>{q}</span>
+        </span>
+        <span aria-hidden className="faq-icon shrink-0 mt-0.5 w-5 h-5 rounded-full bg-white text-primary flex items-center justify-center text-[16px] leading-none font-bold shadow-sm transition-transform duration-200 group-open:rotate-45">
+          +
+        </span>
+      </summary>
+      <div className="faq-answer px-5 pb-5 pl-10 text-[#374151] break-keep">{a}</div>
+    </details>
   )
 }
 

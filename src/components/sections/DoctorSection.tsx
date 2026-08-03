@@ -24,7 +24,7 @@ const societies = [
 
 export default function DoctorSection() {
   return (
-    <section className="bg-[#f8fafb] py-20 lg:py-28">
+    <section className="bg-[#f8fafb] section-space home-section-tight">
       <div className="max-w-7xl mx-auto px-4 lg:px-8">
         <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
 
@@ -60,9 +60,9 @@ export default function DoctorSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="flex-1"
           >
-            <span className="inline-block text-[11px] font-bold tracking-widest text-primary bg-primary/10 px-3 py-1 rounded-full mb-3">외과전문의</span>
-            <h2 className="text-[28px] md:text-[34px] font-black text-[#0d1117] mb-2">대표원장 한호선</h2>
-            <p className="text-[14px] text-[#6b7280] mb-6">정확한 진단, 바른 진료로 환자분들께 다가갑니다.</p>
+            <span className="inline-block section-eyebrow tracking-widest text-primary bg-primary/10 px-3 py-1 rounded-full mb-2 md:mb-2.5">외과전문의</span>
+            <h2 className="section-title text-[#0d1117] mb-2.5 md:mb-3.5">대표원장 한호선</h2>
+            <p className="section-lead text-[#6b7280] mb-5 md:mb-6">정확한 진단, 바른 진료로 환자분들께 다가갑니다.</p>
 
             <div className="space-y-2 mb-6">
               {items.map((item, i) => (

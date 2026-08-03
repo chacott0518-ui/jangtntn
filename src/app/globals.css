@@ -15,6 +15,29 @@
   --text: #0d1117;
   --muted: #64748b;
   --dim: #94a3b8;
+  --nav: #0B789E;
+  --nav-hover: #075F7E;
+  --section-pad-y: 64px;
+  --section-title-gap: 24px;
+  --eyebrow-to-title: 8px;
+  --title-to-lead: 12px;
+  --mobile-bottom-bar: calc(64px + env(safe-area-inset-bottom, 0px));
+}
+
+@media (min-width: 768px) {
+  :root {
+    --section-pad-y: 80px;
+    --section-title-gap: 36px;
+    --eyebrow-to-title: 10px;
+    --title-to-lead: 14px;
+    --mobile-bottom-bar: 0px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --section-pad-y: 96px;
+  }
 }
 
 html {
@@ -33,6 +56,16 @@ body {
   color: var(--text);
   font-family: 'Pretendard', 'Noto Sans KR', -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14.5px;
+  line-height: 1.75;
+  word-break: keep-all;
+  padding-bottom: var(--mobile-bottom-bar);
+}
+
+@media (min-width: 768px) {
+  body {
+    font-size: 16px;
+  }
 }
 
 img {
@@ -57,13 +90,18 @@ img {
   background: #94a3b8;
 }
 
-h1 { font-weight: 900; letter-spacing: -0.02em; }
-h2 { font-weight: 800; letter-spacing: -0.02em; }
-h3 { font-weight: 700; letter-spacing: -0.02em; }
+h1 { font-weight: 800; letter-spacing: -0.02em; word-break: keep-all; }
+h2 { font-weight: 800; letter-spacing: -0.035em; word-break: keep-all; }
+h3 { font-weight: 700; letter-spacing: -0.02em; word-break: keep-all; }
 
 @keyframes shine {
   0% { left: -100%; }
   100% { left: 200%; }
+}
+
+@keyframes kakao-modal-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 .btn-shine {
@@ -80,4 +118,259 @@ h3 { font-weight: 700; letter-spacing: -0.02em; }
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
   animation: shine 2.5s infinite;
+}
+
+@layer components {
+  .section-space {
+    padding-top: var(--section-pad-y);
+    padding-bottom: var(--section-pad-y);
+  }
+
+  .section-header {
+    margin-bottom: var(--section-title-gap);
+  }
+
+  .section-header .section-eyebrow {
+    margin-bottom: var(--eyebrow-to-title);
+  }
+
+  .section-header .section-title {
+    margin-bottom: var(--title-to-lead);
+  }
+
+  .section-eyebrow {
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  }
+
+  @media (min-width: 768px) {
+    .section-eyebrow {
+      font-size: 13px;
+    }
+  }
+
+  /* Page H1 / 주요 섹션 타이틀 */
+  .section-title {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.035em;
+    word-break: keep-all;
+  }
+
+  @media (min-width: 768px) {
+    .section-title {
+      font-size: clamp(32px, 3vw, 42px);
+    }
+  }
+
+  /* H2 */
+  .section-h2 {
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1.28;
+    letter-spacing: -0.03em;
+    word-break: keep-all;
+  }
+
+  @media (min-width: 768px) {
+    .section-h2 {
+      font-size: 30px;
+    }
+  }
+
+  .section-lead {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.7;
+    word-break: keep-all;
+  }
+
+  @media (min-width: 768px) {
+    .section-lead {
+      font-size: 17px;
+      line-height: 1.75;
+    }
+  }
+
+  /* H3 / 카드 타이틀 */
+  .card-title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.4;
+    word-break: keep-all;
+  }
+
+  @media (min-width: 768px) {
+    .card-title {
+      font-size: 20px;
+    }
+  }
+
+  .body-text {
+    font-size: 14.5px;
+    font-weight: 400;
+    line-height: 1.75;
+    word-break: keep-all;
+  }
+
+  @media (min-width: 768px) {
+    .body-text {
+      font-size: 16px;
+    }
+  }
+
+  .meta-text {
+    font-size: 12.5px;
+    line-height: 1.6;
+  }
+
+  @media (min-width: 768px) {
+    .meta-text {
+      font-size: 13px;
+    }
+  }
+
+  .faq-question {
+    font-size: 15.5px;
+    font-weight: 700;
+    line-height: 1.5;
+  }
+
+  @media (min-width: 768px) {
+    .faq-question {
+      font-size: 16px;
+    }
+  }
+
+  .faq-answer {
+    font-size: 14.5px;
+    line-height: 1.75;
+  }
+
+  @media (min-width: 768px) {
+    .faq-answer {
+      font-size: 15px;
+    }
+  }
+
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item[open] .faq-answer {
+    animation: faq-open 200ms ease-out;
+  }
+
+  /* Hero H1 — 메인 히어로 전용 (문구/줄바꿈은 컴포넌트 유지) */
+  .hero-h1 {
+    font-size: clamp(30px, 8vw, 34px);
+    font-weight: 800;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    word-break: keep-all;
+  }
+
+  @media (min-width: 768px) {
+    .hero-h1 {
+      font-size: clamp(44px, 4vw, 64px);
+      line-height: 1.08;
+    }
+  }
+
+  .page-h1 {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    word-break: keep-all;
+  }
+
+  @media (min-width: 768px) {
+    .page-h1 {
+      font-size: clamp(32px, 3vw, 42px);
+    }
+  }
+
+  .mobile-bottom-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10000;
+    transform: none;
+  }
+
+  /* 메인페이지 전용 — 모바일 섹션 여백 (하위페이지 .section-space 64px 유지) */
+  @media (max-width: 767px) {
+    main.home-main {
+      --section-pad-y: 48px;
+      --section-title-gap: 20px;
+      --eyebrow-to-title: 8px;
+      --title-to-lead: 10px;
+    }
+
+    main.home-main > section.section-space {
+      padding-top: 48px;
+      padding-bottom: 48px;
+    }
+
+    /* 연속·비교적 짧은 섹션(원장·진료안내) */
+    main.home-main > section.section-space.home-section-tight {
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+  }
+}
+
+@keyframes faq-open {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-bg-img {
+  object-fit: cover;
+  /* PC: 인물을 더 아래로 — 헤더 메뉴와 검은 머리 겹침 해소 (Y 60% → 72%) */
+  object-position: 72% 72%;
+}
+
+@media (max-width: 767px) {
+  .hero-bg-img {
+    object-position: center 28%;
+  }
+}
+
+.pending-modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 100dvh;
+  z-index: 13000;
+  padding: 0;
+}
+
+.subpage-hero-scrim-x {
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.42) 0%,
+    rgba(255, 255, 255, 0.28) 40%,
+    rgba(255, 255, 255, 0.12) 65%,
+    transparent 100%
+  );
+}
+
+.subpage-hero-scrim-y {
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(255, 255, 255, 0.22) 80%,
+    rgba(255, 255, 255, 0.55) 100%
+  );
+}
+
+.subpage-hero-title {
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7);
 }

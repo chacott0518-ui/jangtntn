@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { NAV_ITEMS } from '@/lib/constants'
+import PendingFeatureButton from '@/components/ui/PendingFeatureButton'
 
 const VISIBLE_NAV = NAV_ITEMS.slice(0, 7)
 const HIDDEN_NAV = NAV_ITEMS.slice(7)
@@ -13,19 +14,19 @@ const HIDDEN_NAV = NAV_ITEMS.slice(7)
 function Logo() {
   return (
     <Link href="/" className="shrink-0">
-      <Image src="/images/logo.png" width={140} height={42} alt="장튼튼항외과 로고" className="object-contain h-9 w-auto" priority />
+      <Image src="/images/logo.png" width={140} height={42} alt="장튼튼항외과의원 로고" className="object-contain h-9 w-auto" priority />
     </Link>
   )
 }
 
-function DesktopNav({ scrolled }: { scrolled: boolean }) {
+function DesktopNav() {
   const [hovered, setHovered] = useState<number | null>(null)
   const [moreOpen, setMoreOpen] = useState(false)
   return (
     <nav className="hidden lg:flex items-center">
       {VISIBLE_NAV.map((item, i) => (
         <div key={item.href} className="relative" onMouseEnter={() => setHovered(i)} onMouseLeave={() => setHovered(null)}>
-          <Link href={item.href} className={`px-2.5 py-1.5 text-[13px] font-bold transition-all whitespace-nowrap ${scrolled ? 'text-[#1a1a2e] hover:text-primary' : 'text-white drop-shadow-[0_1px_4px_rgba(0,0,0,0.45)]'}`}>
+          <Link href={item.href} className="px-2.5 py-1.5 text-[13px] font-bold transition-all whitespace-nowrap text-[#0B789E] hover:text-[#075F7E]">
             {item.label}
           </Link>
           <AnimatePresence>
@@ -43,7 +44,7 @@ function DesktopNav({ scrolled }: { scrolled: boolean }) {
       ))}
       {HIDDEN_NAV.length > 0 && (
         <div className="relative" onMouseEnter={() => setMoreOpen(true)} onMouseLeave={() => setMoreOpen(false)}>
-          <button className={`px-2.5 py-1.5 text-[13px] font-bold ${scrolled ? 'text-[#1a1a2e]' : 'text-white drop-shadow-[0_1px_4px_rgba(0,0,0,0.45)]'}`}>• • •</button>
+          <button className="px-2.5 py-1.5 text-[13px] font-bold text-[#0B789E] hover:text-[#075F7E]">• • •</button>
           <AnimatePresence>
             {moreOpen && (
               <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 8 }} transition={{ duration: 0.18 }} className="absolute top-full right-0 pt-2 z-50">
@@ -198,14 +199,15 @@ function MobileMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
               ))}
             </div>
 
-            {/* 하단 예약 버튼 */}
+            {/* 하단 온라인예약 버튼 */}
             <div style={{ padding: '16px', flexShrink: 0, borderTop: '1px solid rgba(255,255,255,0.2)' }}>
-              <button
-                onClick={() => handleLink('/consultation')}
+              <PendingFeatureButton
+                message="온라인예약 기능을 준비하고 있습니다."
+                className="w-full"
                 style={{ width: '100%', padding: '14px', borderRadius: '16px', background: 'rgba(255,255,255,0.25)', color: 'white', fontWeight: 700, fontSize: '14px', border: 'none', cursor: 'pointer' }}
               >
-                📅 온라인 예약
-              </button>
+                온라인예약
+              </PendingFeatureButton>
             </div>
           </motion.div>
         </>
@@ -213,8 +215,6 @@ function MobileMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
     </AnimatePresence>
   )
 }
-
-// ... 상단 생략
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
@@ -227,8 +227,8 @@ export default function Header() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [onScroll])
 
-  // 스크롤 시에는 청록색(#0d7fc4), 평소나 메뉴 열림 시에는 흰색
-  const burgerColor = mobileOpen ? 'white' : (scrolled ? '#0d7fc4' : 'white');
+  // MENU 텍스트: #0B789E, 열림(✕) 시 헤더가 청록색이라 흰색 유지
+  const burgerColor = mobileOpen ? 'white' : '#0B789E';
 
   return (
     <header
@@ -237,13 +237,13 @@ export default function Header() {
     mobileOpen
       ? 'bg-[#0d7fc4]'
       : scrolled 
-      ? 'bg-white/60 backdrop-blur-lg shadow-sm' // 'border-b border-white/20'를 삭제했습니다.
+      ? 'bg-white/60 backdrop-blur-lg shadow-sm'
       : 'bg-transparent'
   }`}
 >
       <div className="max-w-7xl mx-auto h-full px-4 lg:px-6 flex items-center justify-between gap-4">
         <Logo />
-        <DesktopNav scrolled={scrolled} />
+        <DesktopNav />
         
         {/* 모바일 메뉴 버튼: 'menu' 글자와 '✕' 아이콘 처리 */}
         <button

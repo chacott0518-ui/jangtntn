@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import Image from 'next/image'
+import { PageToc } from '@/components/content/MedicalImageGallery'
 
 const faqs = [
   {
@@ -111,7 +112,6 @@ const faqs = [
 ]
 
 export default function FaqPage() {
-  const [openIdx, setOpenIdx] = useState<number | null>(null)
   const [activeCategory, setActiveCategory] = useState('전체')
   const categories = ['전체', ...Array.from(new Set(faqs.map(f => f.category)))]
   const filtered = activeCategory === '전체' ? faqs : faqs.filter(f => f.category === activeCategory)
@@ -119,9 +119,9 @@ export default function FaqPage() {
   return (
     <div className="bg-white min-h-screen pb-24 md:pb-0">
       <div className="relative overflow-hidden h-[260px] md:h-[360px] lg:h-[480px]">
-        <Image src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1200&q=80" alt="자주 묻는 질문" fill className="object-cover" sizes="100vw" priority />
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.82) 40%, rgba(255,255,255,0.4) 65%, transparent 100%)' }} />
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, transparent 50%, rgba(255,255,255,0.6) 80%, rgba(255,255,255,1) 100%)' }} />
+        <Image src="/images/pages/medical-tools.webp" alt="자주 묻는 질문" fill className="object-cover" sizes="100vw" priority />
+        <div className="absolute inset-0 subpage-hero-scrim-x" />
+        <div className="absolute inset-0 subpage-hero-scrim-y" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8 h-full flex flex-col justify-end pb-8 lg:pb-10">
           <nav className="text-[12px] text-[#94a3b8] mb-3">홈 / <strong className="text-[#0d1117]">자주 묻는 질문</strong></nav>
           <h1 className="text-[26px] md:text-[36px] lg:text-[44px] font-black text-[#0d1117] mb-2">자주 묻는 질문</h1>
@@ -129,37 +129,51 @@ export default function FaqPage() {
         </div>
       </div>
 
-      <div className="max-w-3xl mx-auto px-4 lg:px-8 py-8 lg:py-12">
-        {/* 카테고리 필터 */}
-        <div className="flex gap-2 flex-wrap mb-8">
+      <div className="max-w-3xl mx-auto px-4 lg:px-8 section-space space-y-6">
+        <section className="bg-white rounded-2xl p-6 shadow-[0_4px_20px_rgba(0,0,0,0.07)]">
+          <h2 className="section-h2 text-[#0d1117] mb-3">핵심요약</h2>
+          <p className="body-text text-[#374151] break-keep">
+            예약·항문 질환·내시경·피부·수술·보험 등 진료 전 자주 묻는 질문을 카테고리별로 모았습니다. 아래에서 원하는 주제를 골라 확인하세요.
+          </p>
+        </section>
+
+        <PageToc items={[{ id: 'faq-list', label: '질문과 답변' }]} />
+
+        <section id="faq-list">
+          <h2 className="section-h2 text-[#0d1117] mb-4">질문과 답변</h2>
+        <div className="flex gap-2 flex-wrap mb-[var(--section-title-gap)]">
           {categories.map(cat => (
-            <button key={cat} onClick={() => { setActiveCategory(cat); setOpenIdx(null) }}
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
               className={`px-4 py-2 rounded-full text-[13px] font-bold transition-all ${activeCategory === cat ? 'text-white shadow-md' : 'bg-[#f3f4f6] text-[#6b7280] hover:bg-[#e5e7eb]'}`}
-              style={activeCategory === cat ? { background: 'linear-gradient(135deg, #0d7fc4, #0d9488)' } : {}}>
+              style={activeCategory === cat ? { background: 'linear-gradient(135deg, #0d7fc4, #0d9488)' } : {}}
+            >
               {cat}
             </button>
           ))}
         </div>
 
         <div className="space-y-3">
-          {filtered.map((faq, i) => (
-            <div key={i} className="rounded-2xl bg-white shadow-[0_2px_12px_rgba(0,0,0,0.06)] overflow-hidden">
-              <button onClick={() => setOpenIdx(openIdx === i ? null : i)}
-                className="w-full flex items-start justify-between gap-3 px-5 py-4 text-left">
-                <div className="flex items-start gap-3">
+          {filtered.map((faq) => (
+            <details
+              key={faq.q}
+              className="group faq-item rounded-2xl bg-white shadow-[0_2px_12px_rgba(0,0,0,0.06)] overflow-hidden"
+            >
+              <summary className="faq-question list-none cursor-pointer flex items-start justify-between gap-3 px-5 py-4 text-[#0d1117] break-keep focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+                <div className="flex items-start gap-3 min-w-0">
                   <span className="shrink-0 mt-0.5 text-[11px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded-full">{faq.category}</span>
-                  <p className="text-[14px] font-bold text-[#0d1117] leading-[1.6]">Q. {faq.q}</p>
+                  <span className="min-w-0">Q. {faq.q}</span>
                 </div>
-                <span className={`shrink-0 text-[18px] text-[#9ca3af] transition-transform duration-200 ${openIdx === i ? 'rotate-45' : ''}`}>+</span>
-              </button>
-              {openIdx === i && (
-                <div className="px-5 pb-5 pt-1 border-t border-[#f3f4f6]">
-                  <p className="text-[13px] text-[#374151] leading-[1.9] whitespace-pre-line">A. {faq.a}</p>
-                </div>
-              )}
-            </div>
+                <span aria-hidden className="faq-icon shrink-0 mt-0.5 w-5 h-5 rounded-full bg-[#f8fafb] text-primary flex items-center justify-center text-[16px] leading-none font-bold shadow-sm transition-transform duration-200 group-open:rotate-45">+</span>
+              </summary>
+              <div className="faq-answer px-5 pb-5 pt-1 border-t border-[#f3f4f6] text-[#374151] whitespace-pre-line break-keep">
+                A. {faq.a}
+              </div>
+            </details>
           ))}
         </div>
+        </section>
       </div>
     </div>
   )

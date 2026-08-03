@@ -1,26 +1,25 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { ADDRESS, PHONE } from '@/lib/constants'
+import PendingFeatureButton from '@/components/ui/PendingFeatureButton'
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0d1117]" aria-label="푸터">
-      {/* pt-12를 pt-4로 수정하여 상단 여백을 줄였습니다 */}
-      <div className="max-w-7xl mx-auto px-4 lg:px-8 pt-20 pb-12">
-        <div className="pb-8 border-b border-white/10">
+    <footer className="bg-[#0d1117] site-footer" aria-label="푸터">
+      <div className="max-w-7xl mx-auto px-4 lg:px-8 pt-8 pb-6 md:pt-20 md:pb-12">
+        <div className="pb-6 md:pb-8 border-b border-white/10">
           <div className="space-y-4 max-w-xs">
             <Link href="/" className="inline-block">
               <Image
                 src="/images/logo.png"
                 width={140}
                 height={42}
-                alt="장튼튼항외과"
+                alt="장튼튼항외과의원"
                 className="object-contain h-9 w-auto brightness-0 invert"
               />
             </Link>
             <div className="flex gap-2 flex-wrap">
-              
-                <a
+              <a
                 href="#"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -28,15 +27,12 @@ export default function Footer() {
               >
                 📝 공식 블로그
               </a>
-              
-                <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
+              <PendingFeatureButton
+                message="카카오상담 기능을 준비하고 있습니다."
                 className="px-4 py-2 rounded-full bg-[#3a2000] text-[#FEE500] text-[12px] font-bold hover:bg-[#4a2c00] transition-colors"
               >
-                💬 카카오 상담
-              </a>
+                카카오상담
+              </PendingFeatureButton>
             </div>
           </div>
         </div>
@@ -49,10 +45,9 @@ export default function Footer() {
             <span>팩스: 031-981-7282</span>
             <span className="hidden md:inline">주소: {ADDRESS}</span>
           </div>
-          <p className="shrink-0">© {new Date().getFullYear()} 장튼튼항외과. All rights reserved.</p>
+          <p className="shrink-0">© {new Date().getFullYear()} 장튼튼항외과의원. All rights reserved.</p>
         </div>
       </div>
-      <div className="h-20 md:h-0" />
     </footer>
   )
 }

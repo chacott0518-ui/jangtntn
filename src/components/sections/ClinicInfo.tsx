@@ -8,15 +8,15 @@ export default function ClinicInfo() {
   const [tab, setTab] = useState<'hours' | 'location'>('hours')
 
   return (
-    <section className="bg-white pt-20 pb-0 lg:pt-28 lg:pb-0" aria-labelledby="clinic-info-heading">
+    <section className="bg-white section-space home-section-tight" aria-labelledby="clinic-info-heading">
       <div className="max-w-7xl mx-auto px-4 lg:px-8">
 
-        <div className="mb-12">
-          <span className="inline-flex items-center gap-2 text-[11px] font-bold tracking-[3px] uppercase text-primary mb-3">
+        <div className="section-header">
+          <span className="inline-flex items-center gap-2 section-eyebrow tracking-[3px] uppercase text-primary">
             <span className="w-5 h-[2px] bg-primary inline-block rounded-full" />
             INFORMATION
           </span>
-          <h2 id="clinic-info-heading" className="text-[28px] md:text-[36px] lg:text-[40px] font-black text-[#0d1117] tracking-[-0.02em]">
+          <h2 id="clinic-info-heading" className="section-title text-[#0d1117]">
             진료 안내
           </h2>
         </div>

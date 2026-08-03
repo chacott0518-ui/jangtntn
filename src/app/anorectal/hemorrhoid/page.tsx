@@ -1,20 +1,50 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
+import StaticFaq, { faqJsonLd } from '@/components/content/StaticFaq'
+import MedicalImageGallery, { OfficialSource, PageToc } from '@/components/content/MedicalImageGallery'
 
 export const metadata: Metadata = {
-  title: '치핵(치질) | 장튼튼항외과',
-  description: '치핵(치질) 전문 치료. 1~4도 치핵 정확한 진단, 당일 수술 가능. 김포 구래역.',
-  keywords: '치핵, 치질, 항문 출혈, 치핵 수술, 김포 치질, 내치핵, 외치핵, PPH',
+  title: '치핵(치질) | 장튼튼항외과의원',
+  description:
+    '치핵(치질)의 단계별 증상과 보존·시술·수술 치료 안내. 김포 구래역 장튼튼항외과의원에서 외과전문의가 직접 진찰합니다.',
+  keywords: '치질, 치핵, 치질진료, 치질치료, 치질수술, 치핵치료, 치핵수술, 김포 치질, 김포 치핵, 김포 치질수술, 구래동 치질, 구래역 치질병원',
   alternates: { canonical: 'https://www.jangtntnhang.com/anorectal/hemorrhoid' },
+  openGraph: {
+    title: '치핵(치질) | 장튼튼항외과의원',
+    description:
+      '치핵(치질)의 단계별 증상과 보존·시술·수술 치료 안내. 김포 구래역 장튼튼항외과의원에서 외과전문의가 직접 진찰합니다.',
+    url: 'https://www.jangtntnhang.com/anorectal/hemorrhoid',
+    images: [{ url: '/images/og-image.webp', width: 1200, height: 630 }],
+  },
 }
+
+const faqs = [
+  {
+    q: '치핵과 치질은 같은 말인가요?',
+    a: '네, 일상에서 말하는 치질은 대개 치핵을 가리키는 표현입니다. 다만 항문 질환에는 치열·치루·농양 등도 있어 출혈이나 통증만으로 구분하기 어렵습니다. 증상 정도와 생활습관은 개인마다 달라 항문 진찰로 정확히 확인한 뒤 치료 방향을 상담하는 것이 안전합니다.',
+  },
+  {
+    q: '배변 시 피가 나오면 치핵인가요?',
+    a: '선홍색 출혈은 치핵에서 흔하지만 치열이나 대장·직장 질환에서도 나타날 수 있습니다. 출혈량, 통증 유무, 잔변감은 사람마다 다르게 느껴집니다. 원인을 감별하려면 항문 진찰이 필요하며 상황에 따라 대장내시경도 함께 검토할 수 있어, 증상만으로 단정하지 않는 것이 좋습니다.',
+  },
+  {
+    q: '치핵은 무조건 수술해야 하나요?',
+    a: '아닙니다. 1~2도 치핵은 좌욕·식이·약물 등 보존 치료로 호전되는 경우가 많습니다. 3~4도이거나 반복 출혈·감돈이 있으면 시술·수술을 검토합니다. 단계와 생활습관이 달라 치료 방침은 진찰 후 개인별로 결정하며, 같은 증상이라도 계획이 달라질 수 있습니다.',
+  },
+  {
+    q: 'PPH 수술은 어떤 경우에 고려하나요?',
+    a: '내치핵이 크거나 다발성인 3~4도에서 주로 검토하는 방법입니다. 자동문합기로 점막을 절제·문합하며, 적응증과 회복 양상은 개인마다 다릅니다. 적합한지 여부는 항문 진찰과 상담을 통해 안내드리며 다른 수술법과 비교해 선택할 수 있습니다. 같은 증상이라도 개인별 상태와 경과가 달라 진찰 후 맞춤 안내가 필요합니다.',
+  },
+]
 
 export default function HemorrhoidPage() {
   return (
     <div className="bg-[#f9fafb] min-h-screen pb-24 md:pb-0">
       <div className="relative overflow-hidden h-[260px] md:h-[360px] lg:h-[480px]">
-        <Image src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1600&q=85" alt="치핵 전문 치료" fill className="object-cover" sizes="100vw" priority />
-        <div className="absolute inset-0" style={{background:'linear-gradient(to right,rgba(255,255,255,0.97) 0%,rgba(255,255,255,0.85) 35%,rgba(255,255,255,0.3) 65%,transparent 100%)'}} />
-        <div className="absolute inset-0" style={{background:'linear-gradient(to bottom,transparent 40%,rgba(255,255,255,0.7) 80%,rgba(249,250,251,1) 100%)'}} />
+        <Image src="/images/tour/03-consultation-room.webp" alt="치핵 단계별 진단과 치료 안내" fill className="object-cover" sizes="100vw" priority />
+        <div className="absolute inset-0 subpage-hero-scrim-x" />
+        <div className="absolute inset-0 subpage-hero-scrim-y" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 lg:px-8 h-full flex flex-col justify-end pb-10">
           <nav className="text-[12px] text-[#94a3b8] mb-3 flex items-center gap-1.5">
             <span>홈</span><span>/</span><span>대장항문센터</span><span>/</span>
@@ -26,25 +56,39 @@ export default function HemorrhoidPage() {
         </div>
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 lg:px-8 py-10 lg:py-14 space-y-6">
+      <div className="max-w-4xl mx-auto px-4 lg:px-8 section-space space-y-6">
 
         <section className="bg-white rounded-2xl p-6 lg:p-8 shadow-[0_4px_24px_rgba(0,0,0,0.07)]">
+          <h2 className="text-[19px] lg:text-[21px] font-black text-[#0d1117] mb-3">핵심요약</h2>
+          <p className="text-[14px] text-[#374151] leading-[1.9] break-keep">
+            치핵은 항문 혈관 조직이 늘어나거나 돌출되는 질환으로, 출혈·돌출감이 대표 증상입니다. 단계에 따라 보존 치료부터 시술·수술까지 상담하며, 치료 방침은 진찰 후 개인별로 결정됩니다.
+          </p>
+        </section>
+
+        <PageToc
+          items={[
+            { id: 'what-is', label: '치핵이란 무엇인가요?' },
+            { id: 'causes', label: '치핵의 주요 원인' },
+            { id: 'stages', label: '치핵의 단계별 증상' },
+            { id: 'treatment', label: '치료 방법' },
+            { id: 'aftercare', label: '수술 후 관리' },
+            { id: 'images', label: '관련 이미지' },
+            { id: 'faq', label: '자주 묻는 질문' },
+          ]}
+        />
+
+        <section id="what-is" className="bg-white rounded-2xl p-6 lg:p-8 shadow-[0_4px_24px_rgba(0,0,0,0.07)]">
           <h2 className="text-[19px] lg:text-[21px] font-black text-[#0d1117] mb-5 pb-3 border-b border-[#f0f4f8] flex items-center gap-2">
             <span>💡</span> 치핵이란 무엇인가요?
           </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-            <div className="space-y-4 text-[14px] text-[#374151] leading-[2.0]">
-              <p>치핵은 항문 안쪽의 혈관 조직(치핵 쿠션)이 비정상적으로 늘어나거나 돌출되는 질환입니다. 성인의 약 <strong className="text-[#0d7fc4]">75%</strong>가 일생에 한 번 이상 경험할 정도로 흔하며, 항문 출혈이나 돌출감이 대표 증상입니다.</p>
-              <p>발생 위치에 따라 치상선 위쪽의 <strong>내치핵</strong>과 아래쪽의 <strong>외치핵</strong>으로 나뉩니다. 내치핵은 통증보다 출혈이 주요 증상이며, 외치핵은 통증과 불쾌감이 심합니다. 두 가지가 함께 나타나는 혼합치핵도 흔합니다.</p>
-              <p>초기에는 생활습관 교정과 약물로 호전되지만, 3~4도로 진행되면 수술이 필요합니다. 참지 말고 조기에 치료하는 것이 중요합니다.</p>
-            </div>
-            <div className="relative rounded-2xl overflow-hidden" style={{height:'220px'}}>
-              <Image src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80" alt="치핵 진료 상담" fill className="object-cover" sizes="400px" />
-            </div>
+          <div className="space-y-4 text-[14px] text-[#374151] leading-[2.0]">
+            <p>치핵은 항문 안쪽의 혈관 조직(치핵 쿠션)이 비정상적으로 늘어나거나 돌출되는 질환입니다. 성인의 약 <strong className="text-[#0d7fc4]">75%</strong>가 일생에 한 번 이상 경험할 정도로 흔하며, 항문 출혈이나 돌출감이 대표 증상입니다.</p>
+            <p>발생 위치에 따라 치상선 위쪽의 <strong>내치핵</strong>과 아래쪽의 <strong>외치핵</strong>으로 나뉩니다. 내치핵은 통증보다 출혈이 주요 증상이며, 외치핵은 통증과 불쾌감이 심합니다. 두 가지가 함께 나타나는 혼합치핵도 흔합니다.</p>
+            <p>초기에는 생활습관 교정과 약물로 호전되지만, 3~4도로 진행되면 수술이 필요합니다. 참지 말고 조기에 치료하는 것이 중요합니다.</p>
           </div>
         </section>
 
-        <section className="bg-white rounded-2xl p-6 lg:p-8 shadow-[0_4px_24px_rgba(0,0,0,0.07)]">
+        <section id="causes" className="bg-white rounded-2xl p-6 lg:p-8 shadow-[0_4px_24px_rgba(0,0,0,0.07)]">
           <h2 className="text-[19px] lg:text-[21px] font-black text-[#0d1117] mb-5 pb-3 border-b border-[#f0f4f8] flex items-center gap-2">
             <span>🔍</span> 치핵의 주요 원인
           </h2>
@@ -68,7 +112,7 @@ export default function HemorrhoidPage() {
           </div>
         </section>
 
-        <section className="bg-white rounded-2xl p-6 lg:p-8 shadow-[0_4px_24px_rgba(0,0,0,0.07)]">
+        <section id="stages" className="bg-white rounded-2xl p-6 lg:p-8 shadow-[0_4px_24px_rgba(0,0,0,0.07)]">
           <h2 className="text-[19px] lg:text-[21px] font-black text-[#0d1117] mb-5 pb-3 border-b border-[#f0f4f8] flex items-center gap-2">
             <span>📊</span> 치핵의 단계별 증상
           </h2>
@@ -90,39 +134,34 @@ export default function HemorrhoidPage() {
           </div>
         </section>
 
-        <section className="bg-white rounded-2xl p-6 lg:p-8 shadow-[0_4px_24px_rgba(0,0,0,0.07)]">
+        <section id="treatment" className="bg-white rounded-2xl p-6 lg:p-8 shadow-[0_4px_24px_rgba(0,0,0,0.07)]">
           <h2 className="text-[19px] lg:text-[21px] font-black text-[#0d1117] mb-5 pb-3 border-b border-[#f0f4f8] flex items-center gap-2">
             <span>⚕️</span> 치료 방법
           </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-            <div className="relative rounded-2xl overflow-hidden" style={{height:'200px'}}>
-              <Image src="https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=800&q=80" alt="치핵 수술" fill className="object-cover" sizes="400px" />
-            </div>
-            <div className="space-y-3">
-              {[
-                {title:'보존적 치료', badge:'1~2도', color:'#22c55e', desc:'좌욕(1일 3회, 미온수 5~10분), 식이섬유, 수분 2L, 연고·좌약으로 증상 완화.'},
-                {title:'고무밴드 결찰', badge:'2도', color:'#eab308', desc:'치핵 기저부에 고무밴드를 묶어 혈류를 차단하는 외래 시술.'},
-                {title:'PPH 수술', badge:'3~4도', color:'#0d7fc4', desc:'자동문합기로 치핵 위쪽 점막 절제·봉합. 통증 적고 당일 퇴원 가능.'},
-                {title:'치핵 절제술', badge:'3~4도', color:'#0d9488', desc:'치핵 조직 직접 절제. 완전 제거로 재발률이 낮습니다.'},
-              ].map((t) => (
-                <div key={t.title} className="flex gap-3 items-start">
-                  <span className="text-[11px] font-bold text-white px-2 py-0.5 rounded-full shrink-0 mt-0.5" style={{background:t.color}}>{t.badge}</span>
-                  <div>
-                    <h3 className="text-[13px] font-bold text-[#0d1117]">{t.title}</h3>
-                    <p className="text-[12px] text-[#6b7280] leading-[1.8]">{t.desc}</p>
-                  </div>
+          <div className="space-y-3">
+            {[
+              {title:'보존적 치료', badge:'1~2도', color:'#22c55e', desc:'좌욕(1일 3회, 미온수 5~10분), 식이섬유, 수분 2L, 연고·좌약으로 증상 완화.'},
+              {title:'고무밴드 결찰', badge:'2도', color:'#eab308', desc:'치핵 기저부에 고무밴드를 묶어 혈류를 차단하는 외래 시술.'},
+              {title:'PPH 수술', badge:'3~4도', color:'#0d7fc4', desc:'자동문합기로 치핵 위쪽 점막 절제·봉합. 상태에 따라 당일 퇴원을 검토할 수 있습니다.'},
+              {title:'치핵 절제술', badge:'3~4도', color:'#0d9488', desc:'치핵 조직 직접 절제. 완전 제거로 재발률이 낮습니다.'},
+            ].map((t) => (
+              <div key={t.title} className="flex gap-3 items-start">
+                <span className="text-[11px] font-bold text-white px-2 py-0.5 rounded-full shrink-0 mt-0.5" style={{background:t.color}}>{t.badge}</span>
+                <div>
+                  <h3 className="text-[13px] font-bold text-[#0d1117]">{t.title}</h3>
+                  <p className="text-[12px] text-[#6b7280] leading-[1.8]">{t.desc}</p>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </section>
 
-        <section className="bg-white rounded-2xl p-6 lg:p-8 shadow-[0_4px_24px_rgba(0,0,0,0.07)]">
+        <section id="aftercare" className="bg-white rounded-2xl p-6 lg:p-8 shadow-[0_4px_24px_rgba(0,0,0,0.07)]">
           <h2 className="text-[19px] lg:text-[21px] font-black text-[#0d1117] mb-5 pb-3 border-b border-[#f0f4f8] flex items-center gap-2">
             <span>🌿</span> 수술 후 관리
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {['당일 또는 다음 날 퇴원 가능','좌욕 1일 3회 이상 — 미온수, 5~10분','수분 하루 2L 이상 + 식이섬유 충분히','격렬한 운동·음주·자극적 음식 2~3주 자제','변비 예방이 재발 방지의 핵심','이상 출혈·발열 시 즉시 내원'].map((item, i) => (
+            {['상태에 따라 당일 또는 다음 날 퇴원을 검토할 수 있습니다','좌욕 1일 3회 이상 — 미온수, 5~10분','수분 하루 2L 이상 + 식이섬유 충분히','격렬한 운동·음주·자극적 음식 2~3주 자제','변비 예방이 재발 방지의 핵심','이상 출혈·발열 시 즉시 내원'].map((item, i) => (
               <div key={i} className="flex gap-3 items-start p-3 rounded-xl bg-[#f0f7ff]">
                 <span className="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-black text-white shrink-0 mt-0.5" style={{background:'linear-gradient(135deg,#0d7fc4,#0d9488)'}}>{i+1}</span>
                 <p className="text-[13px] text-[#374151] leading-[1.8]">{item}</p>
@@ -131,9 +170,40 @@ export default function HemorrhoidPage() {
           </div>
         </section>
 
+        <p className="text-[14px] text-[#374151] leading-[1.9] break-keep">
+          관련 진료:{' '}
+          <Link href="/pph" className="text-primary font-semibold underline-offset-2 hover:underline">PPH</Link>,{' '}
+          <Link href="/anorectal/fissure" className="text-primary font-semibold underline-offset-2 hover:underline">치열</Link>,{' '}
+          <Link href="/endoscopy/colon" className="text-primary font-semibold underline-offset-2 hover:underline">대장내시경</Link>,{' '}
+          <Link href="/about/info" className="text-primary font-semibold underline-offset-2 hover:underline">진료안내</Link>
+        </p>
+
+        <div id="images">
+          <MedicalImageGallery
+            title="관련 이미지"
+            items={[
+              { src: '/images/medical/anorectal/hemorrhoid/hemorrhoid-diagram.webp', caption: '치핵모식도' },
+              { src: '/images/medical/anorectal/hemorrhoid/hemorrhoid-before.webp', caption: '치핵수술 전', clinical: true },
+              { src: '/images/medical/anorectal/hemorrhoid/hemorrhoid-after.webp', caption: '치핵수술 후', clinical: true },
+              { src: '/images/medical/anorectal/hemorrhoid/hemorrhoid-excised-tissue.webp', caption: '절제된 치핵 조직', clinical: true },
+            ]}
+          />
+        </div>
+
+        <OfficialSource
+          sources={['보건복지부', '대한의학회']}
+          note="위 치핵모식도는 보건복지부·대한의학회 자료에 표기된 출처를 따릅니다."
+        />
+
+        <StaticFaq items={faqs} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd(faqs)) }}
+        />
+
         <div className="rounded-2xl p-6 text-center" style={{background:'linear-gradient(135deg,#0d7fc4,#0d9488)'}}>
           <p className="text-white font-black text-[16px] mb-2">치핵, 참지 마세요</p>
-          <p className="text-white/85 text-[13px] leading-[1.9]">초기에 치료할수록 간단하고 빠르게 해결됩니다.<br />장튼튼항외과 외과전문의가 직접 진단하고 치료합니다.</p>
+          <p className="text-white/85 text-[13px] leading-[1.9]">초기에 치료할수록 간단하고 빠르게 해결됩니다.<br />장튼튼항외과의원 외과전문의가 직접 진단하고 치료합니다.</p>
         </div>
 
       </div>

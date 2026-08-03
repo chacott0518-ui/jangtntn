@@ -14,25 +14,24 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   // 1. 기본 주소를 현재 Vercel 주소로 변경
   metadataBase: new URL('https://jangtntn.vercel.app'), 
-  title: '장튼튼항외과 | 김포 항문외과 대장항문 전문',
-  description: '김포 구래역 1번출구 장튼튼항외과. 외과전문의 한호선 원장. 치핵 치열 치루 대장내시경 PPH수술 전문',
-  keywords: '김포항문외과,김포치질,김포치질병원,김포치질수술,김포항문병원,김포외과,김포외과의원,김포대장항문외과,김포대장항문,구래동항문외과,구래동치질,구래동치질병원,구래동외과,구래동대장내시경,구래역항문외과,구래역치질,구래역외과,구래역대장내시경,구래역병원,김포대장내시경,김포위내시경,김포내시경,김포수면내시경,김포수면대장내시경,김포용종,김포대장암검진,김포위암검진,PPH수술김포,김포PPH,김포치핵수술,김포치핵,김포치열,김포치루,김포변비,김포항문소양증,김포콘딜로마,김포모소동,김포지방종,김포피지낭종,김포연성섬유종,김포내성발톱,김포화상치료,김포상처치료,김포영양수액,한호선원장,장튼튼항외과,장튼튼항외과김포,김포한강신도시항문외과,한강신도시외과,한강신도시치질,한강신도시대장내시경,김포골드라인병원,김포골드라인외과,구래역1번출구병원,계림M스퀘어병원,김포구래역병원,구래동병원,김포치핵치료,김포치핵병원,김포항문출혈,김포항문통증,김포항문가려움,김포배변통증,김포혈변,김포대장용종,김포대장암,김포위암,김포헬리코박터,김포역류성식도염,김포소화불량,김포복통,김포변혈,당일치질수술김포,당일수술김포,수면내시경김포,외과전문의김포,대장항문전문의김포,치질수술당일퇴원,PPH당일퇴원,김포항문외과추천,구래동항문외과추천,김포외과추천,김포내시경추천,김포치질잘하는곳,김포대장내시경잘하는곳,김포외과잘하는곳,치핵1도,치핵2도,치핵3도,치핵4도,내치핵,외치핵,혼합치핵,급성치열,만성치열,항문농양,항문누공,항문거근증후군,항문소양증치료,모소동수술,콘딜로마치료,용종절제술,EMR,ESD,대장내시경용종,위내시경검사,수면위내시경,헬리코박터제균,지방종제거,피지낭종제거,쥐젖제거,내성발톱수술,조모세포파괴술,영양수액치료,마늘주사,비타민C수액',
+  title: '장튼튼항외과의원 | 김포 항문외과 대장항문 전문',
+  description: '김포 구래역 1번출구 장튼튼항외과의원. 외과전문의 한호선 원장. 치핵·치열·치루·대장내시경·PPH 등 대장항문 진료.',
+  keywords: '장튼튼항외과, 장튼튼항외과의원, 항문외과, 대장항문외과, 김포 항문외과, 김포 대장항문외과, 구래동 항문외과, 구래역 항문외과, 김포한강신도시 항문외과',
   openGraph: {
-    title: '장튼튼항외과 | 김포 항문외과 대장항문 전문',
-    description: '김포 구래역 1번출구 장튼튼항외과. 외과전문의 한호선 원장. 치핵 치열 치루 대장내시경 PPH수술 전문',
-    // 2. 여기도 실제 접속 주소로 일치시킴
-    url: 'https://jangtntn.vercel.app', 
-    siteName: '장튼튼항외과',
-    // 3. 이미지 경로가 정확한지 다시 한번 확인 (/images/og-image.png)
-    images: [{ url: '/images/og-image.png', width: 1200, height: 630 }], 
+    title: '장튼튼항외과의원 | 김포 항문외과 대장항문 전문',
+    description: '김포 구래역 1번출구 장튼튼항외과의원. 외과전문의 한호선 원장. 치핵·치열·치루·대장내시경·PPH 등 대장항문 진료.',
+    url: 'https://jangtntn.vercel.app',
+    siteName: '장튼튼항외과의원',
+    // 3. 이미지 경로가 정확한지 다시 한번 확인 (/images/og-image.webp)
+    images: [{ url: '/images/og-image.webp', width: 1200, height: 630 }],
     locale: 'ko_KR',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: '장튼튼항외과 | 김포 항문외과 대장항문 전문',
-    description: '김포 구래역 1번출구 장튼튼항외과. 외과전문의 한호선 원장. 치핵 치열 치루 대장내시경 PPH수술 전문',
-    images: ['/images/og-image.png'],
+    title: '장튼튼항외과의원 | 김포 항문외과 대장항문 전문',
+    description: '김포 구래역 1번출구 장튼튼항외과의원. 외과전문의 한호선 원장. 치핵·치열·치루·대장내시경·PPH 등 대장항문 진료.',
+    images: ['/images/og-image.webp'],
   },
   alternates: {
     canonical: 'https://jangtntn.vercel.app',
@@ -46,8 +45,8 @@ const jsonLd = {
   alternateName: '장튼튼항외과',
   url: 'https://jangtntn.vercel.app',
   logo: 'https://jangtntn.vercel.app/images/logo.png',
-  image: 'https://jangtntn.vercel.app/images/hero.jpg',
-  description: '김포 구래역 1번출구 장튼튼항외과. 외과전문의 한호선 원장. 치핵 치열 치루 대장내시경 PPH수술 전문',
+  image: 'https://jangtntn.vercel.app/images/og-image.webp',
+  description: '김포 구래역 1번출구 장튼튼항외과의원. 외과전문의 한호선 원장. 치핵 치열 치루 대장내시경 PPH수술 전문',
   telephone: '031-987-7282',
   faxNumber: '031-981-7282',
   address: {

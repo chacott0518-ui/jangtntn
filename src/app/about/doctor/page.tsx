@@ -1,13 +1,14 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
+import { PageToc } from '@/components/content/MedicalImageGallery'
 
 export const metadata: Metadata = {
-  title: '의료진 소개 | 장튼튼항외과 외과전문의 한호선',
-  description: '장튼튼항외과 대표원장 한호선 외과전문의. 중앙대학교 의과대학 졸업, 대장내시경 인증의. 김포 구래역 1번출구.',
-  keywords: '장튼튼항외과 원장, 한호선 원장, 김포 외과전문의, 김포 대장항문 전문의, 중앙대학교 외과',
+  title: '의료진 소개 | 장튼튼항외과의원 외과전문의 한호선',
+  description: '장튼튼항외과의원 대표원장 한호선 외과전문의. 중앙대학교 의과대학 졸업, 대장내시경 인증의. 김포 구래역 1번출구.',
+  keywords: '장튼튼항외과의원 원장, 한호선 원장, 김포 외과전문의, 김포 대장항문 전문의, 중앙대학교 외과',
   alternates: { canonical: 'https://jangtntn.vercel.app/about/doctor' },
   openGraph: {
-    title: '의료진 소개 | 장튼튼항외과',
+    title: '의료진 소개 | 장튼튼항외과의원',
     description: '외과전문의 한호선 원장. 중앙대학교병원 외과전문의, 위·대장 내시경학회 인증의.',
     url: 'https://jangtntn.vercel.app/about/doctor',
     images: [{ url: '/images/doctor.jpg', width: 400, height: 500 }],
@@ -70,15 +71,15 @@ export default function DoctorPage() {
         {/* 히어로 */}
         <div className="relative overflow-hidden h-[260px] md:h-[360px] lg:h-[480px]">
           <Image
-            src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&q=80"
-            alt="의료진 소개 장튼튼항외과"
+            src="/images/tour/02-waiting-area.webp"
+            alt="의료진 소개 장튼튼항외과의원"
             fill
             className="object-cover"
             sizes="100vw"
             priority
           />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.82) 40%, rgba(255,255,255,0.4) 65%, transparent 100%)' }} />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, transparent 50%, rgba(255,255,255,0.6) 80%, rgba(255,255,255,1) 100%)' }} />
+          <div className="absolute inset-0 subpage-hero-scrim-x" />
+          <div className="absolute inset-0 subpage-hero-scrim-y" />
           <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8 h-full flex flex-col justify-end pb-8 lg:pb-10">
             <nav className="text-[12px] text-[#94a3b8] mb-3" aria-label="경로">
               홈 / 병원소개 / <strong className="text-[#0d1117]">의료진 소개</strong>
@@ -88,27 +89,41 @@ export default function DoctorPage() {
           </div>
         </div>
 
-        <div className="max-w-4xl mx-auto px-4 lg:px-8 py-10 lg:py-14">
+        <div className="max-w-4xl mx-auto px-4 lg:px-8 section-space space-y-6">
+
+          <section className="bg-white rounded-2xl p-6 lg:p-8 shadow-[0_4px_20px_rgba(0,0,0,0.07)]">
+            <h2 className="section-h2 text-[#0d1117] mb-3">핵심요약</h2>
+            <p className="body-text text-[#374151] break-keep">
+              장튼튼항외과의원 대표원장 한호선은 외과전문의로서 내시경·항문외과 진료를 시행합니다. 아래 인사말과 경력을 확인하세요.
+            </p>
+          </section>
+
+          <PageToc
+            items={[
+              { id: 'greeting', label: '원장 인사말' },
+              { id: 'doctor-profile', label: '한호선 원장 소개' },
+            ]}
+          />
 
           {/* 인사말 */}
-          <div className="mb-10 p-6 lg:p-8 rounded-2xl" style={{ background: 'linear-gradient(135deg, rgba(13,127,196,0.05), rgba(13,148,136,0.05))', border: '1px solid rgba(13,127,196,0.12)' }}>
-            <p className="text-[12px] font-black text-primary tracking-wider mb-2">원장 인사말</p>
-            <p className="text-[14px] md:text-[15px] text-[#374151] leading-[2.0]">
-              안녕하세요, 장튼튼항외과 원장 한호선입니다.<br />
+          <section id="greeting" className="p-6 lg:p-8 rounded-2xl" style={{ background: 'linear-gradient(135deg, rgba(13,127,196,0.05), rgba(13,148,136,0.05))', border: '1px solid rgba(13,127,196,0.12)' }}>
+            <h2 className="section-h2 text-[#0d1117] mb-3">원장 인사말</h2>
+            <p className="body-text text-[#374151] leading-[2.0]">
+              안녕하세요, 장튼튼항외과의원 원장 한호선입니다.<br />
               오랜기간 외과전문의로서 내시경·수술 경험을 통해서 최선의 진료 및 수술을 약속드립니다.<br className="hidden md:block" />
               저희 병원을 찾아주시는 한 분 한 분을 가족처럼 생각하고 모시겠습니다.<br className="hidden md:block" />
               편안한 진료 및 최고의 만족감을 위해서 항상 노력하겠습니다. 감사합니다.
             </p>
-          </div>
+          </section>
 
           {/* 의료진 카드 */}
-          <div className="flex flex-col md:flex-row gap-6 lg:gap-10">
+          <section id="doctor-profile" className="flex flex-col md:flex-row gap-6 lg:gap-10">
 
             {/* 사진 */}
             <div className="relative mx-auto md:mx-0 shrink-0 w-48 h-60 md:w-60 md:h-72 lg:w-72 lg:h-88 rounded-3xl overflow-hidden shadow-[0_8px_32px_rgba(13,127,196,0.18)]">
               <Image
                 src="/images/doctor.jpg"
-                alt="장튼튼항외과 대표원장 한호선 외과전문의"
+                alt="장튼튼항외과의원 대표원장 한호선 외과전문의"
                 fill
                 className="object-cover object-top"
                 sizes="(max-width: 768px) 192px, (max-width: 1024px) 240px, 288px"
@@ -126,7 +141,7 @@ export default function DoctorPage() {
             <div className="flex-1">
               <div className="mb-6">
                 <p className="text-[13px] font-bold text-primary mb-1">대표원장</p>
-                <h2 className="text-[24px] md:text-[28px] font-black text-[#0d1117] mb-1">한호선 원장</h2>
+                <h2 className="section-h2 text-[#0d1117] mb-1">한호선 원장</h2>
                 <p className="text-[14px] text-[#6b7280]">정확한 진단, 바른 진료로 환자분들께 다가갑니다.</p>
                 <div className="w-12 h-1 rounded-full bg-primary mt-3" />
               </div>
@@ -154,7 +169,7 @@ export default function DoctorPage() {
               </div>
             </div>
 
-          </div>
+          </section>
         </div>
       </div>
     </>

@@ -1,4 +1,4 @@
-export const SITE_NAME = '장튼튼항외과'
+export const SITE_NAME = '장튼튼항외과의원'
 
 export const PHONE = '031-987-7282'
 

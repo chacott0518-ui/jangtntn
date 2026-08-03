@@ -1,9 +1,9 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
-import Link from 'next/link'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
+import PendingFeatureButton from '@/components/ui/PendingFeatureButton'
 
 function SplashScreen({ onComplete }: { onComplete: () => void }) {
   useEffect(() => {
@@ -28,7 +28,7 @@ function SplashScreen({ onComplete }: { onComplete: () => void }) {
           src="/images/logo.png"
           width={220}
           height={66}
-          alt="장튼튼항외과"
+          alt="장튼튼항외과의원"
           className="object-contain"
           priority
         />
@@ -69,14 +69,20 @@ export default function HeroSection() {
         className="relative w-full min-h-screen overflow-hidden"
         aria-label="메인 히어로 섹션"
       >
-        {/* 배경 이미지 — 오버레이 없이 원본 그대로 */}
-        <Image
-          src="/images/hero.jpg"
-          alt="장튼튼항외과 병원 내부"
-          fill
-          priority
-          style={{ objectFit: 'cover', objectPosition: 'center center' }}
-        />
+        {/* 배경 이미지 — PC/모바일 소스 분리, 오버레이·높이·텍스트 유지 */}
+        <picture className="absolute inset-0 block">
+          <source media="(max-width: 767px)" srcSet="/images/hero-mobile.webp" type="image/webp" />
+          <source media="(min-width: 768px)" srcSet="/images/hero.webp" type="image/webp" />
+          {/* native img: picture art-direction이 next/image srcSet과 충돌하지 않도록 */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/hero.webp"
+            alt="장튼튼항외과의원 병원 내부"
+            className="hero-bg-img absolute inset-0 w-full h-full"
+            fetchPriority="high"
+            decoding="async"
+          />
+        </picture>
 
         {/* 텍스트 콘텐츠 */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 min-h-screen flex items-center">
@@ -127,7 +133,7 @@ export default function HeroSection() {
                 믿을 수 있는 병원
               </span>
               <span
-                className="block text-[36px] md:text-[46px] lg:text-[60px] font-black tracking-[-0.03em]"
+                className="block text-[32px] md:text-[clamp(44px,4vw,64px)] font-extrabold leading-[1.12] md:leading-[1.08] tracking-[-0.03em]"
                 style={{
                   color: '#0d1117',
                   textShadow:
@@ -138,7 +144,7 @@ export default function HeroSection() {
                 오랜 임상경험을<br className="md:hidden" /> 바탕으로
               </span>
               <span
-                className="block text-[36px] md:text-[46px] lg:text-[60px] font-black tracking-[-0.03em]"
+                className="block text-[32px] md:text-[clamp(44px,4vw,64px)] font-extrabold leading-[1.12] md:leading-[1.08] tracking-[-0.03em]"
                 style={{
                   color: '#0d7fc4',
                   textShadow:
@@ -173,16 +179,16 @@ export default function HeroSection() {
               transition={{ delay: delay + 0.34, duration: 0.45 }}
               className="hidden sm:flex flex-row gap-3 pt-1"
             >
-              <Link
-                href="/consultation"
+              <PendingFeatureButton
+                message="온라인예약 기능을 준비하고 있습니다."
                 className="btn-shine inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full text-[15px] font-bold text-white transition-all duration-300"
                 style={{
                   background: 'linear-gradient(135deg, #0d7fc4, #0d9488)',
                   boxShadow: '0 8px 28px rgba(13,127,196,0.45)',
                 }}
               >
-                📅 온라인 예약
-              </Link>
+                온라인예약
+              </PendingFeatureButton>
             </motion.div>
           </div>
         </div>
