@@ -46,7 +46,7 @@ export default function HemorrhoidPage() {
         <div className="absolute inset-0 subpage-hero-scrim-x" />
         <div className="absolute inset-0 subpage-hero-scrim-y" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 lg:px-8 h-full flex flex-col justify-end pb-10">
-          <nav className="text-[12px] text-[#94a3b8] mb-3 flex items-center gap-1.5">
+          <nav className="subpage-breadcrumb mb-3 flex items-center gap-1.5">
             <span>홈</span><span>/</span><span>대장항문센터</span><span>/</span>
             <span className="text-[#0d1117] font-bold">치핵</span>
           </nav>

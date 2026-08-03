@@ -15,8 +15,8 @@
   --text: #0d1117;
   --muted: #64748b;
   --dim: #94a3b8;
-  --nav: #0B789E;
-  --nav-hover: #075F7E;
+  --nav: #075F8F;
+  --nav-hover: #054A70;
   --section-pad-y: 64px;
   --section-title-gap: 24px;
   --eyebrow-to-title: 8px;
@@ -373,4 +373,203 @@ h3 { font-weight: 700; letter-spacing: -0.02em; word-break: keep-all; }
 
 .subpage-hero-title {
   text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7);
+}
+
+/* PC 헤더 메뉴 — 히어로 위 가독성 */
+.nav-link-pc {
+  color: var(--nav);
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.35);
+}
+
+.nav-link-pc:hover {
+  color: var(--nav-hover);
+}
+
+/* 하위페이지 breadcrumb / 서브내비 — 기본·hover·active 검정 통일 */
+.subpage-breadcrumb,
+.subpage-breadcrumb a,
+.subpage-breadcrumb span,
+.subpage-breadcrumb strong,
+.subpage-sidenav a,
+.subpage-sidenav p {
+  color: #111111 !important;
+  font-weight: 600;
+  opacity: 1;
+}
+
+.subpage-breadcrumb {
+  font-size: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.subpage-breadcrumb a:hover,
+.subpage-sidenav a:hover {
+  color: #111111 !important;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* 모바일 메뉴 열림 시 하단 퀵바(노란 카카오 포함) 가림 — 메뉴 안 CTA로 오인 방지 */
+body.mobile-menu-open .mobile-bottom-bar {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* 히어로 CTA 가로폭 */
+.hero-cta-btn {
+  min-width: 148px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .hero-cta-btn {
+    min-width: 160px;
+  }
+}
+
+/* 히어로 문구 — 단일 wrapper 기준선, 자식 개별 offset 금지 */
+.hero-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 1rem;
+  padding-top: 6rem;
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  .hero-content {
+    width: 58%;
+    margin-left: 2.5rem;
+    padding-top: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-content {
+    width: 50%;
+    margin-left: 0;
+  }
+}
+
+.hero-content > * {
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  transform: none;
+  text-align: left;
+  width: auto;
+  max-width: 100%;
+}
+
+.hero-location-badge {
+  display: inline-block;
+  padding: 0.375rem 0.875rem;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--primary);
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 2px 10px rgba(13, 127, 196, 0.12);
+}
+
+.hero-eyebrow {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  text-shadow:
+    0 0 12px rgba(255, 255, 255, 1),
+    0 0 24px rgba(255, 255, 255, 0.9),
+    0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+@media (min-width: 768px) {
+  .hero-eyebrow {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-eyebrow {
+    font-size: 22px;
+  }
+}
+
+.hero-title {
+  display: block;
+  width: 100%;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: #0d1117;
+  text-shadow:
+    0 0 16px rgba(255, 255, 255, 1),
+    0 0 32px rgba(255, 255, 255, 0.95),
+    0 2px 0 rgba(255, 255, 255, 0.7);
+  -webkit-text-stroke: 0.2px rgba(0, 0, 0, 0.04);
+}
+
+.hero-title > span {
+  display: block;
+  margin: 0;
+  padding: 0;
+  line-height: inherit;
+}
+
+.hero-title-accent {
+  color: #0d7fc4;
+  text-shadow:
+    0 0 16px rgba(255, 255, 255, 1),
+    0 0 32px rgba(255, 255, 255, 0.95),
+    0 0 48px rgba(13, 127, 196, 0.2);
+  -webkit-text-stroke: 0.2px rgba(13, 127, 196, 0.08);
+}
+
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: clamp(44px, 4vw, 64px);
+    line-height: 1.08;
+  }
+}
+
+.hero-description {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a1a2e;
+  text-shadow:
+    0 0 10px rgba(255, 255, 255, 1),
+    0 0 20px rgba(255, 255, 255, 0.9),
+    0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+@media (min-width: 768px) {
+  .hero-description {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-description {
+    font-size: 16px;
+  }
+}
+
+.hero-cta-wrap {
+  display: none;
+  padding-top: 0.25rem;
+}
+
+@media (min-width: 640px) {
+  .hero-cta-wrap {
+    display: flex;
+  }
 }

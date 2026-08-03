@@ -13,7 +13,7 @@ export default function LocationPage() {
         <Image src="/images/tour/02-waiting-area.webp" alt="오시는 길" fill className="object-cover" sizes="100vw" priority />
         <div className="absolute inset-0 subpage-hero-scrim-x" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 h-full flex flex-col justify-end pb-10">
-          <nav className="text-[12px] text-[#94a3b8] mb-4">홈 / 병원소개 / <strong>오시는 길</strong></nav>
+          <nav className="subpage-breadcrumb mb-4">홈 / 병원소개 / <strong>오시는 길</strong></nav>
           <h1 className="page-h1 text-[#0d1117] mb-2">오시는 길</h1>
         </div>
       </div>

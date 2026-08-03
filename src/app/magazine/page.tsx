@@ -57,6 +57,13 @@ const articles = [
   },
 ]
 
+function toDateTimeAttr(date: string) {
+  // existing data is YYYY.MM — no day invented
+  const m = date.match(/^(\d{4})\.(\d{2})$/)
+  if (!m) return undefined
+  return `${m[1]}-${m[2]}`
+}
+
 export default function MagazinePage() {
   return (
     <div className="bg-white min-h-screen pb-24 md:pb-0">
@@ -65,7 +72,7 @@ export default function MagazinePage() {
         <div className="absolute inset-0 subpage-hero-scrim-x" />
         <div className="absolute inset-0 subpage-hero-scrim-y" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8 h-full flex flex-col justify-end pb-8 lg:pb-10">
-          <nav className="text-[12px] text-[#94a3b8] mb-3">홈 / <strong className="text-[#0d1117]">건강매거진</strong></nav>
+          <nav className="subpage-breadcrumb mb-3">홈 / <strong>건강매거진</strong></nav>
           <h1 className="text-[26px] md:text-[36px] lg:text-[44px] font-black text-[#0d1117] mb-2">건강매거진</h1>
           <p className="text-[14px] md:text-[16px] text-[#555] font-semibold">장튼튼 건강 전문 정보</p>
         </div>
@@ -82,22 +89,75 @@ export default function MagazinePage() {
 
         <section id="articles" className="space-y-5">
           <h2 className="section-h2 text-[#0d1117]">건강 정보 목록</h2>
-          {articles.map((a, i) => (
-            <Link key={i} href={a.href} className="group flex flex-col sm:flex-row gap-4 p-5 rounded-2xl bg-white shadow-[0_4px_20px_rgba(0,0,0,0.07)] hover:shadow-[0_8px_28px_rgba(13,127,196,0.15)] hover:-translate-y-0.5 transition-all duration-300">
-              <div className="relative shrink-0 w-full sm:w-40 h-44 sm:h-28 rounded-xl overflow-hidden">
-                <Image src={a.img} alt={a.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="160px" />
-              </div>
-              <div className="flex-1">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="meta-text font-bold text-primary bg-primary/10 px-2 py-0.5 rounded-full">{a.category}</span>
-                  <span className="meta-text text-[#9ca3af]">{a.date}</span>
-                  <span className="meta-text text-[#9ca3af]">· 읽기 {a.readTime}</span>
-                </div>
-                <h3 className="card-title text-[#0d1117] mb-2 group-hover:text-primary transition-colors">{a.title}</h3>
-                <p className="body-text text-[#6b7280]">{a.summary}</p>
-              </div>
-            </Link>
-          ))}
+
+          {/* 모바일: 2열 카드 */}
+          <div className="grid grid-cols-2 gap-3 md:hidden">
+            {articles.map((a, i) => {
+              const dt = toDateTimeAttr(a.date)
+              return (
+                <article key={i} className="min-w-0">
+                  <Link
+                    href={a.href}
+                    className="group flex flex-col h-full rounded-xl bg-white shadow-[0_2px_12px_rgba(0,0,0,0.07)] overflow-hidden"
+                  >
+                    <div className="relative w-full aspect-[4/3] overflow-hidden">
+                      <Image src={a.img} alt={a.title} fill className="object-cover" sizes="50vw" />
+                    </div>
+                    <div className="p-2.5 flex flex-col flex-1 min-w-0">
+                      <div className="flex flex-wrap items-center gap-1 mb-1.5">
+                        <span className="text-[10px] font-bold text-primary bg-primary/10 px-1.5 py-0.5 rounded-full">
+                          {a.category}
+                        </span>
+                        {dt ? (
+                          <time dateTime={dt} className="text-[10px] text-[#64748b] font-medium">
+                            {a.date}
+                          </time>
+                        ) : null}
+                      </div>
+                      <h3 className="text-[13px] font-bold text-[#111111] leading-[1.4] line-clamp-3 break-keep mb-1">
+                        {a.title}
+                      </h3>
+                      <p className="text-[11px] text-[#6b7280] leading-[1.5] line-clamp-3 break-keep">
+                        {a.summary}
+                      </p>
+                    </div>
+                  </Link>
+                </article>
+              )
+            })}
+          </div>
+
+          {/* 태블릿·PC: 기존 가로형 리스트 */}
+          <div className="hidden md:block space-y-5">
+            {articles.map((a, i) => {
+              const dt = toDateTimeAttr(a.date)
+              return (
+                <article key={i}>
+                  <Link
+                    href={a.href}
+                    className="group flex flex-col sm:flex-row gap-4 p-5 rounded-2xl bg-white shadow-[0_4px_20px_rgba(0,0,0,0.07)] hover:shadow-[0_8px_28px_rgba(13,127,196,0.15)] hover:-translate-y-0.5 transition-all duration-300"
+                  >
+                    <div className="relative shrink-0 w-full sm:w-40 h-44 sm:h-28 rounded-xl overflow-hidden">
+                      <Image src={a.img} alt={a.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="160px" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="meta-text font-bold text-primary bg-primary/10 px-2 py-0.5 rounded-full">{a.category}</span>
+                        {dt ? (
+                          <time dateTime={dt} className="meta-text text-[#64748b]">
+                            {a.date}
+                          </time>
+                        ) : null}
+                        <span className="meta-text text-[#9ca3af]">· 읽기 {a.readTime}</span>
+                      </div>
+                      <h3 className="card-title text-[#0d1117] mb-2 group-hover:text-primary transition-colors break-keep">{a.title}</h3>
+                      <p className="body-text text-[#6b7280] line-clamp-3 break-keep">{a.summary}</p>
+                    </div>
+                  </Link>
+                </article>
+              )
+            })}
+          </div>
         </section>
       </div>
     </div>

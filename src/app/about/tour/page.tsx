@@ -42,7 +42,7 @@ export default function TourPage() {
         <div className="absolute inset-0 subpage-hero-scrim-x" />
         <div className="absolute inset-0 subpage-hero-scrim-y" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8 h-full flex flex-col justify-end pb-10">
-          <nav className="text-[12px] text-[#94a3b8] mb-4 flex items-center gap-1.5">
+          <nav className="subpage-breadcrumb mb-4 flex items-center gap-1.5">
             <span>홈</span>
             <span>/</span>
             <span>병원소개</span>

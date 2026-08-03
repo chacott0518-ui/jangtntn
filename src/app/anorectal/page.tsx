@@ -56,7 +56,7 @@ export default function AnorectalPage() {
         <div className="absolute inset-0 subpage-hero-scrim-x" />
         <div className="absolute inset-0 subpage-hero-scrim-y" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8 h-full flex flex-col justify-end pb-8 lg:pb-10">
-          <nav className="text-[12px] text-[#94a3b8] mb-3">홈 / <strong className="text-[#0d1117]">대장항문센터</strong></nav>
+          <nav className="subpage-breadcrumb mb-3">홈 / <strong>대장항문센터</strong></nav>
           <h1 className="text-[26px] md:text-[36px] lg:text-[44px] font-black text-[#0d1117] mb-2">대장항문센터</h1>
           <p className="text-[14px] md:text-[16px] text-[#555] font-semibold">외과전문의가 증상과 상태에 맞춰 진단·치료 방향을 안내합니다</p>
         </div>

@@ -52,7 +52,7 @@ export default function Page() {
         <div className="absolute inset-0 subpage-hero-scrim-x" />
         <div className="absolute inset-0 subpage-hero-scrim-y" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 lg:px-8 h-full flex flex-col justify-end pb-10">
-          <nav className="text-[12px] text-[#94a3b8] mb-3">홈 / 기타외과질환 / 영양 수액</nav>
+          <nav className="subpage-breadcrumb mb-3">홈 / 기타외과질환 / 영양 수액</nav>
           <p className="text-[12px] font-black text-primary tracking-widest mb-2">Nutrition IV Therapy</p>
           <h1 className="text-[28px] md:text-[38px] lg:text-[46px] font-black text-[#0d1117] mb-3">영양 수액</h1>
           <p className="text-[14px] md:text-[16px] text-[#555] font-semibold">피로 회복과 면역력 강화를 위한 맞춤형 영양 수액</p>

@@ -45,7 +45,7 @@ export default function SurgeryGuidePage() {
         <Image src="/images/tour/02-waiting-area.webp" alt="수술안내" fill className="object-cover" sizes="100vw" priority />
         <div className="absolute inset-0 subpage-hero-scrim-x" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 h-full flex flex-col justify-end pb-10">
-          <nav className="text-[12px] text-[#94a3b8] mb-4">홈 / 병원소개 / <strong>수술안내</strong></nav>
+          <nav className="subpage-breadcrumb mb-4">홈 / 병원소개 / <strong>수술안내</strong></nav>
           <h1 className="text-[44px] font-black text-[#0d1117] mb-2">수술안내</h1>
           <p className="text-[16px] text-[#555]">수술 전후 확인사항을 안내합니다</p>
         </div>

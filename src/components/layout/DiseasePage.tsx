@@ -62,14 +62,14 @@ export default function DiseasePage({
         <div className="absolute inset-0 subpage-hero-scrim-x" />
         <div className="absolute inset-0 subpage-hero-scrim-y" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8 h-full flex flex-col justify-end pb-8 md:pb-10">
-          <nav className="flex items-center gap-1.5 text-[12px] text-[#94a3b8] mb-3 flex-wrap">
+          <nav className="subpage-breadcrumb mb-3 flex-wrap" aria-label="경로">
             {breadcrumbs.map((b, i) => (
               <span key={i} className="flex items-center gap-1.5">
-                {i > 0 && <span className="text-[#cbd5e1]">/</span>}
+                {i > 0 && <span>/</span>}
                 {b.href ? (
-                  <Link href={b.href} className="hover:text-primary transition-colors font-medium">{b.label}</Link>
+                  <Link href={b.href}>{b.label}</Link>
                 ) : (
-                  <span className="text-[#0d1117] font-bold">{b.label}</span>
+                  <span>{b.label}</span>
                 )}
               </span>
             ))}
@@ -86,9 +86,9 @@ export default function DiseasePage({
           {sideNav && sideNav.length > 0 && (
             <aside className="hidden lg:block w-[190px] shrink-0">
               <div className="sticky top-24 space-y-1">
-                <p className="text-[11px] font-bold text-[#94a3b8] uppercase tracking-widest px-3 mb-3">관련 질환</p>
+                <p className="text-[11px] font-bold uppercase tracking-widest px-3 mb-3 text-[#111111]">관련 질환</p>
                 {sideNav.map((n) => (
-                  <Link key={n.href} href={n.href} className="block px-3 py-2.5 rounded-xl text-[13px] font-semibold text-[#374151] hover:text-primary hover:bg-[#f0f7ff] transition-all">
+                  <Link key={n.href} href={n.href} className="subpage-sidenav block px-3 py-2.5 rounded-xl text-[13px] font-semibold hover:bg-[#f0f7ff] transition-all">
                     {n.label}
                   </Link>
                 ))}

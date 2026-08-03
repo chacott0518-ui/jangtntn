@@ -55,7 +55,7 @@ export default function Page() {
         <div className="absolute inset-0 subpage-hero-scrim-x" />
         <div className="absolute inset-0 subpage-hero-scrim-y" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 lg:px-8 h-full flex flex-col justify-end pb-10">
-          <nav className="text-[12px] text-[#94a3b8] mb-3">홈 / 대장항문센터 / <strong className="text-[#0d1117]">항문콘딜로마</strong></nav>
+          <nav className="subpage-breadcrumb mb-3">홈 / 대장항문센터 / <strong>항문콘딜로마</strong></nav>
           <p className="text-[12px] font-black text-primary tracking-widest mb-2">Anal Condyloma</p>
           <h1 className="text-[28px] md:text-[38px] lg:text-[46px] font-black text-[#0d1117] mb-3">항문콘딜로마</h1>
           <p className="text-[14px] md:text-[16px] text-[#555] font-semibold">HPV 바이러스 감염으로 인한 항문 주위 사마귀성 병변</p>

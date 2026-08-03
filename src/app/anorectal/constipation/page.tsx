@@ -58,7 +58,7 @@ export default function ConstipationPage() {
         <div className="absolute inset-0 subpage-hero-scrim-x" />
         <div className="absolute inset-0 subpage-hero-scrim-y" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 lg:px-8 h-full flex flex-col justify-end pb-10">
-          <nav className="text-[12px] text-[#94a3b8] mb-3">홈 / 대장항문센터 / <strong className="text-[#0d1117]">변비·설사</strong></nav>
+          <nav className="subpage-breadcrumb mb-3">홈 / 대장항문센터 / <strong>변비·설사</strong></nav>
           <h1 className="text-[28px] md:text-[38px] lg:text-[46px] font-black text-[#0d1117] mb-3">변비 · 설사</h1>
           <p className="text-[14px] md:text-[16px] text-[#555] font-semibold">만성 배변 장애 · 정확한 원인 진단</p>
         </div>

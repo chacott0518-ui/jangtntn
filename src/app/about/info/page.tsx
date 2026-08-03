@@ -30,8 +30,8 @@ export default function InfoPage() {
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to right,rgba(255,255,255,0.97) 0%,rgba(255,255,255,0.82) 40%,rgba(255,255,255,0.4) 65%,transparent 100%)' }} />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom,transparent 50%,rgba(255,255,255,0.6) 80%,rgba(255,255,255,1) 100%)' }} />
         <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8 h-full flex flex-col justify-end pb-10">
-          <nav className="text-[12px] text-[#94a3b8] mb-3">
-            홈 / 병원소개 / <strong className="text-[#0d1117]">진료안내</strong>
+          <nav className="subpage-breadcrumb mb-3">
+            홈 / 병원소개 / <strong>진료안내</strong>
           </nav>
           <h1 className="text-[28px] md:text-[36px] lg:text-[44px] font-black text-[#0d1117] mb-2">진료안내</h1>
           <p className="text-[14px] md:text-[16px] text-[#555] font-semibold">진료시간 · 수술안내 · 오시는 길</p>
@@ -40,22 +40,45 @@ export default function InfoPage() {
 
       {/* 탭 */}
       <div className="sticky top-16 bg-white z-10 border-b border-[#e5e7eb]">
-        <div className="max-w-5xl mx-auto px-4 lg:px-8 flex">
+        <div
+          role="tablist"
+          aria-label="진료안내 탭"
+          className="max-w-5xl mx-auto px-4 lg:px-8 flex"
+        >
           {[
-            { key: 'hours', label: '🕐 진료시간' },
-            { key: 'surgery', label: '⚕️ 수술안내' },
-            { key: 'location', label: '📍 오시는 길' },
-          ].map((t) => (
-            <button
-              key={t.key}
-              onClick={() => setTab(t.key as typeof tab)}
-              className={`flex-1 py-3.5 text-[13px] md:text-[14px] font-bold border-b-2 transition-colors ${
-                tab === t.key ? 'border-primary text-primary' : 'border-transparent text-[#9ca3af]'
-              }`}
-            >
-              {t.label}
-            </button>
-          ))}
+            { key: 'hours' as const, label: '🕐 진료시간' },
+            { key: 'surgery' as const, label: '⚕️ 수술안내' },
+            { key: 'location' as const, label: '📍 오시는 길' },
+          ].map((t) => {
+            const selected = tab === t.key
+            return (
+              <button
+                key={t.key}
+                type="button"
+                role="tab"
+                id={`info-tab-${t.key}`}
+                aria-selected={selected}
+                aria-controls={t.key}
+                tabIndex={selected ? 0 : -1}
+                onClick={() => {
+                  setTab(t.key)
+                  window.history.replaceState(null, '', `#${t.key}`)
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault()
+                    setTab(t.key)
+                    window.history.replaceState(null, '', `#${t.key}`)
+                  }
+                }}
+                className={`flex-1 py-3.5 text-[13px] md:text-[14px] font-bold border-b-2 transition-colors ${
+                  selected ? 'border-primary text-[#111111]' : 'border-transparent text-[#111111]'
+                }`}
+              >
+                {t.label}
+              </button>
+            )
+          })}
         </div>
       </div>
 

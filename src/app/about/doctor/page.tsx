@@ -81,8 +81,8 @@ export default function DoctorPage() {
           <div className="absolute inset-0 subpage-hero-scrim-x" />
           <div className="absolute inset-0 subpage-hero-scrim-y" />
           <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8 h-full flex flex-col justify-end pb-8 lg:pb-10">
-            <nav className="text-[12px] text-[#94a3b8] mb-3" aria-label="경로">
-              홈 / 병원소개 / <strong className="text-[#0d1117]">의료진 소개</strong>
+            <nav className="subpage-breadcrumb mb-3" aria-label="경로">
+              홈 / 병원소개 / <strong>의료진 소개</strong>
             </nav>
             <h1 className="text-[26px] md:text-[36px] lg:text-[44px] font-black text-[#0d1117] mb-2">의료진 소개</h1>
             <p className="text-[14px] md:text-[16px] text-[#555] font-semibold">경험과 실력을 갖춘 전문 의료진</p>

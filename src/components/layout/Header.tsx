@@ -8,9 +8,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { NAV_ITEMS } from '@/lib/constants'
 import PendingFeatureButton from '@/components/ui/PendingFeatureButton'
 
-const VISIBLE_NAV = NAV_ITEMS.slice(0, 7)
-const HIDDEN_NAV = NAV_ITEMS.slice(7)
-
 function Logo() {
   return (
     <Link href="/" className="shrink-0">
@@ -21,12 +18,14 @@ function Logo() {
 
 function DesktopNav() {
   const [hovered, setHovered] = useState<number | null>(null)
-  const [moreOpen, setMoreOpen] = useState(false)
   return (
     <nav className="hidden lg:flex items-center">
-      {VISIBLE_NAV.map((item, i) => (
+      {NAV_ITEMS.map((item, i) => (
         <div key={item.href} className="relative" onMouseEnter={() => setHovered(i)} onMouseLeave={() => setHovered(null)}>
-          <Link href={item.href} className="px-2.5 py-1.5 text-[13px] font-bold transition-all whitespace-nowrap text-[#0B789E] hover:text-[#075F7E]">
+          <Link
+            href={item.href}
+            className="nav-link-pc px-2.5 py-1.5 text-[13px] font-bold transition-all whitespace-nowrap"
+          >
             {item.label}
           </Link>
           <AnimatePresence>
@@ -42,22 +41,6 @@ function DesktopNav() {
           </AnimatePresence>
         </div>
       ))}
-      {HIDDEN_NAV.length > 0 && (
-        <div className="relative" onMouseEnter={() => setMoreOpen(true)} onMouseLeave={() => setMoreOpen(false)}>
-          <button className="px-2.5 py-1.5 text-[13px] font-bold text-[#0B789E] hover:text-[#075F7E]">• • •</button>
-          <AnimatePresence>
-            {moreOpen && (
-              <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 8 }} transition={{ duration: 0.18 }} className="absolute top-full right-0 pt-2 z-50">
-                <div className="rounded-2xl shadow-[0_8px_32px_rgba(13,127,196,0.2)] py-2 min-w-[150px] overflow-hidden" style={{ background: 'linear-gradient(135deg, #0d7fc4 0%, #0d9488 100%)' }}>
-                  {HIDDEN_NAV.map((item) => (
-                    <Link key={item.href} href={item.href} className="block px-5 py-2.5 text-[13px] font-semibold text-white/90 hover:text-white hover:bg-white/15 transition-all">{item.label}</Link>
-                  ))}
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-      )}
     </nav>
   )
 }
@@ -66,7 +49,7 @@ function MobileMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
   const router = useRouter()
   const [expanded, setExpanded] = useState<number | null>(null)
 
-  // iOS Safari overflow 잠금
+  // iOS Safari overflow 잠금 + 하단 퀵바 가림
   useEffect(() => {
     if (isOpen) {
       const scrollY = window.scrollY
@@ -74,12 +57,14 @@ function MobileMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
       document.body.style.top = `-${scrollY}px`
       document.body.style.width = '100%'
       document.body.style.overflow = 'hidden'
+      document.body.classList.add('mobile-menu-open')
     } else {
       const scrollY = document.body.style.top
       document.body.style.position = ''
       document.body.style.top = ''
       document.body.style.width = ''
       document.body.style.overflow = ''
+      document.body.classList.remove('mobile-menu-open')
       if (scrollY) window.scrollTo(0, parseInt(scrollY || '0') * -1)
     }
     return () => {
@@ -87,6 +72,7 @@ function MobileMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
       document.body.style.top = ''
       document.body.style.width = ''
       document.body.style.overflow = ''
+      document.body.classList.remove('mobile-menu-open')
     }
   }, [isOpen])
 
@@ -151,13 +137,26 @@ function MobileMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
                     <>
                       <button
                         onClick={() => setExpanded(expanded === i ? null : i)}
-                        style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 20px', color: 'white', fontWeight: 700, fontSize: '14px', background: 'none', border: 'none', cursor: 'pointer' }}
+                        style={{
+                          width: '100%',
+                          minHeight: '48px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          padding: '11px 20px',
+                          color: 'white',
+                          fontWeight: 700,
+                          fontSize: '13px',
+                          background: 'none',
+                          border: 'none',
+                          cursor: 'pointer',
+                        }}
                       >
                         {item.label}
                         <motion.span
                           animate={{ rotate: expanded === i ? 180 : 0 }}
                           transition={{ duration: 0.2 }}
-                          style={{ color: 'rgba(255,255,255,0.6)', fontSize: '11px' }}
+                          style={{ color: 'rgba(255,255,255,0.6)', fontSize: '10px' }}
                         >
                           ▼
                         </motion.span>
@@ -171,14 +170,29 @@ function MobileMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
                             transition={{ duration: 0.18 }}
                             style={{ overflow: 'hidden', background: 'rgba(0,0,0,0.15)' }}
                           >
-                            <div style={{ padding: '8px 16px 8px 20px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                            <div style={{ padding: '6px 16px 6px 20px', display: 'flex', flexDirection: 'column', gap: '2px' }}>
                               {item.subItems.map((sub) => (
                                 <button
                                   key={sub.href}
                                   onClick={() => handleLink(sub.href)}
-                                  style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '10px 12px', borderRadius: '10px', color: 'rgba(255,255,255,0.9)', fontSize: '13px', fontWeight: 600, background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', width: '100%' }}
+                                  style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '10px',
+                                    minHeight: '46px',
+                                    padding: '8px 12px',
+                                    borderRadius: '10px',
+                                    color: 'rgba(255,255,255,0.9)',
+                                    fontSize: '12px',
+                                    fontWeight: 600,
+                                    background: 'none',
+                                    border: 'none',
+                                    cursor: 'pointer',
+                                    textAlign: 'left',
+                                    width: '100%',
+                                  }}
                                 >
-                                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'rgba(255,255,255,0.5)', flexShrink: 0 }} />
+                                  <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: 'rgba(255,255,255,0.5)', flexShrink: 0 }} />
                                   {sub.label}
                                 </button>
                               ))}
@@ -190,7 +204,20 @@ function MobileMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
                   ) : (
                     <button
                       onClick={() => handleLink(item.href)}
-                      style={{ width: '100%', display: 'flex', alignItems: 'center', padding: '14px 20px', color: 'white', fontWeight: 700, fontSize: '14px', background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left' }}
+                      style={{
+                        width: '100%',
+                        minHeight: '48px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        padding: '11px 20px',
+                        color: 'white',
+                        fontWeight: 700,
+                        fontSize: '13px',
+                        background: 'none',
+                        border: 'none',
+                        cursor: 'pointer',
+                        textAlign: 'left',
+                      }}
                     >
                       {item.label}
                     </button>
@@ -200,11 +227,11 @@ function MobileMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
             </div>
 
             {/* 하단 온라인예약 버튼 */}
-            <div style={{ padding: '16px', flexShrink: 0, borderTop: '1px solid rgba(255,255,255,0.2)' }}>
+            <div style={{ padding: '14px 16px', flexShrink: 0, borderTop: '1px solid rgba(255,255,255,0.2)' }}>
               <PendingFeatureButton
                 message="온라인예약 기능을 준비하고 있습니다."
                 className="w-full"
-                style={{ width: '100%', padding: '14px', borderRadius: '16px', background: 'rgba(255,255,255,0.25)', color: 'white', fontWeight: 700, fontSize: '14px', border: 'none', cursor: 'pointer' }}
+                style={{ width: '100%', padding: '12px', borderRadius: '16px', background: 'rgba(255,255,255,0.25)', color: 'white', fontWeight: 700, fontSize: '13px', border: 'none', cursor: 'pointer' }}
               >
                 온라인예약
               </PendingFeatureButton>
@@ -227,8 +254,8 @@ export default function Header() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [onScroll])
 
-  // MENU 텍스트: #0B789E, 열림(✕) 시 헤더가 청록색이라 흰색 유지
-  const burgerColor = mobileOpen ? 'white' : '#0B789E';
+  // MENU 텍스트: 진한 청록, 열림(✕) 시 헤더가 청록색이라 흰색 유지
+  const burgerColor = mobileOpen ? 'white' : '#075F8F'
 
   return (
     <header

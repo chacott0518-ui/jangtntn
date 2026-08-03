@@ -12,7 +12,7 @@ export default function ConsultationPage() {
         <Image src="/images/tour/01-reception.webp" alt="온라인 상담" fill className="object-cover" sizes="100vw" priority />
         <div className="absolute inset-0 subpage-hero-scrim-x" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 h-full flex flex-col justify-end pb-10">
-          <nav className="text-[12px] text-[#94a3b8] mb-4">홈 / <strong>온라인 상담</strong></nav>
+          <nav className="subpage-breadcrumb mb-4">홈 / <strong>온라인 상담</strong></nav>
           <h1 className="subpage-hero-title page-h1 text-[#0d1117] mb-2">온라인 상담</h1>
           <p className="section-lead text-[#555]">궁금한 사항을 남겨주시면 빠르게 답변드립니다</p>
         </div>
