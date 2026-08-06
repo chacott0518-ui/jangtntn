@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: '지방종 | 장튼튼항외과의원',
   description: '김포 구래역 지방종 진료. 피부 아래 부드러운 혹의 진단과 국소마취 절제 안내. 크기에 따라 시술 계획이 달라질 수 있습니다.',
   keywords: '지방종, 지방종제거, 피부종양, 피부종양제거, 김포 지방종제거, 구래동 지방종제거',
-  alternates: { canonical: 'https://www.jangtntnhang.com/skin/lipoma' },
+  alternates: { canonical: 'https://jtntn.co.kr/skin/lipoma' },
   openGraph: {
     title: '지방종 | 장튼튼항외과의원',
     description: '김포 구래역 지방종 진료. 피부 아래 부드러운 혹의 진단과 국소마취 절제 안내. 크기에 따라 시술 계획이 달라질 수 있습니다.',

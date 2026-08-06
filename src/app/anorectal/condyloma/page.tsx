@@ -8,12 +8,12 @@ export const metadata: Metadata = {
   title: '항문콘딜로마 | 장튼튼항외과의원',
   description:
     '항문콘딜로마(HPV)의 증상과 제거·추적 관찰 안내. 항문 주위 사마귀성 병변이 있을 때 김포 구래역 장튼튼항외과의원에서 진찰받을 수 있습니다.',
-  alternates: { canonical: 'https://www.jangtntnhang.com/anorectal/condyloma' },
+  alternates: { canonical: 'https://jtntn.co.kr/anorectal/condyloma' },
   openGraph: {
     title: '항문콘딜로마 | 장튼튼항외과의원',
     description:
       '항문콘딜로마(HPV)의 증상과 제거·추적 관찰 안내. 항문 주위 사마귀성 병변이 있을 때 김포 구래역 장튼튼항외과의원에서 진찰받을 수 있습니다.',
-    url: 'https://www.jangtntnhang.com/anorectal/condyloma',
+    url: 'https://jtntn.co.kr/anorectal/condyloma',
     images: [{ url: '/images/og-image.webp', width: 1200, height: 630 }],
   },
 }

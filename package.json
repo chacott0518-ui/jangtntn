@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "indexnow": "node scripts/submit-indexnow.mjs",
+    "indexnow:sitemap": "node scripts/submit-indexnow.mjs --sitemap"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",

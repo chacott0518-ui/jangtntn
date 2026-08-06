@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: '용종 절제술 | 장튼튼항외과의원',
   description: '김포 구래역 대장 용종 절제 안내. 크기·위치에 따라 당일 제거가 어려울 수 있으며, 절제 후 주의사항을 설명합니다.',
   keywords: '대장용종, 대장용종제거, 용종절제술, 김포 대장용종제거, 구래동 대장용종제거',
-  alternates: { canonical: 'https://www.jangtntnhang.com/endoscopy/polyp' },
+  alternates: { canonical: 'https://jtntn.co.kr/endoscopy/polyp' },
   openGraph: {
     title: '용종 절제술 | 장튼튼항외과의원',
     description: '김포 구래역 대장 용종 절제 안내. 크기·위치에 따라 당일 제거가 어려울 수 있으며, 절제 후 주의사항을 설명합니다.',

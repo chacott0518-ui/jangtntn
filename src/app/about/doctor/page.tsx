@@ -1,18 +1,15 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
+import { DOCTOR, SITE_NAME, absoluteUrl, physicianId, ENTITY_IDS } from '@/lib/site-config'
+import { buildPageMetadata } from '@/lib/seo/metadata'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
+  path: '/about/doctor',
   title: '의료진 소개 | 장튼튼항외과의원 외과전문의 한호선',
-  description: '장튼튼항외과의원 대표원장 한호선 외과전문의. 중앙대학교 의과대학 졸업, 대장내시경 인증의. 김포 구래역 1번출구.',
-  keywords: '장튼튼항외과의원 원장, 한호선 원장, 김포 외과전문의, 김포 대장항문 전문의, 중앙대학교 외과',
-  alternates: { canonical: 'https://jangtntn.vercel.app/about/doctor' },
-  openGraph: {
-    title: '의료진 소개 | 장튼튼항외과의원',
-    description: '외과전문의 한호선 원장. 중앙대학교병원 외과전문의, 위·대장 내시경학회 인증의.',
-    url: 'https://jangtntn.vercel.app/about/doctor',
-    images: [{ url: '/images/doctor.jpg', width: 400, height: 500 }],
-  },
-}
+  description:
+    '장튼튼항외과의원 대표원장 한호선 외과전문의. 중앙대학교 의과대학 졸업, 대장내시경 인증의. 김포 구래역 1번출구.',
+  ogImage: '/images/doctor.jpg',
+})
 
 const career = [
   {
@@ -42,19 +39,22 @@ const career = [
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Physician',
-  name: '한호선',
-  jobTitle: '대표원장',
+  '@id': physicianId(),
+  name: DOCTOR.name,
+  jobTitle: DOCTOR.jobTitle,
   medicalSpecialty: 'Surgery',
-  description: '외과전문의. 중앙대학교 의과대학 졸업. 위·대장 내시경학회 인증의.',
-  alumniOf: [
-    { '@type': 'CollegeOrUniversity', name: '중앙대학교 의과대학' },
-    { '@type': 'CollegeOrUniversity', name: '중앙대학교 의과대학원' },
-  ],
+  description: DOCTOR.description,
+  alumniOf: DOCTOR.alumniOf.map((name) => ({
+    '@type': 'CollegeOrUniversity',
+    name,
+  })),
   worksFor: {
+    '@id': ENTITY_IDS.medicalClinic,
     '@type': 'MedicalClinic',
-    name: '장튼튼항외과의원',
-    url: 'https://jangtntn.vercel.app',
+    name: SITE_NAME,
+    url: absoluteUrl('/'),
   },
+  url: absoluteUrl('/about/doctor'),
 }
 
 export default function DoctorPage() {

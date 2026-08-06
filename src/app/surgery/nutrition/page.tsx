@@ -7,7 +7,7 @@ import { PageToc } from '@/components/content/MedicalImageGallery'
 export const metadata: Metadata = {
   title: '영양 수액 | 장튼튼항외과의원',
   description: '김포 구래역 영양 수액 안내. 기본 영양 수액·고용량 비타민C·마늘 주사 등 페이지에 소개된 항목을 상담합니다.',
-  alternates: { canonical: 'https://www.jangtntnhang.com/surgery/nutrition' },
+  alternates: { canonical: 'https://jtntn.co.kr/surgery/nutrition' },
   openGraph: {
     title: '영양 수액 | 장튼튼항외과의원',
     description: '김포 구래역 영양 수액 안내. 기본 영양 수액·고용량 비타민C·마늘 주사 등 페이지에 소개된 항목을 상담합니다.',

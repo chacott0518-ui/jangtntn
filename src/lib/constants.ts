@@ -1,15 +1,11 @@
-export const SITE_NAME = '장튼튼항외과의원'
-
-export const PHONE = '031-987-7282'
-
-export const ADDRESS = '경기 김포시 김포한강4로 507 계림M스퀘어 3층 308호'
-
-export const HOURS = {
-  weekday: { open: '09:00', close: '18:00', label: '평일 09:00~18:00' },
-  saturday: { open: '09:00', close: '15:00', label: '토요일 09:00~15:00' },
-  lunch: { start: '13:00', end: '14:00', label: '점심 13:00~14:00 (토요일 점심없음)' },
-  sunday: { label: '일요일·공휴일 휴진' },
-}
+export {
+  SITE_NAME,
+  PHONE,
+  ADDRESS,
+  HOURS,
+  FAX,
+  SITE_URL,
+} from '@/lib/site-config'
 
 export interface NavSubItem {
   href: string

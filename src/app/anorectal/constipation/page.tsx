@@ -9,12 +9,12 @@ export const metadata: Metadata = {
   description:
     '만성 변비와 설사의 원인 평가·생활습관·약물 치료 안내. 배변 장애가 반복될 때 김포 구래역 장튼튼항외과의원에서 필요 시 대장내시경을 함께 검토합니다.',
   keywords: '변비, 만성변비, 설사, 만성설사, 잔변감, 김포 변비, 김포 설사',
-  alternates: { canonical: 'https://www.jangtntnhang.com/anorectal/constipation' },
+  alternates: { canonical: 'https://jtntn.co.kr/anorectal/constipation' },
   openGraph: {
     title: '변비·설사 | 장튼튼항외과의원',
     description:
       '만성 변비와 설사의 원인 평가·생활습관·약물 치료 안내. 배변 장애가 반복될 때 김포 구래역 장튼튼항외과의원에서 필요 시 대장내시경을 함께 검토합니다.',
-    url: 'https://www.jangtntnhang.com/anorectal/constipation',
+    url: 'https://jtntn.co.kr/anorectal/constipation',
     images: [{ url: '/images/og-image.webp', width: 1200, height: 630 }],
   },
 }

@@ -7,7 +7,7 @@ import { PageToc } from '@/components/content/MedicalImageGallery'
 export const metadata: Metadata = {
   title: '내시경센터 | 장튼튼항외과의원',
   description: '위내시경·대장내시경·용종절제술 안내. 수면 여부와 준비 방법은 상담 후 상태에 맞춰 진행합니다.',
-  alternates: { canonical: 'https://www.jangtntnhang.com/endoscopy' },
+  alternates: { canonical: 'https://jtntn.co.kr/endoscopy' },
 }
 
 const menus = [

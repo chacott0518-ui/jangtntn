@@ -7,7 +7,7 @@ import { PageToc } from '@/components/content/MedicalImageGallery'
 export const metadata: Metadata = {
   title: '기타외과질환 | 장튼튼항외과의원',
   description: '화상·내성발톱·상처봉합·영양수액·예방접종 상담. 일상 외과 문제를 정도에 맞춰 처치·경과를 관찰합니다.',
-  alternates: { canonical: 'https://www.jangtntnhang.com/surgery' },
+  alternates: { canonical: 'https://jtntn.co.kr/surgery' },
 }
 
 const menus = [

@@ -8,12 +8,12 @@ export const metadata: Metadata = {
   title: '항문거근증후군 | 장튼튼항외과의원',
   description:
     '항문거근증후군의 만성 골반·직장 통증 증상과 이완 치료 안내. 앉아 있을 때 통증이 심하면 김포 구래역 장튼튼항외과의원에서 감별 진찰을 받을 수 있습니다.',
-  alternates: { canonical: 'https://www.jangtntnhang.com/anorectal/levator' },
+  alternates: { canonical: 'https://jtntn.co.kr/anorectal/levator' },
   openGraph: {
     title: '항문거근증후군 | 장튼튼항외과의원',
     description:
       '항문거근증후군의 만성 골반·직장 통증 증상과 이완 치료 안내. 앉아 있을 때 통증이 심하면 김포 구래역 장튼튼항외과의원에서 감별 진찰을 받을 수 있습니다.',
-    url: 'https://www.jangtntnhang.com/anorectal/levator',
+    url: 'https://jtntn.co.kr/anorectal/levator',
     images: [{ url: '/images/og-image.webp', width: 1200, height: 630 }],
   },
 }

@@ -9,12 +9,12 @@ export const metadata: Metadata = {
   description:
     '치핵(치질)의 단계별 증상과 보존·시술·수술 치료 안내. 김포 구래역 장튼튼항외과의원에서 외과전문의가 직접 진찰합니다.',
   keywords: '치질, 치핵, 치질진료, 치질치료, 치질수술, 치핵치료, 치핵수술, 김포 치질, 김포 치핵, 김포 치질수술, 구래동 치질, 구래역 치질병원',
-  alternates: { canonical: 'https://www.jangtntnhang.com/anorectal/hemorrhoid' },
+  alternates: { canonical: 'https://jtntn.co.kr/anorectal/hemorrhoid' },
   openGraph: {
     title: '치핵(치질) | 장튼튼항외과의원',
     description:
       '치핵(치질)의 단계별 증상과 보존·시술·수술 치료 안내. 김포 구래역 장튼튼항외과의원에서 외과전문의가 직접 진찰합니다.',
-    url: 'https://www.jangtntnhang.com/anorectal/hemorrhoid',
+    url: 'https://jtntn.co.kr/anorectal/hemorrhoid',
     images: [{ url: '/images/og-image.webp', width: 1200, height: 630 }],
   },
 }

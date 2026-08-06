@@ -9,12 +9,12 @@ export const metadata: Metadata = {
   description:
     '치루·항문 주위 농양의 증상과 수술 치료 안내. 분비물·반복 통증이 있을 때 김포 구래역 장튼튼항외과의원에서 외과전문의가 진찰합니다.',
   keywords: '치루, 항문농양, 항문주위농양, 치루치료, 치루수술, 항문농양치료, 항문농양수술, 김포 치루, 김포 항문농양',
-  alternates: { canonical: 'https://www.jangtntnhang.com/anorectal/fistula' },
+  alternates: { canonical: 'https://jtntn.co.kr/anorectal/fistula' },
   openGraph: {
     title: '치루 | 장튼튼항외과의원',
     description:
       '치루·항문 주위 농양의 증상과 수술 치료 안내. 분비물·반복 통증이 있을 때 김포 구래역 장튼튼항외과의원에서 외과전문의가 진찰합니다.',
-    url: 'https://www.jangtntnhang.com/anorectal/fistula',
+    url: 'https://jtntn.co.kr/anorectal/fistula',
     images: [{ url: '/images/og-image.webp', width: 1200, height: 630 }],
   },
 }

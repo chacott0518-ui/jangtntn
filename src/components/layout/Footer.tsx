@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { ADDRESS, PHONE } from '@/lib/constants'
+import { ADDRESS, FAX, PHONE } from '@/lib/constants'
 import PendingFeatureButton from '@/components/ui/PendingFeatureButton'
 
 export default function Footer() {
@@ -42,7 +42,7 @@ export default function Footer() {
             <span>사업자등록번호: 260-92-01324</span>
             <span>대표자: 한호선</span>
             <span>전화: {PHONE}</span>
-            <span>팩스: 031-981-7282</span>
+            <span>팩스: {FAX}</span>
             <span className="hidden md:inline">주소: {ADDRESS}</span>
           </div>
           <p className="shrink-0">© {new Date().getFullYear()} 장튼튼항외과의원. All rights reserved.</p>

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: '피지낭종 | 장튼튼항외과의원',
   description: '김포 구래역 피지낭종(표피낭종) 진료. 감염 여부에 따라 배농 후 절제 일정이 달라질 수 있습니다.',
   keywords: '표피낭종, 표피낭종제거, 피지낭종, 피지낭종제거, 김포 표피낭종제거, 김포 피지낭종제거',
-  alternates: { canonical: 'https://www.jangtntnhang.com/skin/cyst' },
+  alternates: { canonical: 'https://jtntn.co.kr/skin/cyst' },
   openGraph: {
     title: '피지낭종 | 장튼튼항외과의원',
     description: '김포 구래역 피지낭종(표피낭종) 진료. 감염 여부에 따라 배농 후 절제 일정이 달라질 수 있습니다.',

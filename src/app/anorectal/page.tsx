@@ -7,7 +7,7 @@ import { PageToc } from '@/components/content/MedicalImageGallery'
 export const metadata: Metadata = {
   title: '대장항문센터 | 장튼튼항외과의원',
   description: '치핵·치열·치루·변비·항문소양증 등 대장항문 질환 진료. 외과전문의 상담 후 상태에 맞는 치료 방향을 안내합니다.',
-  alternates: { canonical: 'https://www.jangtntnhang.com/anorectal' },
+  alternates: { canonical: 'https://jtntn.co.kr/anorectal' },
 }
 
 const diseases = [

@@ -8,12 +8,12 @@ export const metadata: Metadata = {
   title: '모소동 | 장튼튼항외과의원',
   description:
     '모소동(꼬리뼈 부위 낭종·누공)의 증상과 절개·절제 치료 안내. 앉을 때 통증·분비물이 있으면 김포 구래역 장튼튼항외과의원에서 진찰받을 수 있습니다.',
-  alternates: { canonical: 'https://www.jangtntnhang.com/anorectal/pilonidal' },
+  alternates: { canonical: 'https://jtntn.co.kr/anorectal/pilonidal' },
   openGraph: {
     title: '모소동 | 장튼튼항외과의원',
     description:
       '모소동(꼬리뼈 부위 낭종·누공)의 증상과 절개·절제 치료 안내. 앉을 때 통증·분비물이 있으면 김포 구래역 장튼튼항외과의원에서 진찰받을 수 있습니다.',
-    url: 'https://www.jangtntnhang.com/anorectal/pilonidal',
+    url: 'https://jtntn.co.kr/anorectal/pilonidal',
     images: [{ url: '/images/og-image.webp', width: 1200, height: 630 }],
   },
 }

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: '대장내시경 | 장튼튼항외과의원',
   description: '김포 구래역 대장내시경. 장 정결·약물 안내와 용종 확인. 수면 검사 후 당일 운전은 피해야 합니다.',
   keywords: '대장내시경, 수면대장내시경, 위대장내시경, 대장암검진, 김포 대장내시경, 김포 수면대장내시경, 구래동 대장내시경, 구래역 대장내시경',
-  alternates: { canonical: 'https://www.jangtntnhang.com/endoscopy/colon' },
+  alternates: { canonical: 'https://jtntn.co.kr/endoscopy/colon' },
   openGraph: {
     title: '대장내시경 | 장튼튼항외과의원',
     description: '김포 구래역 대장내시경. 장 정결·약물 안내와 용종 확인. 수면 검사 후 당일 운전은 피해야 합니다.',

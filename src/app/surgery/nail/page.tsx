@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: '내성발톱 | 장튼튼항외과의원',
   description: '김포 구래역 내성발톱 진료. 외래 시술과 회복 기간은 염증·감염 정도에 따라 달라질 수 있습니다.',
   keywords: '내성발톱, 내성발톱치료, 김포 내성발톱치료',
-  alternates: { canonical: 'https://www.jangtntnhang.com/surgery/nail' },
+  alternates: { canonical: 'https://jtntn.co.kr/surgery/nail' },
   openGraph: {
     title: '내성발톱 | 장튼튼항외과의원',
     description: '김포 구래역 내성발톱 진료. 외래 시술과 회복 기간은 염증·감염 정도에 따라 달라질 수 있습니다.',

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: '화상 치료 | 장튼튼항외과의원',
   description: '김포 구래역 화상 진료. 깊이·범위에 따른 처치 안내. 넓은 화상·깊은 화상은 응급 진료가 필요할 수 있습니다.',
   keywords: '화상치료, 김포 화상치료',
-  alternates: { canonical: 'https://www.jangtntnhang.com/surgery/burn' },
+  alternates: { canonical: 'https://jtntn.co.kr/surgery/burn' },
   openGraph: {
     title: '화상 치료 | 장튼튼항외과의원',
     description: '김포 구래역 화상 진료. 깊이·범위에 따른 처치 안내. 넓은 화상·깊은 화상은 응급 진료가 필요할 수 있습니다.',

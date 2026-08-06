@@ -9,12 +9,12 @@ export const metadata: Metadata = {
   description:
     '치열의 급성·만성 증상과 좌욕·약물·수술 치료 안내. 배변 시 통증·출혈이 있을 때 김포 구래역 장튼튼항외과의원에서 진찰받을 수 있습니다.',
   keywords: '치열, 배변통증, 배변출혈, 치열치료, 치열수술, 김포 치열, 구래동 치열',
-  alternates: { canonical: 'https://www.jangtntnhang.com/anorectal/fissure' },
+  alternates: { canonical: 'https://jtntn.co.kr/anorectal/fissure' },
   openGraph: {
     title: '치열 | 장튼튼항외과의원',
     description:
       '치열의 급성·만성 증상과 좌욕·약물·수술 치료 안내. 배변 시 통증·출혈이 있을 때 김포 구래역 장튼튼항외과의원에서 진찰받을 수 있습니다.',
-    url: 'https://www.jangtntnhang.com/anorectal/fissure',
+    url: 'https://jtntn.co.kr/anorectal/fissure',
     images: [{ url: '/images/og-image.webp', width: 1200, height: 630 }],
   },
 }

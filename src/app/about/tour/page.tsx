@@ -7,13 +7,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: '병원둘러보기 | 장튼튼항외과의원',
     description: '장튼튼항외과의원 실제 병원 시설 안내. 접수·대기·진료실·수술실·회복실·내시경실을 소개합니다.',
-    url: 'https://www.jangtntnhang.com/about/tour',
+    url: 'https://jtntn.co.kr/about/tour',
     siteName: '장튼튼항외과의원',
     images: [{ url: '/images/og-image.webp', width: 1200, height: 630 }],
     locale: 'ko_KR',
     type: 'website',
   },
-  alternates: { canonical: 'https://www.jangtntnhang.com/about/tour' },
+  alternates: { canonical: 'https://jtntn.co.kr/about/tour' },
 }
 
 const GALLERY = [

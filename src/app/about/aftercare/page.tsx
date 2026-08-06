@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: '수술 후 주의사항 | 장튼튼항외과의원',
     description: '수술 후 좌욕·식이·활동 일반 안내. 회복 경과에 따라 개인별 안내가 달라질 수 있습니다.',
-    url: 'https://www.jangtntnhang.com/about/aftercare',
+    url: 'https://jtntn.co.kr/about/aftercare',
     siteName: '장튼튼항외과의원',
     images: [{ url: '/images/og-image.webp', width: 1200, height: 630 }],
     locale: 'ko_KR',
     type: 'website',
   },
-  alternates: { canonical: 'https://www.jangtntnhang.com/about/aftercare' },
+  alternates: { canonical: 'https://jtntn.co.kr/about/aftercare' },
 }
 
 const items = [

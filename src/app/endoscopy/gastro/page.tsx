@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: '위내시경 | 장튼튼항외과의원',
   description: '김포 구래역 위내시경. 식도·위·십이지장 관찰과 조직 검사. 검사 전 금식·수면 내시경 주의사항을 안내합니다.',
   keywords: '위내시경, 수면위내시경, 내시경검사, 김포 위내시경, 김포 수면위내시경, 구래동 위내시경, 구래역 위내시경',
-  alternates: { canonical: 'https://www.jangtntnhang.com/endoscopy/gastro' },
+  alternates: { canonical: 'https://jtntn.co.kr/endoscopy/gastro' },
   openGraph: {
     title: '위내시경 | 장튼튼항외과의원',
     description: '김포 구래역 위내시경. 식도·위·십이지장 관찰과 조직 검사. 검사 전 금식·수면 내시경 주의사항을 안내합니다.',

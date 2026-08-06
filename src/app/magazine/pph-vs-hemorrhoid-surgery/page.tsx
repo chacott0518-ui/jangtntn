@@ -3,20 +3,21 @@ import Image from 'next/image'
 import Link from 'next/link'
 import StaticFaq, { faqJsonLd } from '@/components/content/StaticFaq'
 import { PageToc } from '@/components/content/MedicalImageGallery'
+import { absoluteUrl, articleId, SITE_NAME } from '@/lib/site-config'
+import { buildPageMetadata } from '@/lib/seo/metadata'
 
-export const metadata: Metadata = {
-  title: 'PPH 수술 vs 기존 치핵 수술, 무엇이 다른가요? | 건강매거진',
-  description:
-    'PPH와 기존 치핵 수술의 차이점을 비교하는 건강 정보입니다. 장튼튼항외과의원에서는 PPH 수술을 시행하지 않습니다.',
-  alternates: { canonical: 'https://www.jangtntnhang.com/magazine/pph-vs-hemorrhoid-surgery' },
-  openGraph: {
-    title: 'PPH 수술 vs 기존 치핵 수술, 무엇이 다른가요?',
-    description:
-      'PPH와 기존 치핵 수술의 차이점을 비교하는 건강 정보입니다. 장튼튼항외과의원에서는 PPH 수술을 시행하지 않습니다.',
-    url: 'https://www.jangtntnhang.com/magazine/pph-vs-hemorrhoid-surgery',
-    type: 'article',
-  },
-}
+const PATH = '/magazine/pph-vs-hemorrhoid-surgery'
+const TITLE = 'PPH 수술 vs 기존 치핵 수술, 무엇이 다른가요?'
+const DESCRIPTION =
+  'PPH와 기존 치핵 수술의 차이점을 비교하는 건강 정보입니다. 장튼튼항외과의원에서는 PPH 수술을 시행하지 않습니다.'
+
+export const metadata: Metadata = buildPageMetadata({
+  path: PATH,
+  title: `${TITLE} | 건강매거진`,
+  description: DESCRIPTION,
+  type: 'article',
+  ogImage: '/images/pages/surgery.webp',
+})
 
 const DISCLAIMER = '장튼튼항외과의원에서는 PPH 수술을 시행하지 않습니다.'
 
@@ -46,17 +47,18 @@ const faqs = [
 const articleJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: 'PPH 수술 vs 기존 치핵 수술, 무엇이 다른가요?',
-  description:
-    'PPH와 기존 치핵 수술의 차이점을 비교하는 건강 정보입니다. 장튼튼항외과의원에서는 PPH 수술을 시행하지 않습니다.',
+  '@id': articleId(PATH),
+  headline: TITLE,
+  description: DESCRIPTION,
   datePublished: '2024-09-01',
-  author: { '@type': 'Organization', name: '장튼튼항외과의원' },
+  dateModified: '2024-09-01',
+  author: { '@type': 'Organization', name: SITE_NAME },
   publisher: {
     '@type': 'Organization',
-    name: '장튼튼항외과의원',
-    logo: { '@type': 'ImageObject', url: 'https://jangtntn.vercel.app/images/logo.png' },
+    name: SITE_NAME,
+    logo: { '@type': 'ImageObject', url: absoluteUrl('/images/logo.png') },
   },
-  mainEntityOfPage: 'https://www.jangtntnhang.com/magazine/pph-vs-hemorrhoid-surgery',
+  mainEntityOfPage: absoluteUrl(PATH),
 }
 
 export default function PphVsHemorrhoidArticlePage() {

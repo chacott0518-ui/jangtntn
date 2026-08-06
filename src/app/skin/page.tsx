@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: '피부종양센터 | 장튼튼항외과의원',
   description: '지방종·피지낭종·섬유종 제거 상담. 국소마취 하 외래 시술 가능 여부는 크기·위치에 따라 달라질 수 있습니다.',
   keywords: '피부종양, 피부종양제거, 지방종, 표피낭종, 연성섬유종, 김포 지방종제거',
-  alternates: { canonical: 'https://www.jangtntnhang.com/skin' },
+  alternates: { canonical: 'https://jtntn.co.kr/skin' },
 }
 
 const menus = [

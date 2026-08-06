@@ -9,12 +9,12 @@ export const metadata: Metadata = {
   description:
     '항문소양증의 원인·증상과 위생·약물 치료 안내. 야간 가려움이 심할 때 김포 구래역 장튼튼항외과의원에서 원인 질환을 함께 확인합니다.',
   keywords: '항문가려움, 항문소양증, 김포 항문가려움, 김포 항문소양증',
-  alternates: { canonical: 'https://www.jangtntnhang.com/anorectal/pruritus' },
+  alternates: { canonical: 'https://jtntn.co.kr/anorectal/pruritus' },
   openGraph: {
     title: '항문소양증 | 장튼튼항외과의원',
     description:
       '항문소양증의 원인·증상과 위생·약물 치료 안내. 야간 가려움이 심할 때 김포 구래역 장튼튼항외과의원에서 원인 질환을 함께 확인합니다.',
-    url: 'https://www.jangtntnhang.com/anorectal/pruritus',
+    url: 'https://jtntn.co.kr/anorectal/pruritus',
     images: [{ url: '/images/og-image.webp', width: 1200, height: 630 }],
   },
 }

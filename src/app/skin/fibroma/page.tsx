@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: '연성섬유종 | 장튼튼항외과의원',
   description: '김포 구래역 연성섬유종(쥐젖) 진료. 마찰 부위에 생기는 돌기 제거 방법을 상태에 맞게 안내합니다.',
   keywords: '쥐젖제거, 연성섬유종제거, 김포 쥐젖제거',
-  alternates: { canonical: 'https://www.jangtntnhang.com/skin/fibroma' },
+  alternates: { canonical: 'https://jtntn.co.kr/skin/fibroma' },
   openGraph: {
     title: '연성섬유종 | 장튼튼항외과의원',
     description: '김포 구래역 연성섬유종(쥐젖) 진료. 마찰 부위에 생기는 돌기 제거 방법을 상태에 맞게 안내합니다.',

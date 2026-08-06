@@ -5,7 +5,6 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: '건강매거진 | 장튼튼항외과의원',
   description: '장튼튼항외과의원 건강 정보 매거진. 대장항문, 내시경, 피부 건강 전문 정보.',
-  alternates: { canonical: 'https://www.jangtntnhang.com/magazine' },
 }
 
 const articles = [

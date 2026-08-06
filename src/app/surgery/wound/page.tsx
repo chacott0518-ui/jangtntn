@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: '상처 치료 | 장튼튼항외과의원',
   description: '김포 구래역 상처 처치·봉합 안내. 깊은 열상·오염 상처·물린 상처는 빠른 진료가 필요할 수 있습니다.',
   keywords: '상처봉합, 외상처치, 외래수술, 김포 상처봉합',
-  alternates: { canonical: 'https://www.jangtntnhang.com/surgery/wound' },
+  alternates: { canonical: 'https://jtntn.co.kr/surgery/wound' },
   openGraph: {
     title: '상처 치료 | 장튼튼항외과의원',
     description: '김포 구래역 상처 처치·봉합 안내. 깊은 열상·오염 상처·물린 상처는 빠른 진료가 필요할 수 있습니다.',

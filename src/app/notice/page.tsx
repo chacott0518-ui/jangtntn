@@ -2,8 +2,13 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notices } from '@/lib/notices'
+import { buildPageMetadata } from '@/lib/seo/metadata'
 
-export const metadata: Metadata = { title: '공지사항 | 장튼튼항외과의원', description: '공지사항.' }
+export const metadata: Metadata = buildPageMetadata({
+  path: '/notice',
+  title: '공지사항 | 장튼튼항외과의원',
+  description: '장튼튼항외과의원 공지사항. 진료·휴진 등 안내를 확인하세요.',
+})
 
 export default function NoticePage() {
   return (

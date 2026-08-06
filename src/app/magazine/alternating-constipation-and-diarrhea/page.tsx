@@ -3,6 +3,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import StaticFaq, { faqJsonLd } from '@/components/content/StaticFaq'
 import { OfficialSource, PageToc } from '@/components/content/MedicalImageGallery'
+import { absoluteUrl } from '@/lib/site-config'
+import { buildPageMetadata } from '@/lib/seo/metadata'
+import { breadcrumbLd } from '@/lib/seo/jsonld'
+import { articleId } from '@/lib/site-config'
 
 const TITLE = '변비와 설사가 번갈아 잦아진다면?'
 const DESCRIPTION =
@@ -13,24 +17,13 @@ const DATE_ISO = '2026-08-06'
 const DISCLAIMER =
   '이 글은 일반적인 건강정보를 제공하기 위한 내용이며, 개인의 증상에 대한 진단이나 치료를 대신하지 않습니다. 증상이 지속되거나 경고 신호가 동반된다면 의료진의 진료를 받아 확인하시기 바랍니다.'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
+  path: PATH,
   title: '변비와 설사가 번갈아 잦아진다면? 원인과 확인할 증상 | 장튼튼항외과의원',
   description: DESCRIPTION,
-  alternates: { canonical: `https://www.jangtntnhang.com${PATH}` },
-  openGraph: {
-    title: TITLE,
-    description: DESCRIPTION,
-    url: `https://www.jangtntnhang.com${PATH}`,
-    type: 'article',
-    images: [{ url: '/images/pages/consultation.webp', width: 1200, height: 630 }],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: TITLE,
-    description: DESCRIPTION,
-    images: ['/images/pages/consultation.webp'],
-  },
-}
+  type: 'article',
+  ogImage: '/images/pages/consultation.webp',
+})
 
 const faqs = [
   {
@@ -58,6 +51,7 @@ const faqs = [
 const articleJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Article',
+  '@id': articleId(PATH),
   headline: TITLE,
   description: DESCRIPTION,
   datePublished: DATE_ISO,
@@ -67,24 +61,15 @@ const articleJsonLd = {
     '@type': 'Organization',
     name: '장튼튼항외과의원',
   },
-  mainEntityOfPage: `https://www.jangtntnhang.com${PATH}`,
-  image: ['https://www.jangtntnhang.com/images/pages/consultation.webp'],
+  mainEntityOfPage: absoluteUrl(PATH),
+  image: [absoluteUrl('/images/pages/consultation.webp')],
 }
 
-const breadcrumbJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: '홈', item: 'https://www.jangtntnhang.com/' },
-    { '@type': 'ListItem', position: 2, name: '건강매거진', item: 'https://www.jangtntnhang.com/magazine' },
-    {
-      '@type': 'ListItem',
-      position: 3,
-      name: TITLE,
-      item: `https://www.jangtntnhang.com${PATH}`,
-    },
-  ],
-}
+const breadcrumbJsonLd = breadcrumbLd([
+  { name: '홈', path: '/' },
+  { name: '건강매거진', path: '/magazine' },
+  { name: TITLE, path: PATH },
+])
 
 const checklist = [
   '증상이 시작된 날짜',

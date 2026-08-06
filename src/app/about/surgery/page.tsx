@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: '수술안내 | 장튼튼항외과의원',
     description: '수술 전후 일반 안내. 준비사항과 주의사항은 진료 후 개인 상태에 맞춰 안내합니다.',
-    url: 'https://www.jangtntnhang.com/about/surgery',
+    url: 'https://jtntn.co.kr/about/surgery',
     siteName: '장튼튼항외과의원',
     images: [{ url: '/images/og-image.webp', width: 1200, height: 630 }],
     locale: 'ko_KR',
     type: 'website',
   },
-  alternates: { canonical: 'https://www.jangtntnhang.com/about/surgery' },
+  alternates: { canonical: 'https://jtntn.co.kr/about/surgery' },
 }
 
 const faqs = [
