@@ -15,11 +15,11 @@ export const metadata: Metadata = {
   // 1. 기본 주소를 현재 Vercel 주소로 변경
   metadataBase: new URL('https://jangtntn.vercel.app'), 
   title: '장튼튼항외과의원 | 김포 항문외과 대장항문 전문',
-  description: '김포 구래역 1번출구 장튼튼항외과의원. 외과전문의 한호선 원장. 치핵·치열·치루·대장내시경·PPH 등 대장항문 진료.',
+  description: '김포 구래역 1번 출구 장튼튼항외과의원. 치핵·치열·치루 등 대장항문질환과 대장·위내시경, 피부종양 및 기타 외과질환을 진료합니다.',
   keywords: '장튼튼항외과, 장튼튼항외과의원, 항문외과, 대장항문외과, 김포 항문외과, 김포 대장항문외과, 구래동 항문외과, 구래역 항문외과, 김포한강신도시 항문외과',
   openGraph: {
     title: '장튼튼항외과의원 | 김포 항문외과 대장항문 전문',
-    description: '김포 구래역 1번출구 장튼튼항외과의원. 외과전문의 한호선 원장. 치핵·치열·치루·대장내시경·PPH 등 대장항문 진료.',
+    description: '김포 구래역 1번 출구 장튼튼항외과의원. 치핵·치열·치루 등 대장항문질환과 대장·위내시경, 피부종양 및 기타 외과질환을 진료합니다.',
     url: 'https://jangtntn.vercel.app',
     siteName: '장튼튼항외과의원',
     // 3. 이미지 경로가 정확한지 다시 한번 확인 (/images/og-image.webp)
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: '장튼튼항외과의원 | 김포 항문외과 대장항문 전문',
-    description: '김포 구래역 1번출구 장튼튼항외과의원. 외과전문의 한호선 원장. 치핵·치열·치루·대장내시경·PPH 등 대장항문 진료.',
+    description: '김포 구래역 1번 출구 장튼튼항외과의원. 치핵·치열·치루 등 대장항문질환과 대장·위내시경, 피부종양 및 기타 외과질환을 진료합니다.',
     images: ['/images/og-image.webp'],
   },
   alternates: {
@@ -46,7 +46,7 @@ const jsonLd = {
   url: 'https://jangtntn.vercel.app',
   logo: 'https://jangtntn.vercel.app/images/logo.png',
   image: 'https://jangtntn.vercel.app/images/og-image.webp',
-  description: '김포 구래역 1번출구 장튼튼항외과의원. 외과전문의 한호선 원장. 치핵 치열 치루 대장내시경 PPH수술 전문',
+  description: '김포 구래역 1번 출구 장튼튼항외과의원. 치핵·치열·치루 등 대장항문질환과 대장·위내시경, 피부종양 및 기타 외과질환을 진료합니다.',
   telephone: '031-987-7282',
   faxNumber: '031-981-7282',
   address: {
@@ -79,7 +79,6 @@ const jsonLd = {
   medicalSpecialty: 'Surgery',
   availableService: [
     { '@type': 'MedicalProcedure', name: '치핵 수술' },
-    { '@type': 'MedicalProcedure', name: 'PPH 수술' },
     { '@type': 'MedicalProcedure', name: '대장내시경' },
     { '@type': 'MedicalProcedure', name: '위내시경' },
     { '@type': 'MedicalProcedure', name: '치열 치료' },

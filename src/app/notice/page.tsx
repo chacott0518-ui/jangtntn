@@ -1,14 +1,9 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
+import { notices } from '@/lib/notices'
 
 export const metadata: Metadata = { title: '공지사항 | 장튼튼항외과의원', description: '공지사항.' }
-
-const notices = [
-  { title: '2025년 설 연휴 휴진 안내', date: '2025.01.20', important: true },
-  { title: '주차 안내 변경 공지', date: '2024.12.10', important: false },
-  { title: '진료 시간 변경 안내', date: '2024.11.01', important: true },
-  { title: '추석 연휴 휴진 안내', date: '2024.09.10', important: false },
-]
 
 export default function NoticePage() {
   return (
@@ -24,15 +19,37 @@ export default function NoticePage() {
       <div className="max-w-3xl mx-auto px-4 section-space space-y-6">
         <section id="notice-list" className="bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.07)] divide-y divide-[#f3f4f6] px-4">
           <h2 className="section-h2 text-[#0d1117] px-2 pt-6 pb-3">공지 목록</h2>
-          {notices.map((n, i) => (
-            <div key={i} className="py-5 flex items-center justify-between px-2">
-              <div className="flex items-center gap-3">
-                {n.important && <span className="meta-text font-bold text-white bg-primary rounded-full px-2 py-0.5">중요</span>}
-                <span className="body-text font-semibold">{n.title}</span>
+          {notices.map((n, i) => {
+            const titleNode = n.slug ? (
+              <Link
+                href={`/notice/${n.slug}`}
+                className="body-text font-semibold text-[#0d1117] break-keep hover:text-primary transition-colors"
+              >
+                {n.title}
+              </Link>
+            ) : (
+              <span className="body-text font-semibold break-keep">{n.title}</span>
+            )
+
+            return (
+              <div
+                key={n.slug ?? `${n.title}-${i}`}
+                className="py-5 px-2 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between"
+              >
+                <div className="flex items-start gap-2 min-w-0 flex-1">
+                  {n.important && (
+                    <span className="meta-text font-bold text-white bg-primary rounded-full px-2 py-0.5 shrink-0 mt-0.5">
+                      중요
+                    </span>
+                  )}
+                  <div className="min-w-0">{titleNode}</div>
+                </div>
+                <time className="meta-text text-[#9ca3af] shrink-0 sm:ml-4 pl-0 sm:pl-0" dateTime={n.date.replace(/\./g, '-')}>
+                  {n.date}
+                </time>
               </div>
-              <span className="meta-text text-[#9ca3af] ml-4">{n.date}</span>
-            </div>
-          ))}
+            )
+          })}
         </section>
       </div>
     </div>

@@ -10,6 +10,15 @@ export const metadata: Metadata = {
 
 const articles = [
   {
+    title: '변비와 설사가 번갈아 잦아진다면?',
+    category: '건강매거진',
+    date: '2026.08.06',
+    readTime: '약 8분',
+    summary: '변비와 설사가 반복되거나 배변 습관이 달라졌을 때 살펴봐야 할 원인과 진료가 필요한 신호를 알아봅니다.',
+    img: '/images/pages/consultation.webp',
+    href: '/magazine/alternating-constipation-and-diarrhea',
+  },
+  {
     title: '치질(치핵), 수술이 꼭 필요할까? 단계별 치료법 완전 정리',
     category: '대장항문',
     date: '2025.01',
@@ -47,17 +56,18 @@ const articles = [
   },
   {
     title: 'PPH 수술 vs 기존 치핵 수술, 무엇이 다른가요?',
-    category: 'PPH',
+    category: '건강매거진',
     date: '2024.09',
     readTime: '4분',
-    summary: '치핵 수술 방법 중 PPH(자동문합기 이용 치핵 절제술)의 특징과 장점, 기존 절제술과의 차이점을 비교하여 설명합니다.',
+    summary: 'PPH와 기존 치핵 수술의 차이점을 비교하는 건강 정보입니다. 장튼튼항외과의원에서는 PPH 수술을 시행하지 않습니다.',
     img: '/images/pages/surgery.webp',
-    href: '/pph',
+    href: '/magazine/pph-vs-hemorrhoid-surgery',
   },
 ]
 
 function toDateTimeAttr(date: string) {
-  // existing data is YYYY.MM — no day invented
+  const full = date.match(/^(\d{4})\.(\d{2})\.(\d{2})$/)
+  if (full) return `${full[1]}-${full[2]}-${full[3]}`
   const m = date.match(/^(\d{4})\.(\d{2})$/)
   if (!m) return undefined
   return `${m[1]}-${m[2]}`

@@ -42,6 +42,13 @@ function fromNav(): SearchItem[] {
 /** 매거진 페이지(src/app/magazine/page.tsx)와 동일한 실제 게시 데이터 */
 const MAGAZINE_ITEMS: SearchItem[] = [
   {
+    title: '변비와 설사가 번갈아 잦아진다면?',
+    summary: '변비와 설사가 반복되거나 배변 습관이 달라졌을 때 살펴봐야 할 원인과 진료가 필요한 신호를 알아봅니다.',
+    keywords: ['변비', '설사', '배변', '과민성장증후군', '건강매거진'],
+    category: '건강매거진',
+    href: '/magazine/alternating-constipation-and-diarrhea',
+  },
+  {
     title: '치질(치핵), 수술이 꼭 필요할까? 단계별 치료법 완전 정리',
     summary: '치핵은 정도에 따라 약물 치료부터 수술까지 다양한 방법이 있습니다.',
     keywords: ['치질', '치핵', '혈변', '항문', '수술'],
@@ -71,10 +78,10 @@ const MAGAZINE_ITEMS: SearchItem[] = [
   },
   {
     title: 'PPH 수술 vs 기존 치핵 수술, 무엇이 다른가요?',
-    summary: 'PPH와 기존 치핵 수술의 차이점을 비교합니다.',
-    keywords: ['PPH', '치핵', '수술'],
+    summary: 'PPH와 기존 치핵 수술의 차이점을 비교하는 건강 정보입니다. 장튼튼항외과의원에서는 PPH 수술을 시행하지 않습니다.',
+    keywords: ['PPH', '치핵', '수술', '건강매거진'],
     category: '건강매거진',
-    href: '/pph',
+    href: '/magazine/pph-vs-hemorrhoid-surgery',
   },
 ]
 

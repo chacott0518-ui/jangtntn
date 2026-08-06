@@ -34,7 +34,7 @@ const faqs = [
   },
   {
     q: 'PPH 수술은 어떤 경우에 고려하나요?',
-    a: '내치핵이 크거나 다발성인 3~4도에서 주로 검토하는 방법입니다. 자동문합기로 점막을 절제·문합하며, 적응증과 회복 양상은 개인마다 다릅니다. 적합한지 여부는 항문 진찰과 상담을 통해 안내드리며 다른 수술법과 비교해 선택할 수 있습니다. 같은 증상이라도 개인별 상태와 경과가 달라 진찰 후 맞춤 안내가 필요합니다.',
+    a: '내치핵이 크거나 다발성인 3~4도에서 일반적으로 검토되는 방법입니다. 자동문합기로 점막을 절제·문합하며, 적응증과 회복 양상은 개인마다 다릅니다. 장튼튼항외과의원에서는 PPH 수술을 시행하지 않습니다. 같은 증상이라도 개인별 상태와 경과가 달라 진찰 후 본원에 맞는 치료 방법을 안내드립니다.',
   },
 ]
 
@@ -142,7 +142,6 @@ export default function HemorrhoidPage() {
             {[
               {title:'보존적 치료', badge:'1~2도', color:'#22c55e', desc:'좌욕(1일 3회, 미온수 5~10분), 식이섬유, 수분 2L, 연고·좌약으로 증상 완화.'},
               {title:'고무밴드 결찰', badge:'2도', color:'#eab308', desc:'치핵 기저부에 고무밴드를 묶어 혈류를 차단하는 외래 시술.'},
-              {title:'PPH 수술', badge:'3~4도', color:'#0d7fc4', desc:'자동문합기로 치핵 위쪽 점막 절제·봉합. 상태에 따라 당일 퇴원을 검토할 수 있습니다.'},
               {title:'치핵 절제술', badge:'3~4도', color:'#0d9488', desc:'치핵 조직 직접 절제. 완전 제거로 재발률이 낮습니다.'},
             ].map((t) => (
               <div key={t.title} className="flex gap-3 items-start">
@@ -172,7 +171,6 @@ export default function HemorrhoidPage() {
 
         <p className="text-[14px] text-[#374151] leading-[1.9] break-keep">
           관련 진료:{' '}
-          <Link href="/pph" className="text-primary font-semibold underline-offset-2 hover:underline">PPH</Link>,{' '}
           <Link href="/anorectal/fissure" className="text-primary font-semibold underline-offset-2 hover:underline">치열</Link>,{' '}
           <Link href="/endoscopy/colon" className="text-primary font-semibold underline-offset-2 hover:underline">대장내시경</Link>,{' '}
           <Link href="/about/info" className="text-primary font-semibold underline-offset-2 hover:underline">진료안내</Link>

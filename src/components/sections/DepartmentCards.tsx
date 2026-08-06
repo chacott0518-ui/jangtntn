@@ -4,10 +4,10 @@ import Image from 'next/image'
 
 const CARDS = [
   { href: '/anorectal', icon: '❤️', title: '대장항문센터', desc: '출혈·통증·가려움·돌출감이 있을 때. 치핵·치열·치루·소양증·콘딜로마·변비 등 항문·배변 증상을 외과전문의가 진단·치료합니다.', img: '/images/tour/03-consultation-room.webp' },
-  { href: '/pph', icon: '✂️', title: 'PPH 수술', desc: '탈출·다발성 치핵에 고려하는 자동문합기 수술. 상태에 따라 통증·회복 기간이 달라질 수 있어 진료 후 적응 여부를 상담합니다.', img: '/images/tour/04-operating-room.webp' },
   { href: '/endoscopy', icon: '🔬', title: '내시경센터', desc: '속쓰림·혈변·검진이 필요할 때. 위·대장내시경과 용종 제거를 시행하며, 수면 여부는 상담 후 선택할 수 있습니다.', img: '/images/tour/06-endoscopy-room.webp' },
   { href: '/skin', icon: '✂️', title: '피부종양센터', desc: '만져지는 혹·낭종·쥐젖이 신경 쓰일 때. 지방종·표피낭종·연성섬유종을 국소마취 하 외래 절제로 상담·진행합니다.', img: '/images/medical/skin/common/skin-clinic-image-01.webp' },
   { href: '/surgery', icon: '🏥', title: '기타외과질환', desc: '화상·상처·내성발톱·영양수액이 필요할 때. 일상에서 생기는 외과 문제를 정도에 맞춰 처치·경과를 관찰합니다.', img: '/images/tour/05-recovery-room.webp' },
+  { href: '/magazine', icon: '📰', title: '건강매거진', desc: '대장·항문질환과 내시경 검사, 일상 건강관리에 필요한 의료 정보를 알기 쉽게 전해드립니다.', img: '/images/pages/wellness.webp' },
   { href: '/consultation', icon: '💬', title: '온라인 상담', desc: '증상·예약이 궁금할 때. 이름·연락처·증상을 남겨주시면 확인 후 안내드리며, 카카오 채널로도 문의할 수 있습니다.', img: '/images/tour/01-reception.webp' },
 ]
 
