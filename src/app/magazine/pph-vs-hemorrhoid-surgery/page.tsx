@@ -3,20 +3,24 @@ import Image from 'next/image'
 import Link from 'next/link'
 import StaticFaq, { faqJsonLd } from '@/components/content/StaticFaq'
 import { PageToc } from '@/components/content/MedicalImageGallery'
+import { MagazineHeroScrim, FaqShell, RelatedCarousel } from '@/app/anorectal/_ui'
 import { absoluteUrl, articleId, SITE_NAME } from '@/lib/site-config'
 import { buildPageMetadata } from '@/lib/seo/metadata'
+import { breadcrumbLd } from '@/lib/seo/jsonld'
 
 const PATH = '/magazine/pph-vs-hemorrhoid-surgery'
 const TITLE = 'PPH 수술 vs 기존 치핵 수술, 무엇이 다른가요?'
 const DESCRIPTION =
   'PPH와 기존 치핵 수술의 차이점을 비교하는 건강 정보입니다. 장튼튼항외과의원에서는 PPH 수술을 시행하지 않습니다.'
+const IMAGE = '/images/tour/04-operating-room.webp'
 
 export const metadata: Metadata = buildPageMetadata({
   path: PATH,
-  title: `${TITLE} | 건강매거진`,
+  title: `${TITLE} | 장튼튼항외과의원`,
   description: DESCRIPTION,
   type: 'article',
-  ogImage: '/images/pages/surgery.webp',
+  ogImage: IMAGE,
+  keywords: ['PPH', '치핵 수술', '치질 수술', '자동문합기', '건강매거진', '장튼튼항외과의원'],
 })
 
 const DISCLAIMER = '장튼튼항외과의원에서는 PPH 수술을 시행하지 않습니다.'
@@ -44,6 +48,12 @@ const faqs = [
   },
 ]
 
+const related = [
+  { href: '/magazine/hemorrhoid', title: '치질(치핵), 수술이 꼭 필요할까?', desc: '1~4도 단계별 치료법을 정리한 건강 정보' },
+  { href: '/anorectal/hemorrhoid', title: '치질(치핵) 진료안내', desc: '단계별 증상과 보존·시술·수술 안내' },
+  { href: '/anorectal', title: '대장항문센터', desc: '치핵·치열·치루 등 항문질환 진료' },
+]
+
 const articleJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Article',
@@ -59,7 +69,16 @@ const articleJsonLd = {
     logo: { '@type': 'ImageObject', url: absoluteUrl('/images/logo.png') },
   },
   mainEntityOfPage: absoluteUrl(PATH),
+  image: [absoluteUrl(IMAGE)],
+  articleSection: '건강매거진',
+  keywords: 'PPH, 치핵 수술, 치질 수술, 자동문합기',
 }
+
+const breadcrumbJsonLd = breadcrumbLd([
+  { name: '홈', path: '/' },
+  { name: '건강매거진', path: '/magazine' },
+  { name: TITLE, path: PATH },
+])
 
 export default function PphVsHemorrhoidArticlePage() {
   const targets = [
@@ -77,32 +96,40 @@ export default function PphVsHemorrhoidArticlePage() {
   ]
 
   return (
-    <div className="bg-[#f9fafb] min-h-screen pb-24 md:pb-0">
+    <div className="bg-[#f8fafb] min-h-screen">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
-      <div className="relative overflow-hidden h-[260px] md:h-[360px] lg:h-[480px]">
-        <Image src="/images/pages/surgery.webp" alt="PPH 수술과 기존 치핵 수술 비교" fill className="object-cover" sizes="100vw" priority />
-        <div className="absolute inset-0 subpage-hero-scrim-x" />
-        <div className="absolute inset-0 subpage-hero-scrim-y" />
-        <div className="relative z-10 max-w-4xl mx-auto px-4 lg:px-8 h-full flex flex-col justify-end pb-10">
-          <nav className="subpage-breadcrumb mb-3">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      <div className="relative overflow-hidden h-[240px] md:h-[320px] lg:h-[400px]">
+        <Image src={IMAGE} alt="PPH 수술과 기존 치핵 수술 비교" fill className="object-cover object-[55%_40%] lg:object-[50%_38%]" sizes="100vw" priority />
+        <MagazineHeroScrim />
+        <div className="relative z-10 max-w-4xl mx-auto px-4 lg:px-8 h-full flex flex-col justify-end pb-6 md:pb-8">
+          <nav className="subpage-breadcrumb mb-2">
             홈 / <Link href="/magazine">건강매거진</Link> / <strong>PPH 수술 vs 기존 치핵 수술</strong>
           </nav>
           <span className="inline-flex w-fit text-[11px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded-full mb-2">
             건강매거진
           </span>
-          <h1 className="text-[26px] md:text-[36px] lg:text-[44px] font-black text-[#0d1117] mb-3 break-keep">
+          <h1 className="text-[26px] md:text-[34px] lg:text-[40px] font-extrabold text-[#0d1117] mb-1.5 break-keep leading-[1.25]">
             PPH 수술 vs 기존 치핵 수술, 무엇이 다른가요?
           </h1>
-          <p className="text-[14px] md:text-[16px] text-[#555] font-semibold break-keep">
-            PPH와 기존 치핵 수술의 차이를 비교하는 건강 정보
+          <p className="text-[13px] md:text-[15px] text-[#555] font-medium break-keep">
+            PPH와 기존 치핵 수술의 차이를 비교하는 건강 정보 · 2024.09
           </p>
         </div>
       </div>
 
-      <article className="max-w-4xl mx-auto px-4 lg:px-8 section-space space-y-6">
+      <article className="max-w-4xl mx-auto px-4 lg:px-8 pt-6 md:pt-8 pb-8 md:pb-12 space-y-6">
         <div className="rounded-2xl bg-[#fff7ed] border border-[#fed7aa] p-4 md:p-5">
           <p className="text-[14px] md:text-[15px] font-bold text-[#9a3412] break-keep">{DISCLAIMER}</p>
         </div>
+
+        <section className="rounded-[16px] border border-[#e8eef3] bg-white p-4 md:p-5 shadow-[0_2px_16px_rgba(0,0,0,0.04)]">
+          <p className="text-[12px] font-bold tracking-wider text-primary mb-2">핵심요약</p>
+          <p className="text-[14px] text-[#374151] leading-[1.85] break-keep">
+            PPH는 자동문합기로 탈출 치핵 위쪽 점막을 원형 절제·봉합하는 방법입니다. 기존 절제술과 적응증·통증·회복이 다를 수
+            있으며, 모든 치핵에 적용되지 않습니다. {DISCLAIMER}
+          </p>
+        </section>
 
         <PageToc
           items={[
@@ -115,8 +142,8 @@ export default function PphVsHemorrhoidArticlePage() {
         />
 
         <section className="bg-white rounded-2xl p-6 lg:p-8 shadow-[0_4px_24px_rgba(0,0,0,0.07)]" id="PPH-수술이란">
-          <h2 className="text-[19px] font-black text-[#0d1117] mb-5 pb-3 border-b border-[#f0f4f8] flex items-center gap-2">
-            <span>💡</span> PPH 수술이란?
+          <h2 className="text-[19px] font-bold text-[#0d1117] mb-5 pb-3 border-b border-[#f0f4f8] flex items-center gap-2">
+            PPH 수술이란?
           </h2>
           <div className="space-y-4 text-[14px] text-[#374151] leading-[2.0] break-keep">
             <p>
@@ -139,11 +166,11 @@ export default function PphVsHemorrhoidArticlePage() {
         </section>
 
         <section className="bg-white rounded-2xl p-6 lg:p-8 shadow-[0_4px_24px_rgba(0,0,0,0.07)]" id="PPH-vs-기존-수술-비교">
-          <h2 className="text-[19px] font-black text-[#0d1117] mb-5 pb-3 border-b border-[#f0f4f8] flex items-center gap-2">
-            <span>⭐</span> PPH vs 기존 수술 비교
+          <h2 className="text-[19px] font-bold text-[#0d1117] mb-5 pb-3 border-b border-[#f0f4f8] flex items-center gap-2">
+            PPH vs 기존 수술 비교
           </h2>
           <div className="overflow-x-auto">
-            <table className="w-full text-[13px]">
+            <table className="w-full text-[13px] min-w-[480px]">
               <thead>
                 <tr className="bg-[#f0f7ff]">
                   <th className="p-3 text-left font-bold">구분</th>
@@ -169,13 +196,13 @@ export default function PphVsHemorrhoidArticlePage() {
         </section>
 
         <section className="bg-white rounded-2xl p-6 lg:p-8 shadow-[0_4px_24px_rgba(0,0,0,0.07)]" id="PPH-수술-적응증">
-          <h2 className="text-[19px] font-black text-[#0d1117] mb-5 pb-3 border-b border-[#f0f4f8] flex items-center gap-2">
-            <span>✅</span> 일반적으로 검토되는 경우
+          <h2 className="text-[19px] font-bold text-[#0d1117] mb-5 pb-3 border-b border-[#f0f4f8] flex items-center gap-2">
+            일반적으로 검토되는 경우
           </h2>
           <div className="space-y-2">
             {targets.map((item, i) => (
               <div key={i} className="flex gap-3 items-center p-3 rounded-xl bg-[#f0f7ff]">
-                <span className="text-primary font-black shrink-0">✓</span>
+                <span className="text-primary font-semibold shrink-0">✓</span>
                 <p className="text-[13px] text-[#374151]">{item}</p>
               </div>
             ))}
@@ -190,8 +217,8 @@ export default function PphVsHemorrhoidArticlePage() {
         </section>
 
         <section className="bg-white rounded-2xl p-6 lg:p-8 shadow-[0_4px_24px_rgba(0,0,0,0.07)]" id="회복-안내">
-          <h2 className="text-[19px] lg:text-[21px] font-black text-[#0d1117] mb-5 pb-3 border-b border-[#f0f4f8] flex items-center gap-2">
-            <span>🩺</span> 회복에 대한 일반 안내
+          <h2 className="text-[19px] lg:text-[21px] font-bold text-[#0d1117] mb-5 pb-3 border-b border-[#f0f4f8] flex items-center gap-2">
+            회복에 대한 일반 안내
           </h2>
           <div className="space-y-4 text-[14px] text-[#374151] leading-[2.0] break-keep">
             <p>{DISCLAIMER} 아래 내용은 일반적인 수술 후 관리에 대한 참고 정보입니다.</p>
@@ -205,8 +232,24 @@ export default function PphVsHemorrhoidArticlePage() {
           </div>
         </section>
 
-        <StaticFaq items={faqs} />
+        <FaqShell>
+          <StaticFaq items={faqs} hideHeading />
+        </FaqShell>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd(faqs)) }} />
+
+        <section className="rounded-[16px] bg-gradient-to-r from-[#0d7fc4] to-[#0d9488] p-5 md:p-6 text-center text-white">
+          <p className="text-[16px] font-bold mb-2 break-keep">치핵 증상이 걱정되시나요?</p>
+          <p className="text-[13px] text-white/90 break-keep">
+            단계와 상태에 맞는 치료 방향을 상담으로 안내합니다. PPH는 본원에서 시행하지 않습니다.
+          </p>
+        </section>
+
+        <section aria-labelledby="related-heading" className="space-y-3">
+          <h2 id="related-heading" className="text-[18px] md:text-[20px] font-bold text-[#0d1117] break-keep">
+            관련 콘텐츠
+          </h2>
+          <RelatedCarousel items={related} />
+        </section>
 
         <div className="pt-2">
           <Link href="/magazine" className="text-[14px] font-bold text-primary hover:underline">

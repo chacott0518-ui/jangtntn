@@ -3,7 +3,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { NAV_ITEMS } from '@/lib/constants'
 
@@ -45,7 +44,6 @@ function DesktopNav() {
 }
 
 function MobileMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
-  const router = useRouter()
   const [expanded, setExpanded] = useState<number | null>(null)
 
   // iOS Safari overflow 잠금 + 하단 퀵바 가림
@@ -74,12 +72,6 @@ function MobileMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
       document.body.classList.remove('mobile-menu-open')
     }
   }, [isOpen])
-
-  const handleLink = (href: string) => {
-    onClose()
-    setExpanded(null)
-    setTimeout(() => router.push(href), 50)
-  }
 
   return (
     <AnimatePresence>
@@ -130,39 +122,69 @@ function MobileMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
 
             {/* 메뉴 리스트 */}
             <div style={{ flex: 1, overflowY: 'auto', WebkitOverflowScrolling: 'touch' }}>
-              {NAV_ITEMS.map((item, i) => (
+              {NAV_ITEMS.map((item, i) => {
+                const submenuId = `mobile-submenu-${item.href.replace(/\//g, '-')}`
+                return (
                 <div key={item.href} style={{ borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
                   {item.subItems.length > 0 ? (
                     <>
-                      <button
-                        onClick={() => setExpanded(expanded === i ? null : i)}
-                        style={{
-                          width: '100%',
-                          minHeight: '48px',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'space-between',
-                          padding: '11px 20px',
-                          color: 'white',
-                          fontWeight: 700,
-                          fontSize: '13px',
-                          background: 'none',
-                          border: 'none',
-                          cursor: 'pointer',
-                        }}
-                      >
-                        {item.label}
-                        <motion.span
-                          animate={{ rotate: expanded === i ? 180 : 0 }}
-                          transition={{ duration: 0.2 }}
-                          style={{ color: 'rgba(255,255,255,0.6)', fontSize: '10px' }}
+                      <div style={{ display: 'flex', alignItems: 'stretch', width: '100%' }}>
+                        <Link
+                          href={item.href}
+                          onClick={() => {
+                            onClose()
+                            setExpanded(null)
+                          }}
+                          style={{
+                            flex: 1,
+                            minHeight: '48px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            padding: '11px 0 11px 20px',
+                            color: 'white',
+                            fontWeight: 700,
+                            fontSize: '13px',
+                            textDecoration: 'none',
+                            textAlign: 'left',
+                          }}
                         >
-                          ▼
-                        </motion.span>
-                      </button>
+                          {item.label}
+                        </Link>
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.preventDefault()
+                            e.stopPropagation()
+                            setExpanded(expanded === i ? null : i)
+                          }}
+                          aria-expanded={expanded === i}
+                          aria-controls={submenuId}
+                          aria-label={`${item.label} 하위 메뉴 ${expanded === i ? '닫기' : '열기'}`}
+                          style={{
+                            minWidth: '48px',
+                            minHeight: '48px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            padding: '11px 20px 11px 12px',
+                            background: 'none',
+                            border: 'none',
+                            cursor: 'pointer',
+                          }}
+                        >
+                          <motion.span
+                            animate={{ rotate: expanded === i ? 180 : 0 }}
+                            transition={{ duration: 0.2 }}
+                            style={{ color: 'rgba(255,255,255,0.6)', fontSize: '10px' }}
+                          >
+                            ▼
+                          </motion.span>
+                        </button>
+                      </div>
                       <AnimatePresence>
                         {expanded === i && (
                           <motion.div
+                            id={submenuId}
                             initial={{ height: 0, opacity: 0 }}
                             animate={{ height: 'auto', opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}
@@ -171,9 +193,13 @@ function MobileMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
                           >
                             <div style={{ padding: '6px 16px 6px 20px', display: 'flex', flexDirection: 'column', gap: '2px' }}>
                               {item.subItems.map((sub) => (
-                                <button
+                                <Link
                                   key={sub.href}
-                                  onClick={() => handleLink(sub.href)}
+                                  href={sub.href}
+                                  onClick={() => {
+                                    onClose()
+                                    setExpanded(null)
+                                  }}
                                   style={{
                                     display: 'flex',
                                     alignItems: 'center',
@@ -184,16 +210,14 @@ function MobileMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
                                     color: 'rgba(255,255,255,0.9)',
                                     fontSize: '12px',
                                     fontWeight: 600,
-                                    background: 'none',
-                                    border: 'none',
-                                    cursor: 'pointer',
+                                    textDecoration: 'none',
                                     textAlign: 'left',
                                     width: '100%',
                                   }}
                                 >
                                   <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: 'rgba(255,255,255,0.5)', flexShrink: 0 }} />
                                   {sub.label}
-                                </button>
+                                </Link>
                               ))}
                             </div>
                           </motion.div>
@@ -201,8 +225,12 @@ function MobileMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
                       </AnimatePresence>
                     </>
                   ) : (
-                    <button
-                      onClick={() => handleLink(item.href)}
+                    <Link
+                      href={item.href}
+                      onClick={() => {
+                        onClose()
+                        setExpanded(null)
+                      }}
                       style={{
                         width: '100%',
                         minHeight: '48px',
@@ -212,17 +240,15 @@ function MobileMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
                         color: 'white',
                         fontWeight: 700,
                         fontSize: '13px',
-                        background: 'none',
-                        border: 'none',
-                        cursor: 'pointer',
+                        textDecoration: 'none',
                         textAlign: 'left',
                       }}
                     >
                       {item.label}
-                    </button>
+                    </Link>
                   )}
                 </div>
-              ))}
+              )})}
             </div>
           </motion.div>
         </>

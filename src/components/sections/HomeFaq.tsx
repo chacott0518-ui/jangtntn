@@ -29,20 +29,24 @@ const faqs = [
 
 export default function HomeFaq() {
   return (
-    <section className="bg-white section-space" aria-labelledby="home-faq-heading">
+    <section className="bg-[#f8fafb] section-space" aria-labelledby="home-faq-heading">
       <div className="max-w-7xl mx-auto px-4 lg:px-8">
-        <div className="section-header">
-          <span className="inline-flex items-center gap-2 section-eyebrow tracking-[3px] uppercase text-primary">
-            <span className="w-5 h-[2px] bg-primary inline-block rounded-full" />
-            FAQ
-          </span>
-          <h2 id="home-faq-heading" className="section-title text-[#0d1117]">
-            장튼튼항외과의원 자주 묻는 질문
+        <div className="rounded-2xl border border-[#e8eef3] bg-white px-4 pt-4 pb-3 md:px-5 md:pt-5 md:pb-4 shadow-[0_2px_16px_rgba(0,0,0,0.05)]">
+          <h2
+            id="home-faq-heading"
+            className="flex items-center gap-2 text-[17px] md:text-[18px] font-bold text-[#0d1117] pb-3 mb-3 border-b border-[#f0f4f8] break-keep"
+          >
+            <span
+              aria-hidden
+              className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[14px] font-bold"
+              style={{ background: '#fde8ef', color: '#d4537e' }}
+            >
+              ?
+            </span>
+            자주 묻는 질문
           </h2>
-          <p className="section-lead text-[#6b7280]">진료 전 궁금한 점을 먼저 확인해 보세요</p>
+          <StaticFaq items={faqs} id="home-faq-list" hideHeading />
         </div>
-
-        <StaticFaq items={faqs} title="자주 묻는 질문" id="home-faq-list" />
 
         <script
           type="application/ld+json"

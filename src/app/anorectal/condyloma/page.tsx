@@ -1,13 +1,34 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import {
+  BugAntIcon,
+  CheckCircleIcon,
+  ExclamationTriangleIcon,
+  EyeDropperIcon,
+  FireIcon,
+  Squares2X2Icon,
+} from '@heroicons/react/24/outline'
 import StaticFaq, { faqJsonLd } from '@/components/content/StaticFaq'
-import { PageToc } from '@/components/content/MedicalImageGallery'
+import {
+  Banner,
+  ClinicHeroScrim,
+  ClinicToc,
+  FaqShell,
+  FlowSteps,
+  IconCard,
+  Prose,
+  RelatedCarousel,
+  SectionTitle,
+  SoftCard,
+  StatChip,
+} from '../_ui'
 
 export const metadata: Metadata = {
   title: '항문콘딜로마 | 장튼튼항외과의원',
   description:
     '항문콘딜로마(HPV)의 증상과 제거·추적 관찰 안내. 항문 주위 사마귀성 병변이 있을 때 김포 구래역 장튼튼항외과의원에서 진찰받을 수 있습니다.',
+  keywords: '항문콘딜로마, 콘딜로마, 김포 항문콘딜로마, 장튼튼항외과의원',
   alternates: { canonical: 'https://jtntn.co.kr/anorectal/condyloma' },
   openGraph: {
     title: '항문콘딜로마 | 장튼튼항외과의원',
@@ -45,78 +66,144 @@ const faqs = [
   },
 ]
 
+const related = [
+  { href: '/anorectal/pruritus', title: '항문소양증', desc: '가려움·불편감이 함께 나타날 수 있음' },
+  { href: '/about/info', title: '진료안내', desc: '방문 전 진료 시간과 절차 확인' },
+  { href: '/consultation', title: '온라인상담', desc: '방문 전 궁금한 점 미리 문의' },
+]
+
 export default function Page() {
-  const symptoms = ["항문 주위 작은 구진 또는 융기","가려움증·불편감·배변 시 통증","항문 분비물 증가","병변이 커지면 출혈 발생","항문 내부 병변은 증상 없이 발견 지연"]
-  const treatments = [{"name":"전기소작술","desc":"고주파 전류로 병변을 태워 제거. 외래에서 시행 가능합니다."},{"name":"레이저 치료","desc":"CO2 레이저로 병변을 정밀 제거. 상처가 작고 회복이 빠릅니다."},{"name":"외과적 절제","desc":"큰 병변 또는 넓은 범위에 적용. 근치적 제거가 가능합니다."},{"name":"약물 도포","desc":"이미퀴모드 크림 도포로 면역 반응을 유도합니다."}]
+  const symptoms = [
+    { icon: Squares2X2Icon, tone: 'lavender' as const, title: '작은 구진·융기', desc: '항문 주위 작은 구진 또는 융기가 나타날 수 있습니다.' },
+    { icon: ExclamationTriangleIcon, tone: 'yellow' as const, title: '가려움·통증', desc: '가려움증·불편감·배변 시 통증이 동반될 수 있습니다.' },
+    { icon: EyeDropperIcon, tone: 'blue' as const, title: '분비물 증가', desc: '항문 분비물이 증가하는 경우가 있습니다.' },
+    { icon: FireIcon, tone: 'coral' as const, title: '출혈 가능성', desc: '병변이 커지면 출혈이 발생할 수 있습니다.' },
+    { icon: BugAntIcon, tone: 'peach' as const, title: '발견 지연', desc: '항문 내부 병변은 증상 없이 발견이 늦어질 수 있습니다.' },
+  ]
   return (
-    <div className="bg-[#f9fafb] min-h-screen pb-24 md:pb-0">
-      <div className="relative overflow-hidden h-[260px] md:h-[360px] lg:h-[480px]">
-        <Image src="/images/tour/03-consultation-room.webp" alt="항문콘딜로마 HPV 병변 진료" fill className="object-cover" sizes="100vw" priority />
-        <div className="absolute inset-0 subpage-hero-scrim-x" />
-        <div className="absolute inset-0 subpage-hero-scrim-y" />
-        <div className="relative z-10 max-w-4xl mx-auto px-4 lg:px-8 h-full flex flex-col justify-end pb-10">
-          <nav className="subpage-breadcrumb mb-3">홈 / 대장항문센터 / <strong>항문콘딜로마</strong></nav>
-          <p className="text-[12px] font-black text-primary tracking-widest mb-2">Anal Condyloma</p>
-          <h1 className="text-[28px] md:text-[38px] lg:text-[46px] font-black text-[#0d1117] mb-3">항문콘딜로마</h1>
-          <p className="text-[14px] md:text-[16px] text-[#555] font-semibold">HPV 바이러스 감염으로 인한 항문 주위 사마귀성 병변</p>
+    <div className="bg-[#f8fafb] min-h-screen">
+      <div className="relative h-[240px] md:h-[320px] lg:h-[400px]">
+        <Image
+          src="/images/colorectal-center-hero.webp"
+          alt="장튼튼항외과의원 항문콘딜로마 진료 안내"
+          fill
+          className="object-cover object-[58%_center] lg:object-[62%_center]"
+          sizes="100vw"
+          priority
+        />
+        <ClinicHeroScrim />
+        <div className="relative z-10 max-w-4xl mx-auto px-4 lg:px-8 h-full flex flex-col justify-end pb-6 md:pb-8">
+          <nav className="subpage-breadcrumb mb-2 flex flex-wrap items-center gap-1.5">
+            <Link href="/" className="hover:underline">홈</Link>
+            <span>/</span>
+            <Link href="/anorectal" className="hover:underline">대장항문센터</Link>
+            <span>/</span>
+            <strong>항문콘딜로마</strong>
+          </nav>
+          <h1 className="text-[27px] md:text-[32px] lg:text-[38px] font-extrabold text-[#0d1117] mb-1 break-keep leading-[1.25]">
+            항문콘딜로마
+          </h1>
+          <p className="text-[13px] md:text-[15px] text-[#374151] font-medium leading-snug">
+            HPV 바이러스 감염과 관련될 수 있는 항문 주위 사마귀성 병변
+          </p>
         </div>
       </div>
-      <div className="max-w-4xl mx-auto px-4 lg:px-8 section-space space-y-6">
 
-        <PageToc
+      <div className="max-w-4xl mx-auto px-4 lg:px-8 pt-6 md:pt-8 pb-7 md:pb-10 space-y-7 md:space-y-8">
+        {/* 핵심요약 */}
+        <section className="space-y-3">
+          <p className="text-[12px] font-bold tracking-wider text-primary">핵심요약</p>
+          <SoftCard>
+            <Prose>
+              <p>
+                항문콘딜로마는 HPV(인유두종 바이러스) 감염과 관련되어 항문 주위에 사마귀 모양의 병변이
+                생기는 질환입니다. 성접촉을 통해 감염될 수 있으며 잠복기는 3주에서 8개월로 다양하게
+                알려져 있습니다.
+              </p>
+              <p>
+                초기에는 작은 구진이지만 치료하지 않으면 닭벼슬 모양으로 커지고 퍼질 수 있습니다. 재발이
+                잦은 편이라 꾸준한 추적 관찰이 필요합니다.
+              </p>
+            </Prose>
+          </SoftCard>
+          <div className="grid grid-cols-2 gap-2.5">
+            <StatChip tone="lavender" icon={BugAntIcon} title="원인" desc="HPV 감염과 관련" />
+            <StatChip tone="coral" icon={Squares2X2Icon} title="대표 증상" desc="사마귀 모양 돌기·병변" />
+            <StatChip tone="yellow" icon={ExclamationTriangleIcon} title="특징" desc="재발이 잦은 편" />
+            <StatChip tone="mint" icon={CheckCircleIcon} title="치료 방향" desc="제거 후 정기 추적 관찰" />
+          </div>
+        </section>
+
+        <ClinicToc
           items={[
-            { id: '항문콘딜로마이란', label: '항문콘딜로마이란?' },
-            { id: '주요-증상', label: '주요 증상' },
-            { id: '치료-방법', label: '치료 방법' },
-            { id: 'faq', label: '자주 묻는 질문' },
+            { id: 's1', label: '항문콘딜로마란 무엇인가요?' },
+            { id: 's2', label: '항문콘딜로마의 주요 증상' },
+            { id: 's3', label: '항문콘딜로마 치료 방법' },
           ]}
         />
 
-        <section className="bg-white rounded-2xl p-6 lg:p-8 shadow-[0_4px_24px_rgba(0,0,0,0.07)]" id="항문콘딜로마이란">
-          <h2 className="text-[19px] font-black text-[#0d1117] mb-5 pb-3 border-b border-[#f0f4f8] flex items-center gap-2"><span>💡</span> 항문콘딜로마이란?</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-            <p className="text-[14px] text-[#374151] leading-[2.0]">HPV(인유두종 바이러스) 감염으로 항문 주위에 사마귀 모양의 병변이 생기는 질환입니다. 성접촉을 통해 감염되며 잠복기는 3주~8개월로 다양합니다. 초기에는 작은 구진이지만 치료하지 않으면 닭벼슬 모양으로 커지고 퍼질 수 있습니다. 재발이 잦으므로 꾸준한 추적 관찰이 필요합니다.</p>
+        <section id="s1" className="scroll-mt-20 space-y-3">
+          <SectionTitle n={1}>항문콘딜로마란 무엇인가요?</SectionTitle>
+          <Prose>
+            <p>
+              HPV(인유두종 바이러스) 감염으로 항문 주위에 사마귀 모양의 병변이 생기는 질환입니다.
+              성접촉을 통해 감염되며 잠복기는 3주~8개월로 다양합니다. 초기에는 작은 구진이지만 치료하지
+              않으면 닭벼슬 모양으로 커지고 퍼질 수 있습니다. 재발이 잦으므로 꾸준한 추적 관찰이
+              필요합니다.
+            </p>
+          </Prose>
+        </section>
 
-          </div>
-        </section>
-        <section className="bg-white rounded-2xl p-6 lg:p-8 shadow-[0_4px_24px_rgba(0,0,0,0.07)]" id="주요-증상">
-          <h2 className="text-[19px] font-black text-[#0d1117] mb-5 pb-3 border-b border-[#f0f4f8] flex items-center gap-2"><span>🔍</span> 주요 증상</h2>
-          <ul className="space-y-2">
-            {symptoms.map((s: string, i: number) => (
-              <li key={i} className="flex gap-3 p-3 rounded-xl bg-[#f8fafb] text-[13px] text-[#374151] leading-[1.85]">
-                <span className="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-black text-white shrink-0 mt-0.5" style={{background:'linear-gradient(135deg,#0d7fc4,#0d9488)'}}>{i+1}</span>
-                {s}
-              </li>
-            ))}
-          </ul>
-        </section>
-        <section className="bg-white rounded-2xl p-6 lg:p-8 shadow-[0_4px_24px_rgba(0,0,0,0.07)]" id="치료-방법">
-          <h2 className="text-[19px] font-black text-[#0d1117] mb-5 pb-3 border-b border-[#f0f4f8] flex items-center gap-2"><span>⚕️</span> 치료 방법</h2>
-          <div className="space-y-3">
-            {treatments.map((t: {name:string;desc:string}, i: number) => (
-              <div key={i} className="p-5 rounded-xl bg-[#f8fafb]">
-                <h3 className="text-[14px] font-bold text-[#0d1117] mb-1.5">{t.name}</h3>
-                <p className="text-[13px] text-[#6b7280] leading-[1.85]">{t.desc}</p>
-              </div>
+        <section id="s2" className="scroll-mt-20 space-y-3">
+          <SectionTitle n={2}>항문콘딜로마의 주요 증상</SectionTitle>
+          <div className="grid grid-cols-1 min-[380px]:grid-cols-2 gap-2.5">
+            {symptoms.map((s) => (
+              <IconCard key={s.title} tone={s.tone} icon={s.icon} title={s.title} desc={s.desc} />
             ))}
           </div>
+          <Banner tone="yellow" icon={ExclamationTriangleIcon}>
+            항문 내부 병변은 겉에서 잘 보이지 않아 발견이 늦어질 수 있습니다. 만져지는 돌기나 분비물
+            변화가 있다면 진찰로 확인하는 것이 좋습니다.
+          </Banner>
         </section>
-                <p className="text-[14px] text-[#374151] leading-[1.9] break-keep">
-          관련 진료:{' '}
-          <Link href="/anorectal/pruritus" className="text-primary font-semibold underline-offset-2 hover:underline">항문소양증</Link>,{' '}
-          <Link href="/about/info" className="text-primary font-semibold underline-offset-2 hover:underline">진료안내</Link>,{' '}
-          <Link href="/consultation" className="text-primary font-semibold underline-offset-2 hover:underline">온라인상담</Link>
-        </p>
 
-        <StaticFaq items={faqs} />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd(faqs)) }}
-        />
+        <section id="s3" className="scroll-mt-20 space-y-3">
+          <SectionTitle n={3}>항문콘딜로마 치료 방법</SectionTitle>
+          <Prose>
+            <p>
+              병변의 크기·위치·범위에 따라 적합한 제거 방법이 달라질 수 있습니다. 치료 후에는 재발 여부를
+              확인하기 위한 정기 추적 관찰이 함께 안내됩니다.
+            </p>
+          </Prose>
+          <FlowSteps
+            cols={4}
+            tone="blue"
+            items={[
+              { title: '전기소작술', desc: '고주파 전류로 병변을 태워 제거하는 방법으로 외래에서 시행할 수 있습니다.' },
+              { title: '레이저 치료', desc: 'CO2 레이저로 병변을 정밀 제거하는 방법으로 상처가 작고 회복이 빠른 편입니다.' },
+              { title: '외과적 절제', desc: '큰 병변 또는 넓은 범위에 적용하며 근치적 제거를 목표로 합니다.' },
+              { title: '약물 도포', desc: '이미퀴모드 크림 도포로 면역 반응을 유도하는 방법입니다.' },
+            ]}
+          />
+        </section>
 
-        <div className="rounded-2xl p-6 text-center" style={{background:'linear-gradient(135deg,#0d7fc4,#0d9488)'}}>
-          <p className="text-white font-black text-[16px] mb-2">콘딜로마는 재발이 잦습니다. 치료 후 정기 추적 관찰이 반드시 필요합니다.</p>
-          <p className="text-white/85 text-[13px] leading-[1.9]">장튼튼항외과의원 외과전문의가 직접 진단하고 치료합니다.</p>
+        <FaqShell>
+          <StaticFaq items={faqs} hideHeading />
+        </FaqShell>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd(faqs)) }} />
+
+        <section className="space-y-3">
+          <SectionTitle>관련 콘텐츠</SectionTitle>
+          <RelatedCarousel items={related} />
+        </section>
+
+        <div className="rounded-[16px] p-5 md:p-6 text-center" style={{ background: 'linear-gradient(135deg,#0d7fc4,#0d9488)' }}>
+          <p className="text-white font-bold text-[16px] mb-2 break-keep">콘딜로마는 재발이 잦은 편입니다</p>
+          <p className="text-white/90 text-[13px] leading-[1.85]">
+            치료 후에도 정기적인 추적 관찰이 도움이 될 수 있습니다.
+            <br />
+            장튼튼항외과의원 외과전문의가 상태에 맞게 진단하고 안내합니다.
+          </p>
         </div>
       </div>
     </div>

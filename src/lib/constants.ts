@@ -33,7 +33,7 @@ export const NAV_ITEMS: NavItem[] = [
     href: '/anorectal',
     label: '대장항문클리닉',
     subItems: [
-      { href: '/anorectal/hemorrhoid', label: '치핵' },
+      { href: '/anorectal/hemorrhoid', label: '치질' },
       { href: '/anorectal/fissure', label: '치열' },
       { href: '/anorectal/fistula', label: '치루및항문주위농양' },
       { href: '/anorectal/pruritus', label: '항문소양증' },

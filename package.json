@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "indexnow": "node scripts/submit-indexnow.mjs",
-    "indexnow:sitemap": "node scripts/submit-indexnow.mjs --sitemap"
+    "indexnow:changed": "node scripts/submit-indexnow.mjs https://jtntn.co.kr",
+    "indexnow:sitemap": "node scripts/submit-indexnow.mjs https://jtntn.co.kr --sitemap"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",

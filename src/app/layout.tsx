@@ -3,6 +3,7 @@ import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import MobileBottomBar from '@/components/layout/MobileBottomBar'
+import August2026ClosureModal from '@/components/notices/August2026ClosureModal'
 import {
   DEFAULT_DESCRIPTION,
   OG_IMAGE_PATH,
@@ -95,6 +96,7 @@ export default function RootLayout({
         {children}
         <Footer />
         <MobileBottomBar />
+        <August2026ClosureModal />
       </body>
     </html>
   )

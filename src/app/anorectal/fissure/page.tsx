@@ -1,8 +1,25 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import {
+  BoltIcon,
+  CheckCircleIcon,
+  ExclamationTriangleIcon,
+  Squares2X2Icon,
+} from '@heroicons/react/24/outline'
 import StaticFaq, { faqJsonLd } from '@/components/content/StaticFaq'
-import { PageToc } from '@/components/content/MedicalImageGallery'
+import {
+  Banner,
+  ClinicHeroScrim,
+  ClinicToc,
+  FaqShell,
+  FlowSteps,
+  Prose,
+  RelatedCarousel,
+  SectionTitle,
+  SoftCard,
+  StatChip,
+} from '../_ui'
 
 export const metadata: Metadata = {
   title: '치열 | 장튼튼항외과의원',
@@ -42,100 +59,197 @@ const faqs = [
   },
 ]
 
+const related = [
+  { href: '/anorectal/hemorrhoid', title: '치질', desc: '출혈·돌출·불편감이 있을 때 확인' },
+  { href: '/anorectal/constipation', title: '변비·설사', desc: '딱딱한 변·힘주기와 치열 악화' },
+  { href: '/anorectal/levator', title: '항문거근증후군', desc: '배변과 무관한 깊은 통증 감별' },
+]
+
 export default function Page() {
   return (
-    <div className="bg-[#f9fafb] min-h-screen pb-24 md:pb-0">
-      <div className="relative overflow-hidden h-[260px] md:h-[360px] lg:h-[480px]">
-        <Image src="/images/tour/03-consultation-room.webp" alt="치열 통증 진단과 치료 안내" fill className="object-cover" sizes="100vw" priority />
-        <div className="absolute inset-0 subpage-hero-scrim-x" />
-        <div className="absolute inset-0 subpage-hero-scrim-y" />
-        <div className="relative z-10 max-w-4xl mx-auto px-4 lg:px-8 h-full flex flex-col justify-end pb-10">
-          <nav className="subpage-breadcrumb mb-3">홈 / 대장항문센터 / <strong>치열</strong></nav>
-          <p className="text-[12px] font-black text-primary tracking-widest mb-2">Anal Fissure</p>
-          <h1 className="text-[28px] md:text-[38px] lg:text-[46px] font-black text-[#0d1117] mb-3">치열</h1>
-          <p className="text-[14px] md:text-[16px] text-[#555] font-semibold">항문 점막의 찢어짐 · 극심한 배변 통증</p>
+    <div className="bg-[#f8fafb] min-h-screen">
+      <div className="relative h-[240px] md:h-[320px] lg:h-[400px]">
+        <Image
+          src="/images/colorectal-center-hero.webp"
+          alt="장튼튼항외과의원 치열 진료 안내"
+          fill
+          className="object-cover object-[58%_center] lg:object-[62%_center]"
+          sizes="100vw"
+          priority
+        />
+        <ClinicHeroScrim />
+        <div className="relative z-10 max-w-4xl mx-auto px-4 lg:px-8 h-full flex flex-col justify-end pb-6 md:pb-8">
+          <nav className="subpage-breadcrumb mb-2 flex flex-wrap items-center gap-1.5">
+            <Link href="/" className="hover:underline">홈</Link>
+            <span>/</span>
+            <Link href="/anorectal" className="hover:underline">대장항문센터</Link>
+            <span>/</span>
+            <strong>치열</strong>
+          </nav>
+          <h1 className="text-[27px] md:text-[32px] lg:text-[38px] font-extrabold text-[#0d1117] mb-1 break-keep leading-[1.25]">
+            치열
+          </h1>
+          <p className="text-[13px] md:text-[15px] text-[#374151] font-medium leading-snug">
+            항문 점막의 찢어짐으로 배변 시 극심한 통증이 나타날 수 있는 상태
+          </p>
         </div>
       </div>
-      <div className="max-w-4xl mx-auto px-4 lg:px-8 section-space space-y-6">
 
-        <section className="bg-white rounded-2xl p-6 lg:p-8 shadow-[0_4px_24px_rgba(0,0,0,0.07)]">
-          <h2 className="section-h2 text-[#0d1117] mb-3">핵심요약</h2>
-          <p className="body-text text-[#374151] break-keep">
-            치열은 항문 입구 점막이 찢어진 상태로, 배변 시 극심한 통증과 선홍색 출혈이 특징입니다. 급성·만성 여부에 따라 좌욕·약물부터 수술까지 상담합니다.
-          </p>
+      <div className="max-w-4xl mx-auto px-4 lg:px-8 pt-6 md:pt-8 pb-7 md:pb-10 space-y-7 md:space-y-8">
+        {/* 핵심요약 */}
+        <section className="space-y-3">
+          <p className="text-[12px] font-bold tracking-wider text-primary">핵심요약</p>
+          <SoftCard>
+            <Prose>
+              <p>
+                치열은 항문 입구의 피부와 점막이 찢어진 상태로, 배변 시 마치 칼로 베이는 듯한 극심한 통증과
+                선홍색 출혈이 특징적으로 나타날 수 있습니다. 배변 후에도 수십 분에서 수 시간 동안 작열감이
+                이어지는 경우가 많습니다.
+              </p>
+              <p>
+                통증 때문에 배변을 참게 되고, 그로 인해 변비가 심해지는 악순환이 반복될 수 있습니다. 20~40대
+                여성에서 비교적 흔하게 나타나며, 항문 후방 정중선에서 발생하는 경우가 약 90%로 알려져 있습니다.
+              </p>
+              <p>
+                급성·만성 여부에 따라 좌욕·약물 등 보존적 치료부터 수술적 치료까지 상담 방향이 달라질 수
+                있습니다. 배변 통증이 반복된다면 김포·구래동 장튼튼항외과의원에서 상태를 확인해 볼 수 있습니다.
+              </p>
+            </Prose>
+          </SoftCard>
+          <div className="grid grid-cols-2 gap-2.5">
+            <StatChip tone="coral" icon={BoltIcon} title="대표 증상" desc="배변 시 날카로운 통증·출혈" />
+            <StatChip tone="lavender" icon={Squares2X2Icon} title="구분" desc="급성 치열·만성 치열" />
+            <StatChip tone="yellow" icon={ExclamationTriangleIcon} title="악화 요인" desc="변비·과도한 힘주기" />
+            <StatChip tone="mint" icon={CheckCircleIcon} title="치료 방향" desc="좌욕·약물부터 수술까지" />
+          </div>
         </section>
 
-        <PageToc
+        <ClinicToc
           items={[
-            { id: 'what-is', label: '치열이란?' },
-            { id: 'treatment', label: '치료 방법' },
-            { id: 'faq', label: '자주 묻는 질문' },
+            { id: 's1', label: '치열이란 무엇인가요?' },
+            { id: 's2', label: '급성 치열과 만성 치열의 차이' },
+            { id: 's3', label: '치열이 반복되는 이유' },
+            { id: 's4', label: '치열 진찰 방법' },
+            { id: 's5', label: '치열 치료 방법' },
           ]}
         />
 
-
-        <section className="bg-white rounded-2xl p-6 lg:p-8 shadow-[0_4px_24px_rgba(0,0,0,0.07)]" id="what-is">
-          <h2 className="text-[19px] lg:text-[21px] font-black text-[#0d1117] mb-5 pb-3 border-b border-[#f0f4f8] flex items-center gap-2">
-            <span>💡</span> 치열이란?
-          </h2>
-          <div className="text-[14px] text-[#374151] leading-[2.0] space-y-3"><p>치열은 항문 입구의 피부와 점막이 찢어진 상태입니다. 배변 시 마치 칼로 베이는 듯한 극심한 통증과 선홍색 출혈이 특징이며, 배변 후에도 수십 분~수 시간 동안 작열감이 지속됩니다.</p>
-              <p>통증 때문에 배변을 참게 되고, 이로 인해 변비가 심해지는 <strong className="text-[#0d7fc4]">악순환</strong>이 반복됩니다. 20~40대 여성에서 가장 흔하며 항문 후방 정중선에서 약 90%가 발생합니다.</p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
-                <div className="p-4 rounded-xl bg-[#f0f7ff] border border-[#bfdbfe]">
-                  <h3 className="font-black text-[14px] text-[#0d7fc4] mb-2">급성 치열</h3>
-                  <ul className="space-y-1.5 text-[13px] text-[#374151]">
-                    <li>• 최근 발생한 표재성 열상</li>
-                    <li>• 약물+좌욕으로 6~8주 내 치유</li>
-                    <li>• 조기 치료가 만성화 예방</li>
-                  </ul>
-                </div>
-                <div className="p-4 rounded-xl bg-[#fff7ed] border border-[#fed7aa]">
-                  <h3 className="font-black text-[14px] text-[#f97316] mb-2">만성 치열</h3>
-                  <ul className="space-y-1.5 text-[13px] text-[#374151]">
-                    <li>• 8주 이상 지속</li>
-                    <li>• 섬유화 조직(감시 치핵) 형성</li>
-                    <li>• 수술적 치료 필요</li>
-                  </ul>
-                </div>
-              </div></div>
+        <section id="s1" className="scroll-mt-20 space-y-3">
+          <SectionTitle n={1}>치열이란 무엇인가요?</SectionTitle>
+          <Prose>
+            <p>
+              치열은 항문 입구의 피부와 점막이 찢어진 상태입니다. 배변 시 마치 칼로 베이는 듯한 극심한 통증과
+              선홍색 출혈이 특징이며, 배변 후에도 수십 분에서 수 시간 동안 작열감이 지속될 수 있습니다.
+            </p>
+            <p>
+              통증 때문에 배변을 참게 되고, 이로 인해 변비가 심해지는 악순환이 반복되는 경우가 있습니다.
+              20~40대 여성에서 비교적 흔한 것으로 알려져 있으며, 항문 후방 정중선에서 발생하는 경우가 약
+              90%에 이릅니다.
+            </p>
+          </Prose>
         </section>
 
-        <section className="bg-white rounded-2xl p-6 lg:p-8 shadow-[0_4px_24px_rgba(0,0,0,0.07)]" id="treatment">
-          <h2 className="text-[19px] lg:text-[21px] font-black text-[#0d1117] mb-5 pb-3 border-b border-[#f0f4f8] flex items-center gap-2">
-            <span>⚕️</span> 치료 방법
-          </h2>
-          <div className="text-[14px] text-[#374151] leading-[2.0] space-y-3"><div className="space-y-3">
-              {[
-                {step:'01', title:'좌욕 치료', desc:'하루 3회 이상 미온수(38~40℃) 좌욕으로 괄약근을 이완하고 혈류를 개선합니다.'},
-                {step:'02', title:'약물 도포', desc:'칼슘 통로 차단제(딜티아젬), 글리세린 삼질산염 연고를 도포하여 내괄약근 압력을 낮춥니다.'},
-                {step:'03', title:'보톡스 주사', desc:'내괄약근에 직접 보톡스를 주입하여 일시적으로 이완시키는 치료법입니다.'},
-                {step:'04', title:'내괄약근 측방 절개술', desc:'만성 치열에서 자주 시행하는 수술입니다. 내괄약근 일부를 절개하며, 상태에 따라 당일 퇴원을 검토할 수 있습니다.'},
-              ].map((t) => (
-                <div key={t.step} className="flex gap-4 p-4 lg:p-5 rounded-xl bg-[#f8fafb]">
-                  <span className="text-[12px] font-black text-primary shrink-0">STEP{t.step}</span>
-                  <div>
-                    <h3 className="text-[14px] font-bold text-[#0d1117] mb-1">{t.title}</h3>
-                    <p className="text-[13px] text-[#6b7280] leading-[1.85]">{t.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div></div>
+        <section id="s2" className="scroll-mt-20 space-y-3">
+          <SectionTitle n={2}>급성 치열과 만성 치열의 차이</SectionTitle>
+          <Prose>
+            <p>
+              치열은 지속 기간과 조직 변화에 따라 급성과 만성으로 구분해 설명합니다. 구분에 따라 치료 방향도
+              달라질 수 있습니다.
+            </p>
+          </Prose>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            <div className="rounded-[16px] border bg-white overflow-hidden" style={{ borderColor: '#cfe3f6' }}>
+              <div className="px-3.5 py-2.5" style={{ background: '#eaf3fd' }}>
+                <p className="text-[12px] font-semibold" style={{ color: '#1e4a76' }}>급성 치열</p>
+                <p className="text-[14px] font-semibold text-[#0d1117] mt-0.5 break-keep">최근 발생한 표재성 열상</p>
+              </div>
+              <div className="p-3.5">
+                <ul className="space-y-1.5 text-[12.5px] text-[#374151] leading-[1.7]">
+                  <li>최근 발생한 표재성 열상 형태로 나타나는 경우가 많습니다.</li>
+                  <li>약물과 좌욕을 함께 진행하면 6~8주 내 치유를 기대해볼 수 있습니다.</li>
+                  <li>조기에 치료를 시작하는 것이 만성화 예방에 도움이 될 수 있습니다.</li>
+                </ul>
+              </div>
+            </div>
+            <div className="rounded-[16px] border bg-white overflow-hidden" style={{ borderColor: '#f4d2d2' }}>
+              <div className="px-3.5 py-2.5" style={{ background: '#fdeeee' }}>
+                <p className="text-[12px] font-semibold" style={{ color: '#8a3a3a' }}>만성 치열</p>
+                <p className="text-[14px] font-semibold text-[#0d1117] mt-0.5 break-keep">8주 이상 지속·섬유화 동반</p>
+              </div>
+              <div className="p-3.5">
+                <ul className="space-y-1.5 text-[12.5px] text-[#374151] leading-[1.7]">
+                  <li>증상이 8주 이상 이어지는 경우를 만성 치열로 설명합니다.</li>
+                  <li>섬유화 조직(감시 치핵)이 함께 형성될 수 있습니다.</li>
+                  <li>상태에 따라 수술적 치료를 검토하게 되는 경우가 많습니다.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </section>
-                <p className="text-[14px] text-[#374151] leading-[1.9] break-keep">
-          관련 진료:{' '}
-          <Link href="/anorectal/hemorrhoid" className="text-primary font-semibold underline-offset-2 hover:underline">치핵</Link>,{' '}
-          <Link href="/anorectal/constipation" className="text-primary font-semibold underline-offset-2 hover:underline">변비·설사</Link>
-        </p>
 
-        <StaticFaq items={faqs} />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd(faqs)) }}
-        />
+        <section id="s3" className="scroll-mt-20 space-y-3">
+          <SectionTitle n={3}>치열이 반복되는 이유</SectionTitle>
+          <Prose>
+            <p>
+              배변 시 통증이 심하다 보니 다음 배변을 무의식적으로 참게 되고, 그 사이 변이 더 딱딱해지면서 다시
+              점막이 찢어지는 악순환이 이어질 수 있습니다. 변비 관리가 함께 이뤄지지 않으면 치유가 늦어질 수
+              있습니다.
+            </p>
+          </Prose>
+          <Banner tone="yellow" icon={ExclamationTriangleIcon}>
+            배변을 참을수록 변이 굳어져 통증이 반복될 수 있습니다. 변비 관리를 함께 진행하는 것이 회복에 도움이
+            될 수 있습니다.
+          </Banner>
+        </section>
 
-        <div className="rounded-2xl p-6 text-center" style={{background:'linear-gradient(135deg,#0d7fc4,#0d9488)'}}>
-          <p className="text-white font-black text-[16px] mb-2">치열, 혼자 참지 마세요</p>
-          <p className="text-white/85 text-[13px] leading-[1.9]">배변이 두려울 정도의 통증이 있다면 반드시 전문의 진찰이 필요합니다.<br />초기 치열은 간단한 치료로 해결됩니다.</p>
+        <section id="s4" className="scroll-mt-20 space-y-3">
+          <SectionTitle n={4}>치열 진찰 방법</SectionTitle>
+          <Prose>
+            <p>
+              진료에서는 통증의 시작 시점, 배변 습관, 출혈 양상을 먼저 확인합니다. 필요한 경우 항문 진찰로
+              열상의 위치와 급성·만성 여부를 평가하며, 다른 항문 질환과의 감별도 함께 살펴봅니다.
+            </p>
+          </Prose>
+          <FlowSteps
+            cols={3}
+            tone="blue"
+            items={[
+              { title: '증상·배변 확인', desc: '통증 시작 시기와 배변 습관을 확인합니다.' },
+              { title: '항문 진찰', desc: '열상 위치와 급성·만성 여부를 평가합니다.' },
+              { title: '치료 상담', desc: '상태에 맞는 치료 방향을 안내합니다.' },
+            ]}
+          />
+        </section>
+
+        <section id="s5" className="scroll-mt-20 space-y-3">
+          <SectionTitle n={5}>치열 치료 방법</SectionTitle>
+          <FlowSteps
+            items={[
+              { title: '좌욕 치료', desc: '하루 3회 이상 미온수(38~40℃) 좌욕으로 괄약근을 이완하고 혈류를 개선하는 방법입니다.' },
+              { title: '약물 도포', desc: '칼슘 통로 차단제(딜티아젬), 글리세린 삼질산염 연고를 도포해 내괄약근 압력을 낮추는 방법입니다.' },
+              { title: '보톡스 주사', desc: '내괄약근에 직접 보톡스를 주입해 일시적으로 이완시키는 치료법입니다.' },
+              { title: '내괄약근 측방 절개술', desc: '만성 치열에서 자주 시행하는 수술로, 내괄약근 일부를 절개하며 상태에 따라 당일 퇴원을 검토할 수 있습니다.' },
+            ]}
+          />
+        </section>
+
+        <FaqShell>
+          <StaticFaq items={faqs} hideHeading />
+        </FaqShell>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd(faqs)) }} />
+
+        <section className="space-y-3">
+          <SectionTitle>관련 콘텐츠</SectionTitle>
+          <RelatedCarousel items={related} />
+        </section>
+
+        <div className="rounded-[16px] p-5 md:p-6 text-center" style={{ background: 'linear-gradient(135deg,#0d7fc4,#0d9488)' }}>
+          <p className="text-white font-bold text-[16px] mb-2 break-keep">치열, 혼자 참지 마세요</p>
+          <p className="text-white/90 text-[13px] leading-[1.85]">
+            배변이 두려울 정도의 통증이 있다면 진찰을 받아보는 것이 좋습니다.
+            <br />
+            초기 치열은 비교적 간단한 치료로 호전을 기대할 수 있습니다.
+          </p>
         </div>
       </div>
     </div>
