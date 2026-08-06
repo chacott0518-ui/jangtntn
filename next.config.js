@@ -5,6 +5,8 @@ const nextConfig = {
       { protocol: 'https', hostname: 'images.unsplash.com' },
       { protocol: 'https', hostname: 'i.pinimg.com' },
     ],
+    // Vercel Image Optimization이 402를 반환해 전역 이미지가 깨짐 → 정적 /images 직접 제공
+    unoptimized: true,
   },
   async headers() {
     return [

@@ -62,7 +62,7 @@ export default function MagazinePage() {
                   className="group flex h-[248px] flex-col rounded-[14px] border border-[#e8eef3] bg-white overflow-hidden active:scale-[0.98] transition-transform duration-150"
                 >
                   <div className="relative w-full h-[96px] shrink-0 overflow-hidden aspect-video">
-                    <Image src={a.image} alt={a.alt} fill className="object-cover" sizes="50vw" />
+                    <Image src={a.image} alt={a.alt} fill className="object-cover" sizes="50vw" loading="lazy" />
                   </div>
                   <div className="flex flex-1 flex-col min-w-0 p-2.5">
                     <div className="flex flex-wrap items-center gap-1 mb-1">
@@ -110,6 +110,7 @@ export default function MagazinePage() {
                       fill
                       className="object-cover group-hover:scale-[1.03] transition-transform duration-300"
                       sizes="160px"
+                      loading="lazy"
                     />
                   </div>
                   <div className="flex flex-1 flex-col min-w-0">

@@ -69,7 +69,7 @@ export default function DepartmentCards() {
             {CARDS.map((card) => (
               <Link key={card.href} href={card.href} className="shrink-0 snap-start w-[72vw] max-w-[280px] rounded-2xl bg-white shadow-[0_4px_20px_rgba(0,0,0,0.09)] overflow-hidden flex flex-col">
                 <div className="relative w-full aspect-[16/9] overflow-hidden">
-                  <Image src={card.img} alt={card.alt} fill className="object-cover" sizes="(max-width: 1023px) 72vw, 280px" />
+                  <Image src={card.img} alt={card.alt} fill className="object-cover" sizes="(max-width: 1023px) 72vw, 280px" loading="lazy" />
                   <div className="absolute bottom-3 left-3 w-9 h-9 rounded-xl bg-white/90 flex items-center justify-center text-[18px] shadow-sm">{card.icon}</div>
                 </div>
                 <div className="p-4 flex-1 flex flex-col">
@@ -90,7 +90,7 @@ export default function DepartmentCards() {
           {CARDS.map((card) => (
             <Link key={card.href} href={card.href} className="group rounded-2xl bg-white shadow-[0_4px_20px_rgba(0,0,0,0.07)] overflow-hidden hover:shadow-[0_8px_32px_rgba(13,127,196,0.15)] hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
               <div className="relative w-full aspect-[16/9] overflow-hidden">
-                <Image src={card.img} alt={card.alt} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(min-width: 1024px) 33vw, 100vw" />
+                <Image src={card.img} alt={card.alt} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(min-width: 1024px) 33vw, 100vw" loading="lazy" />
                 <div className="absolute bottom-4 left-4 w-10 h-10 rounded-2xl bg-white/90 flex items-center justify-center text-[20px] shadow-sm">{card.icon}</div>
               </div>
               <div className="p-5 flex flex-1 flex-col">

@@ -12,7 +12,7 @@ export const metadata: Metadata = buildPageMetadata({
 
 export default function NoticePage() {
   return (
-    <div className="bg-white min-h-screen pb-24 md:pb-0">
+    <div className="bg-white pb-24 md:pb-0">
       <div className="relative overflow-hidden h-[260px] md:h-[360px] lg:h-[480px]">
         <Image src="/images/pages/or-room.webp" alt="공지사항" fill className="object-cover" sizes="100vw" priority />
         <div className="absolute inset-0 subpage-hero-scrim-x" />
