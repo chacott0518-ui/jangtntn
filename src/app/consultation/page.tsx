@@ -3,7 +3,11 @@ import Image from 'next/image'
 import PendingFeatureButton from '@/components/ui/PendingFeatureButton'
 import { PageToc } from '@/components/content/MedicalImageGallery'
 
-export const metadata: Metadata = { title: '온라인 상담 | 장튼튼항외과의원', description: '온라인 상담 신청.' }
+export const metadata: Metadata = {
+  title: '온라인 상담 | 장튼튼항외과의원',
+  description: '온라인 상담 신청.',
+  alternates: { canonical: 'https://jtntn.co.kr/consultation' },
+}
 
 export default function ConsultationPage() {
   return (

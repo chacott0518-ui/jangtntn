@@ -16,6 +16,7 @@ export function generateMetadata({ params }: Props): Metadata {
   return {
     title: `${notice.title} | 장튼튼항외과의원`,
     description: notice.body?.split('\n').filter(Boolean)[0] ?? notice.title,
+    alternates: { canonical: `https://jtntn.co.kr/notice/${params.slug}` },
   }
 }
 
